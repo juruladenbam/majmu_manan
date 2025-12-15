@@ -1,0 +1,63 @@
+.editor-container {
+  border: 1px solid #E2E8F0;
+  border-radius: 0.375rem;
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-toolbar {
+  display: flex;
+  padding: 8px;
+  border-bottom: 1px solid #E2E8F0;
+  background-color: #F7FAFC;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  gap: 4px;
+}
+
+.editor-content {
+  position: relative;
+  flex: 1;
+}
+
+.editor-input {
+  min-height: 100px;
+  padding: 12px;
+  outline: none;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.editor-input[dir="rtl"] {
+  text-align: right;
+  font-family: 'Scheherazade New', serif !important;
+  font-size: 2.2rem; /* Significantly increased size for Arabic */
+  line-height: 2.2;
+}
+
+.editor-paragraph {
+  margin: 0;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.editor-input[dir="rtl"] .editor-paragraph,
+.editor-input[dir="rtl"] .editor-paragraph * {
+  font-family: 'Scheherazade New', serif !important;
+}
+
+.editor-placeholder {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #A0AEC0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.editor-input[dir="rtl"] + .editor-placeholder {
+  left: auto;
+  right: 12px;
+}

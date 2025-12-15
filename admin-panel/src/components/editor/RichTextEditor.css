@@ -1,0 +1,26 @@
+.rich-text-wrapper .ql-editor {
+  min-height: 100px;
+  font-size: 1.25rem;
+}
+
+.rich-text-wrapper .ql-toolbar {
+  border-top-left-radius: var(--chakra-radii-md);
+  border-top-right-radius: var(--chakra-radii-md);
+}
+
+.rich-text-wrapper .ql-container {
+  border-bottom-left-radius: var(--chakra-radii-md);
+  border-bottom-right-radius: var(--chakra-radii-md);
+}
+
+/* RTL Support */
+.rich-text-wrapper.is-rtl .ql-editor {
+  direction: rtl;
+  text-align: right;
+  font-family: serif;
+}
+
+.rich-text-wrapper.is-ltr .ql-editor {
+  direction: ltr;
+  text-align: left;
+}

@@ -1,0 +1,627 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Majmu Manan API",
+        "description": "API Documentation for Majmu Manan Application",
+        "contact": {
+            "email": "admin@majmu-manan.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/api/admin/bacaan": {
+            "get": {
+                "tags": [
+                    "Admin Bacaan"
+                ],
+                "summary": "List all Bacaan",
+                "operationId": "d55221e1f20d757a629c2438053c21ec",
+                "responses": {
+                    "200": {
+                        "description": "List of Bacaan"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Admin Bacaan"
+                ],
+                "summary": "Create Bacaan",
+                "operationId": "9d006d722a1b2a70b600fbcbd1a249c4",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "judul"
+                                ],
+                                "properties": {
+                                    "judul": {
+                                        "type": "string"
+                                    },
+                                    "judul_arab": {
+                                        "type": "string"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/bacaan/{id}": {
+            "get": {
+                "tags": [
+                    "Admin Bacaan"
+                ],
+                "summary": "Get Bacaan Detail",
+                "operationId": "c6660a46b6df2e3f3f7015743c9e11f6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Admin Bacaan"
+                ],
+                "summary": "Update Bacaan",
+                "operationId": "76c2b276899c96178aa24184eb16f7de",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "judul": {
+                                        "type": "string"
+                                    },
+                                    "judul_arab": {
+                                        "type": "string"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Admin Bacaan"
+                ],
+                "summary": "Delete Bacaan",
+                "operationId": "a789ed17a5e2e4eec292840528fc1786",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/items": {
+            "post": {
+                "tags": [
+                    "Admin Items"
+                ],
+                "summary": "Create Item",
+                "operationId": "0c1c741a807aad95c119fd34bd81a279",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "bacaan_id"
+                                ],
+                                "properties": {
+                                    "bacaan_id": {
+                                        "type": "integer"
+                                    },
+                                    "section_id": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "arabic": {
+                                        "type": "string"
+                                    },
+                                    "terjemahan": {
+                                        "type": "string"
+                                    },
+                                    "tipe_tampilan": {
+                                        "type": "string",
+                                        "enum": [
+                                            "text",
+                                            "syiir",
+                                            "judul_tengah",
+                                            "image",
+                                            "keterangan"
+                                        ]
+                                    },
+                                    "urutan": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/items/{id}": {
+            "put": {
+                "tags": [
+                    "Admin Items"
+                ],
+                "summary": "Update Item",
+                "operationId": "d6c8b1edff37bfb3924718b79705bf07",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "arabic": {
+                                        "type": "string"
+                                    },
+                                    "terjemahan": {
+                                        "type": "string"
+                                    },
+                                    "urutan": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Admin Items"
+                ],
+                "summary": "Delete Item",
+                "operationId": "8d88f4476b4232d25618cbb7f5043020",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/sections": {
+            "post": {
+                "tags": [
+                    "Admin Sections"
+                ],
+                "summary": "Create Section",
+                "operationId": "a0c8d6ae28abad854148c6b2d906c1f6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "bacaan_id",
+                                    "judul_section"
+                                ],
+                                "properties": {
+                                    "bacaan_id": {
+                                        "type": "integer"
+                                    },
+                                    "judul_section": {
+                                        "type": "string"
+                                    },
+                                    "urutan": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/sections/{id}": {
+            "put": {
+                "tags": [
+                    "Admin Sections"
+                ],
+                "summary": "Update Section",
+                "operationId": "45a579e93ed2acc63061e2038af01686",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "judul_section": {
+                                        "type": "string"
+                                    },
+                                    "urutan": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Admin Sections"
+                ],
+                "summary": "Delete Section",
+                "operationId": "239d801fbe40613f092f4b7878b899ae",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login for Admin",
+                "description": "Login to get access token",
+                "operationId": "222b2625838e3c57e017987f73598fda",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "admin@majmu-manan.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string",
+                                            "example": "1|AbCdEf..."
+                                        },
+                                        "user": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout",
+                "operationId": "ad65cbbd4e9f201619eae184a5961a98",
+                "responses": {
+                    "200": {
+                        "description": "Logged out"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/me": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get Current User",
+                "operationId": "8367feff40ba10e43187792cad3132c1",
+                "responses": {
+                    "200": {
+                        "description": "User info"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/bacaan": {
+            "get": {
+                "tags": [
+                    "Public Reader"
+                ],
+                "summary": "List all Bacaan (Menu)",
+                "operationId": "09f4bcdcf2fdd1d0afd34e17ddfbf5ba",
+                "responses": {
+                    "200": {
+                        "description": "List"
+                    }
+                }
+            }
+        },
+        "/api/bacaan/{slug}": {
+            "get": {
+                "tags": [
+                    "Public Reader"
+                ],
+                "summary": "Get Bacaan Metadata & Section List",
+                "operationId": "4349eb826c01ce448e4edcaf1b0cfea9",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail with Sections"
+                    }
+                }
+            }
+        },
+        "/api/bacaan/{slug}/{section_slug}": {
+            "get": {
+                "tags": [
+                    "Public Reader"
+                ],
+                "summary": "Get Content of a Section",
+                "operationId": "54001a8c4572166199b21cdf984c9d17",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "section_slug",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Section Items"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Admin Bacaan",
+            "description": "Admin Bacaan"
+        },
+        {
+            "name": "Admin Items",
+            "description": "Admin Items"
+        },
+        {
+            "name": "Admin Sections",
+            "description": "Admin Sections"
+        },
+        {
+            "name": "Auth",
+            "description": "Auth"
+        },
+        {
+            "name": "Public Reader",
+            "description": "Public Reader"
+        }
+    ]
+}

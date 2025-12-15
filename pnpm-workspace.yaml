@@ -1,0 +1,4 @@
+packages:
+  - 'admin-panel'
+  - 'public-app'
+  - 'shared-lib'

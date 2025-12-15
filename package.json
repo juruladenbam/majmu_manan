@@ -1,0 +1,14 @@
+{
+  "name": "majmu-manan-monorepo",
+  "private": true,
+  "workspaces": [
+    "admin-panel",
+    "public-app",
+    "shared-lib"
+  ],
+  "scripts": {
+    "dev:admin": "npm run dev --workspace=admin-panel",
+    "dev:public": "npm run dev --workspace=public-app",
+    "build": "npm run build --workspaces"
+  }
+}

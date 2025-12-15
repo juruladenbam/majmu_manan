@@ -1,0 +1,42 @@
+
+> admin-panel@0.0.0 build
+> tsc -b && vite build
+
+vite v7.2.7 building client environment for production...
+transforming...
+✓ 1511 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.46 kB │ gzip:   0.29 kB
+dist/assets/index-CvhjXLO_.css    0.71 kB │ gzip:   0.36 kB
+dist/assets/index-Dkdi3zHD.js   825.55 kB │ gzip: 250.38 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.95s
+
+> public-app@0.0.0 build
+> tsc -b && vite build
+
+vite v7.2.7 building client environment for production...
+transforming...
+✓ 1874 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  1.00 kB │ gzip:   0.51 kB
+dist/assets/index-BLVRPzlY.js  813.99 kB │ gzip: 246.90 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 6.22s
+npm error Lifecycle script `build` failed with error:
+npm error workspace @project/shared@1.0.0
+npm error location /Users/anasmufti/Projects/Web/BAM/majmu_manan/shared-lib
+npm error Missing script: "build"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run --workspace=@project/shared@1.0.0

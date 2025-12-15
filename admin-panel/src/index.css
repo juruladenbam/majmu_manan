@@ -1,0 +1,8 @@
+html, body {
+  overscroll-behavior-y: none;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
