@@ -1,6 +1,13 @@
-html, body {
-  overscroll-behavior-y: none;
-  height: 100%;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    overscroll-behavior-y: none;
+    height: 100%;
+    @apply font-display antialiased text-text-dark dark:text-text-light bg-background-light dark:bg-background-dark;
+  }
 }
 
 #root {

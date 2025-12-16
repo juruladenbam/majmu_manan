@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Majmu' Admin - Section Manager</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f9f506",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#23220f",
+                        "stone-850": "#1c1917", // Custom dark specific
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Spline Sans", sans-serif;
+        }
+        /* Hide scrollbar for cleaner look in sidebar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#1c1c0d] dark:text-[#f8f8f5] overflow-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Side Navigation -->
+<aside class="w-64 flex-shrink-0 flex flex-col border-r border-[#e9e8ce] dark:border-stone-700 bg-background-light dark:bg-background-dark h-full transition-all">
+<div class="p-6 pb-2">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-primary flex items-center justify-center text-stone-900">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-none tracking-tight">Majmu' Admin</h1>
+<p class="text-xs text-stone-500 dark:text-stone-400 mt-1 font-medium">v2.0.1</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto no-scrollbar py-4 px-3 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-stone-600 dark:group-hover:text-stone-200">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/20 text-stone-900 dark:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-stone-800 dark:text-yellow-200">book_2</span>
+<span class="text-sm font-bold">Bacaan</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-stone-600 dark:group-hover:text-stone-200">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-stone-600 dark:group-hover:text-stone-200">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-stone-400 group-hover:text-stone-600 dark:group-hover:text-stone-200">description</span>
+<span class="text-sm font-medium">Logs</span>
+</a>
+</div>
+<div class="p-4 border-t border-[#e9e8ce] dark:border-stone-700">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="size-8 rounded-full bg-stone-200 dark:bg-stone-700 bg-cover bg-center" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOkcralZzay_AvO7YX_UcpksJBcUI29QkHat1UNYWuyc7Jt0W1hLZBHXselfA0YTxms8Mecg3ineZ09Rb6o86e4hVPzwLxcP9OmJG-SyITm3vul4eUWR7eD4jbwIz3WhMIDavu0X6HWn26jslT5nLyzSuaQs4e2BVDwAyPrICyP8LDVwIWC1xGnagUxQjqoo7PDNgnIM-hhng9u6GcT3figgxkUledG6oiOhEzJQn3Hp7x7lLc6q8nLMbQ58RZVKMmxiGRWLQjjeMw");'></div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-medium truncate text-stone-900 dark:text-white">Admin User</p>
+<p class="text-xs text-stone-500 dark:text-stone-400 truncate">admin@majmu.com</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full min-w-0 overflow-hidden bg-background-light dark:bg-background-dark relative">
+<!-- Top Navbar -->
+<header class="flex items-center justify-between border-b border-[#e9e8ce] dark:border-stone-700 px-8 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10">
+<div class="flex items-center gap-4">
+<!-- Breadcrumb simulation -->
+<div class="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400">
+<span class="hover:text-stone-800 dark:hover:text-stone-200 cursor-pointer">Bacaan</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="font-medium text-stone-900 dark:text-white">Majmu' Syarif</span>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<div class="relative w-full max-w-md">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full rounded-xl border-none bg-[#f0f0e8] dark:bg-stone-800 py-2.5 pl-10 pr-4 text-stone-900 dark:text-white placeholder:text-stone-400 focus:ring-2 focus:ring-primary sm:text-sm sm:leading-6" placeholder="Search sections..." type="text"/>
+</div>
+<button class="relative rounded-full p-2 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-background-light dark:border-background-dark"></span>
+</button>
+</div>
+</header>
+<!-- Scrollable Page Content -->
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-4xl mx-auto flex flex-col gap-6">
+<!-- Page Heading Area -->
+<div class="flex flex-col gap-6">
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-bold tracking-tight text-stone-900 dark:text-white">Majmu' Syarif</h2>
+<p class="text-stone-500 dark:text-stone-400">Managed by Admin Team • Last updated 2 days ago</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-full border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 text-sm font-medium hover:bg-stone-50 dark:hover:bg-stone-800 transition">Preview App</button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="border-b border-[#e9e8ce] dark:border-stone-700">
+<nav aria-label="Tabs" class="-mb-px flex space-x-8">
+<a class="border-transparent text-stone-500 dark:text-stone-400 hover:border-stone-300 hover:text-stone-700 whitespace-nowrap border-b-[3px] py-4 px-1 text-sm font-medium" href="#">
+                                    General Info
+                                </a>
+<a aria-current="page" class="border-primary text-stone-900 dark:text-white whitespace-nowrap border-b-[3px] py-4 px-1 text-sm font-bold" href="#">
+                                    Section/Bab Manager
+                                </a>
+<a class="border-transparent text-stone-500 dark:text-stone-400 hover:border-stone-300 hover:text-stone-700 whitespace-nowrap border-b-[3px] py-4 px-1 text-sm font-medium" href="#">
+                                    Settings
+                                </a>
+</nav>
+</div>
+</div>
+<!-- Manager Content -->
+<div class="flex flex-col gap-4 mt-2">
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center justify-between gap-4 p-2">
+<div class="flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400">
+<span class="material-symbols-outlined text-[20px]">info</span>
+<p>Drag &amp; drop items to reorder the structure.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-stone-900 hover:bg-[#eae605] px-5 py-2.5 rounded-full text-sm font-bold shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Tambah Bab</span>
+</button>
+</div>
+<!-- Sortable List -->
+<div class="flex flex-col gap-3 pb-20">
+<!-- Card 1 -->
+<div class="group relative flex items-center gap-4 bg-white dark:bg-[#2c2b15] p-4 rounded-2xl border border-[#e9e8ce] dark:border-stone-700 shadow-sm hover:shadow-md transition-all cursor-grab active:cursor-grabbing hover:border-primary/50">
+<!-- Drag Handle -->
+<div class="px-1 py-2 cursor-grab text-stone-300 dark:text-stone-600 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<!-- Number -->
+<div class="flex flex-shrink-0 items-center justify-center size-8 rounded-full bg-background-light dark:bg-stone-800 border border-[#e9e8ce] dark:border-stone-700 text-stone-500 dark:text-stone-400 text-xs font-bold font-mono">
+                                    01
+                                </div>
+<!-- Content -->
+<div class="flex-1 min-w-0 flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+<div class="flex flex-col gap-0.5">
+<h3 class="text-base font-bold text-stone-900 dark:text-white leading-tight">Muqaddimah</h3>
+<p class="text-xs text-stone-500 dark:text-stone-400 font-mono truncate max-w-[200px]">/muqaddimah</p>
+</div>
+<!-- Meta Badge -->
+<div class="md:ml-auto flex items-center">
+<span class="inline-flex items-center rounded-full bg-[#f4f4e6] dark:bg-stone-800 px-2.5 py-0.5 text-xs font-medium text-stone-600 dark:text-stone-300">
+                                            3 items
+                                        </span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-1 pl-2 border-l border-[#e9e8ce] dark:border-stone-700">
+<button class="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors" title="Edit Section">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 rounded-full text-stone-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors" title="Delete Section">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative flex items-center gap-4 bg-white dark:bg-[#2c2b15] p-4 rounded-2xl border border-[#e9e8ce] dark:border-stone-700 shadow-sm hover:shadow-md transition-all cursor-grab active:cursor-grabbing hover:border-primary/50">
+<div class="px-1 py-2 cursor-grab text-stone-300 dark:text-stone-600 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<div class="flex flex-shrink-0 items-center justify-center size-8 rounded-full bg-background-light dark:bg-stone-800 border border-[#e9e8ce] dark:border-stone-700 text-stone-500 dark:text-stone-400 text-xs font-bold font-mono">
+                                    02
+                                </div>
+<div class="flex-1 min-w-0 flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+<div class="flex flex-col gap-0.5">
+<h3 class="text-base font-bold text-stone-900 dark:text-white leading-tight">Yasin &amp; Tahlil</h3>
+<p class="text-xs text-stone-500 dark:text-stone-400 font-mono truncate max-w-[200px]">/yasin-tahlil</p>
+</div>
+<div class="md:ml-auto flex items-center">
+<span class="inline-flex items-center rounded-full bg-[#f4f4e6] dark:bg-stone-800 px-2.5 py-0.5 text-xs font-medium text-stone-600 dark:text-stone-300">
+                                            12 items
+                                        </span>
+</div>
+</div>
+<div class="flex items-center gap-1 pl-2 border-l border-[#e9e8ce] dark:border-stone-700">
+<button class="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 rounded-full text-stone-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative flex items-center gap-4 bg-white dark:bg-[#2c2b15] p-4 rounded-2xl border border-[#e9e8ce] dark:border-stone-700 shadow-sm hover:shadow-md transition-all cursor-grab active:cursor-grabbing hover:border-primary/50">
+<div class="px-1 py-2 cursor-grab text-stone-300 dark:text-stone-600 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<div class="flex flex-shrink-0 items-center justify-center size-8 rounded-full bg-background-light dark:bg-stone-800 border border-[#e9e8ce] dark:border-stone-700 text-stone-500 dark:text-stone-400 text-xs font-bold font-mono">
+                                    03
+                                </div>
+<div class="flex-1 min-w-0 flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+<div class="flex flex-col gap-0.5">
+<h3 class="text-base font-bold text-stone-900 dark:text-white leading-tight">Surah-Surah Pilihan</h3>
+<p class="text-xs text-stone-500 dark:text-stone-400 font-mono truncate max-w-[200px]">/surah-pilihan</p>
+</div>
+<div class="md:ml-auto flex items-center">
+<span class="inline-flex items-center rounded-full bg-[#f4f4e6] dark:bg-stone-800 px-2.5 py-0.5 text-xs font-medium text-stone-600 dark:text-stone-300">
+                                            8 items
+                                        </span>
+</div>
+</div>
+<div class="flex items-center gap-1 pl-2 border-l border-[#e9e8ce] dark:border-stone-700">
+<button class="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 rounded-full text-stone-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group relative flex items-center gap-4 bg-white dark:bg-[#2c2b15] p-4 rounded-2xl border border-[#e9e8ce] dark:border-stone-700 shadow-sm hover:shadow-md transition-all cursor-grab active:cursor-grabbing hover:border-primary/50">
+<div class="px-1 py-2 cursor-grab text-stone-300 dark:text-stone-600 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<div class="flex flex-shrink-0 items-center justify-center size-8 rounded-full bg-background-light dark:bg-stone-800 border border-[#e9e8ce] dark:border-stone-700 text-stone-500 dark:text-stone-400 text-xs font-bold font-mono">
+                                    04
+                                </div>
+<div class="flex-1 min-w-0 flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+<div class="flex flex-col gap-0.5">
+<h3 class="text-base font-bold text-stone-900 dark:text-white leading-tight">Doa-Doa Harian</h3>
+<p class="text-xs text-stone-500 dark:text-stone-400 font-mono truncate max-w-[200px]">/doa-harian</p>
+</div>
+<div class="md:ml-auto flex items-center">
+<span class="inline-flex items-center rounded-full bg-[#f4f4e6] dark:bg-stone-800 px-2.5 py-0.5 text-xs font-medium text-stone-600 dark:text-stone-300">
+                                            25 items
+                                        </span>
+</div>
+</div>
+<div class="flex items-center gap-1 pl-2 border-l border-[#e9e8ce] dark:border-stone-700">
+<button class="p-2 rounded-full text-stone-400 hover:text-stone-700 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 rounded-full text-stone-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

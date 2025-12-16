@@ -8,6 +8,7 @@ export interface Bacaan {
   gambar: string | null;
   deskripsi: string | null;
   sections?: Section[];
+  sections_count?: number;
 }
 
 export interface Section {

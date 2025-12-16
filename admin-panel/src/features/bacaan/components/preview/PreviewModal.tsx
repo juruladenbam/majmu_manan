@@ -1,93 +1,70 @@
-import { Box, Heading, Text, VStack, Button } from '@chakra-ui/react';
 import type { Bacaan } from '@project/shared';
-
-// Since I haven't scaffolded the 'components/ui/dialog' as per Chakra v3 recommendations (shadcn-like),
-// I will use the raw imports if available, OR simpler: use a fixed overlay box for now if v3 primitives are complex to setup without running the snippets.
-// Actually, Chakra v3 uses 'Dialog' exports from root if using the new system correctly.
-// Let's try importing DialogRoot etc from @chakra-ui/react directly if they exist, or fallback to a custom implementation if specific components are missing.
-
-// Re-checking Chakra v3 docs from memory: it exports Dialog as a compound component usually or separate parts.
-// Let's use a custom full-screen overlay for simplicity and robustness in this environment.
 
 export const PreviewModal = ({ bacaan, isOpen, onClose }: { bacaan: Bacaan; isOpen: boolean; onClose: () => void }) => {
   if (!isOpen) return null;
 
   return (
-    <Box position="fixed" top="0" left="0" w="100vw" h="100vh" zIndex="modal" bg="blackAlpha.600">
-      <Box 
-        position="absolute" 
-        top="5%" 
-        left="50%" 
-        transform="translateX(-50%)" 
-        w="90%" 
-        maxW="container.md" 
-        h="90%" 
-        bg="white" 
-        rounded="lg" 
-        overflow="hidden" 
-        display="flex" 
-        flexDirection="column"
-      >
-        <Box p="4" borderBottomWidth="1px" display="flex" justifyContent="space-between" alignItems="center">
-          <Heading size="sm">Preview Tampilan Public App</Heading>
-          <Button size="sm" onClick={onClose} variant="ghost">Tutup</Button>
-        </Box>
-        
-        <Box flex="1" overflowY="auto" bg="gray.50">
-           {/* Mock Mobile View */}
-           <Box maxW="sm" mx="auto" minH="100%" bg="white" shadow="sm">
-              <Box bg="green.600" color="white" py={4} px={4}>
-                <Heading size="md" fontFamily="serif">Majmu' Manan</Heading>
-              </Box>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+      <div className="w-full max-w-md bg-white rounded-[2rem] overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+        {/* Header */}
+        <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-white z-10">
+          <h3 className="font-bold text-gray-800 text-sm">Preview Public App</h3>
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-800 font-medium text-sm">Tutup</button>
+        </div>
 
-              <Box p={4}>
-                <VStack gap={6}>
-                  <Box textAlign="center" py={4}>
-                                      <Heading size="2xl" fontFamily="Scheherazade New, serif" mb={2} color="black">{bacaan.judul_arab}</Heading>
-                                      <Heading size="lg" color="green.700">{bacaan.judul}</Heading>
-                                    </Box>
-                  {bacaan.sections?.map((section) => (
-                    <Box key={section.id} w="full">
-                      <Box 
-                        p={3} 
-                        bg="gray.100" 
-                        borderLeftWidth="4px" 
-                        borderLeftColor="green.500"
-                        mb={4}
-                      >
-                        <Text fontWeight="bold">{section.judul_section}</Text>
-                      </Box>
-                      
-                      <VStack gap={4} align="stretch" px={2}>
-                        {section.items?.map((item) => (
-                          <Box key={item.id} py={4} borderBottomWidth="1px" borderColor="gray.100">
-                            <Box 
-                              fontSize="2xl" 
-                              textAlign="right" 
-                              fontFamily="serif" 
-                              lineHeight="2"
-                              dangerouslySetInnerHTML={{ __html: item.arabic || '' }}
+        {/* Mobile Viewport Simulation */}
+        <div className="flex-1 overflow-y-auto bg-gray-50">
+          <div className="bg-white min-h-full shadow-sm max-w-sm mx-auto border-x border-gray-100">
+            {/* App Bar */}
+            <div className="bg-[#1a5f4a] text-white py-4 px-4 sticky top-0 z-10 shadow-md">
+              <h1 className="font-serif font-bold text-lg">Majmu' Manan</h1>
+            </div>
+
+            <div className="p-4 pb-20">
+              <div className="flex flex-col gap-6">
+                {/* Title */}
+                <div className="text-center py-6">
+                  {bacaan.judul_arab && (
+                    <h1 className="text-3xl font-bold font-arabic mb-2 text-black leading-relaxed">{bacaan.judul_arab}</h1>
+                  )}
+                  <h2 className="text-xl font-bold text-[#1a5f4a]">{bacaan.judul}</h2>
+                </div>
+
+                {bacaan.sections?.map((section) => (
+                  <div key={section.id} className="w-full">
+                    <div className="p-3 bg-gray-100 border-l-4 border-[#1a5f4a] mb-4 rounded-r-lg">
+                      <span className="font-bold text-gray-800 text-sm">{section.judul_section}</span>
+                    </div>
+
+                    <div className="flex flex-col gap-4 px-2">
+                      {section.items?.map((item) => (
+                        <div key={item.id} className="py-4 border-b border-gray-100 last:border-0">
+                          {item.arabic && (
+                            <div
+                              className="text-2xl text-right font-arabic leading-loose mb-3 text-gray-900"
+                              dangerouslySetInnerHTML={{ __html: item.arabic }}
                             />
-                            {item.latin && (
-                              <Text fontSize="md" color="green.600" fontStyle="italic" mt={2}>
-                                {item.latin}
-                              </Text>
-                            )}
-                            {item.terjemahan && (
-                              <Text fontSize="md" color="gray.600" mt={1}>
-                                {item.terjemahan}
-                              </Text>
-                            )}
-                          </Box>
-                        ))}
-                      </VStack>
-                    </Box>
-                  ))}
-                </VStack>
-              </Box>
-           </Box>
-        </Box>
-      </Box>
-    </Box>
+                          )}
+                          {item.latin && (
+                            <p className="text-sm text-[#1a5f4a] italic mb-1 font-medium">
+                              {item.latin}
+                            </p>
+                          )}
+                          {item.terjemahan && (
+                            <p className="text-sm text-gray-600">
+                              {item.terjemahan}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
