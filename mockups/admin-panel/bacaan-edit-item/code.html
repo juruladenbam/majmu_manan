@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Majmu' Manan - Content Editor</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;family=Spline+Sans:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f9f506",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#23220f",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2e2d20",
+                        "border-light": "#e6e6db",
+                        "border-dark": "#44443a",
+                        "text-main": "#1c1c0d",
+                        "text-secondary": "#5e5e54",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                        "arabic": ["Noto Sans Arabic", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "2.5rem", "full": "9999px"},
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Spline Sans", "Noto Sans", sans-serif;
+        }
+        /* Custom scrollbar for textareas */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #e6e6db;
+            border-radius: 20px;
+        }
+        .dark textarea::-webkit-scrollbar-thumb {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white transition-colors duration-300">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-border-light dark:border-border-dark px-6 py-3">
+<div class="max-w-[1200px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-8 rounded-lg bg-primary flex items-center justify-center text-text-main">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<h2 class="text-text-main dark:text-white text-lg font-bold leading-tight tracking-tight">Majmu' Manan Admin</h2>
+</div>
+<div class="flex items-center gap-6">
+<button class="flex h-10 px-4 items-center justify-center rounded-full bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark text-sm font-bold text-text-main dark:text-white hover:bg-gray-50 dark:hover:bg-black/20 transition-colors">
+<span class="truncate">Logout</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-primary/50" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAO-YmWjW5qotqV-3ED4KvgQ_kO7TWrQKghO7quLmy_6afHbWowP9fVXwdW_8lx8GlOWLisLlpA_u8ys_pkPj7C6CWNLciBwUSjPESi3V2yqyawPOKjskNrj6utbGGnqYfpNUdfAwJ-G6Ivaedgr4W7ApOtJC7omv-YroWiiOpZFMX6SVwsE-IXobgQatZpKsED6hlYRjiseEvEd6q8bFdgZLwZarrngsimzFB2dzVABozvtEuV1oeS2CALgCFzljrbrC8iV0w3lYVo");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 justify-center py-8 px-4 sm:px-8">
+<div class="flex flex-col max-w-[960px] flex-1 w-full gap-8">
+<!-- Page Heading & Actions -->
+<div class="flex flex-col gap-6">
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-text-main dark:text-white text-3xl md:text-4xl font-bold leading-tight">Bacaan Detail Editor</h1>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-medium">Edit content for selected reading section</p>
+</div>
+<button class="flex h-10 px-6 items-center justify-center rounded-full bg-primary text-text-main text-sm font-bold shadow-soft hover:brightness-105 transition-all">
+                            Save Changes
+                        </button>
+</div>
+<!-- Filter & Add Toolbar -->
+<div class="bg-surface-light dark:bg-surface-dark p-2 rounded-xl border border-border-light dark:border-border-dark shadow-soft flex flex-wrap justify-between items-center gap-4">
+<div class="flex items-center gap-2 pl-2">
+<div class="flex items-center gap-2 bg-background-light dark:bg-black/20 px-4 py-2 rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-white/5 transition-colors group">
+<span class="material-symbols-outlined text-text-secondary dark:text-gray-400 group-hover:text-text-main dark:group-hover:text-white">filter_list</span>
+<span class="text-sm font-medium text-text-main dark:text-white">Filter: <span class="font-bold">Bab: Tawassul</span></span>
+<span class="material-symbols-outlined text-sm text-text-secondary">expand_more</span>
+</div>
+</div>
+<button class="flex items-center gap-2 bg-text-main dark:bg-white text-white dark:text-text-main px-5 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Tambah Item</span>
+</button>
+</div>
+</div>
+<!-- Content Feed -->
+<div class="flex flex-col gap-6">
+<!-- Card #1 -->
+<article class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-light dark:border-border-dark group transition-all hover:border-primary/50">
+<!-- Card Header -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6 border-b border-border-light dark:border-border-dark pb-4">
+<div class="flex items-center gap-3">
+<span class="bg-primary text-text-main font-bold px-3 py-1 rounded-full text-sm shadow-sm">#1</span>
+<div class="relative group/dropdown">
+<button class="flex items-center gap-2 bg-background-light dark:bg-black/20 hover:bg-gray-200 dark:hover:bg-white/10 px-4 py-1.5 rounded-full text-sm font-medium text-text-main dark:text-white transition-colors">
+                                        Type: <span class="font-bold">Text</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="size-9 flex items-center justify-center rounded-full hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400 transition-colors" title="Move Up">
+<span class="material-symbols-outlined text-[20px]">arrow_upward</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-full hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400 transition-colors" title="Move Down">
+<span class="material-symbols-outlined text-[20px]">arrow_downward</span>
+</button>
+<div class="w-px h-5 bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="size-9 flex items-center justify-center rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 text-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Editors Grid -->
+<div class="grid gap-8">
+<!-- Arabic Editor -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end px-1">
+<label class="text-xs font-bold uppercase tracking-widest text-text-secondary dark:text-gray-400">Arabic</label>
+<span class="text-[10px] font-mono bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">keyboard_backspace</span> RTL
+                                    </span>
+</div>
+<div class="border border-border-light dark:border-border-dark rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition-all bg-background-light dark:bg-black/10">
+<!-- Toolbar -->
+<div class="bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark p-1.5 flex flex-wrap gap-1">
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">link</span></button>
+<div class="w-px h-4 my-auto bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">undo</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">redo</span></button>
+<div class="flex-1"></div>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">code</span></button>
+</div>
+<!-- Input -->
+<textarea class="w-full p-4 bg-transparent outline-none text-right font-serif text-2xl min-h-[120px] resize-y text-text-main dark:text-white" dir="rtl" placeholder="Type Arabic text here...">يا رب صل على محمد</textarea>
+</div>
+</div>
+<!-- Latin Editor -->
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-text-secondary dark:text-gray-400 px-1">Latin</label>
+<div class="border border-border-light dark:border-border-dark rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition-all bg-background-light dark:bg-black/10">
+<div class="bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark p-1.5 flex flex-wrap gap-1">
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">format_underlined</span></button>
+<div class="w-px h-4 my-auto bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">format_list_numbered</span></button>
+<div class="w-px h-4 my-auto bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">undo</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">redo</span></button>
+</div>
+<textarea class="w-full p-4 bg-transparent outline-none text-base min-h-[100px] resize-y text-text-main dark:text-white" placeholder="Transliteration...">Ya Robbi sholli 'ala Muhammad</textarea>
+</div>
+</div>
+<!-- Terjemah Editor -->
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-text-secondary dark:text-gray-400 px-1">Terjemah</label>
+<div class="border border-border-light dark:border-border-dark rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition-all bg-background-light dark:bg-black/10">
+<div class="bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark p-1.5 flex flex-wrap gap-1">
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">link</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">image</span></button>
+<div class="w-px h-4 my-auto bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">undo</span></button>
+<button class="p-1.5 rounded hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400"><span class="material-symbols-outlined text-[18px]">redo</span></button>
+</div>
+<textarea class="w-full p-4 bg-transparent outline-none text-base min-h-[100px] resize-y text-text-main dark:text-white" placeholder="Translation...">Oh Lord, send blessings upon Muhammad</textarea>
+</div>
+</div>
+</div>
+</article>
+<!-- Card #2 (Collapsed/Visual Variation) -->
+<article class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-light dark:border-border-dark group transition-all hover:border-primary/50 opacity-80 hover:opacity-100">
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6 border-b border-border-light dark:border-border-dark pb-4">
+<div class="flex items-center gap-3">
+<span class="bg-primary/20 text-text-main font-bold px-3 py-1 rounded-full text-sm">#2</span>
+<div class="relative group/dropdown">
+<button class="flex items-center gap-2 bg-background-light dark:bg-black/20 hover:bg-gray-200 dark:hover:bg-white/10 px-4 py-1.5 rounded-full text-sm font-medium text-text-main dark:text-white transition-colors">
+                                        Type: <span class="font-bold">Text</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="size-9 flex items-center justify-center rounded-full hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400 transition-colors">
+<span class="material-symbols-outlined text-[20px]">arrow_upward</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-full hover:bg-background-light dark:hover:bg-white/10 text-text-secondary dark:text-gray-400 transition-colors">
+<span class="material-symbols-outlined text-[20px]">arrow_downward</span>
+</button>
+<div class="w-px h-5 bg-border-light dark:bg-border-dark mx-1"></div>
+<button class="size-9 flex items-center justify-center rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<div class="grid gap-8">
+<!-- Editors (Simplified for visual balance in demo) -->
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-text-secondary dark:text-gray-400 px-1">Preview Content</label>
+<div class="p-4 bg-background-light dark:bg-black/20 rounded-lg text-text-secondary dark:text-gray-400 text-sm italic">
+                                    Click to expand and edit content...
+                                </div>
+</div>
+</div>
+</article>
+<!-- Load More -->
+<div class="flex justify-center pt-4 pb-12">
+<button class="group flex items-center gap-2 px-8 py-3 rounded-full border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-main dark:text-white font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-all">
+<span>Muat Lebih Banyak</span>
+<span class="material-symbols-outlined text-[20px] group-hover:translate-y-0.5 transition-transform">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

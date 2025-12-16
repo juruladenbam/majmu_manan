@@ -83,4 +83,19 @@ class SectionController extends Controller
         BacaanSection::destroy($id);
         return response()->json(['message' => 'Deleted']);
     }
+
+    public function reorder(Request $request)
+    {
+        $request->validate([
+            'items' => 'required|array',
+            'items.*.id' => 'required|integer',
+            'items.*.urutan' => 'required|integer',
+        ]);
+
+        foreach ($request->items as $item) {
+            BacaanSection::where('id', $item['id'])->update(['urutan' => $item['urutan']]);
+        }
+
+        return response()->json(['message' => 'Order updated']);
+    }
 }

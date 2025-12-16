@@ -20,7 +20,7 @@ class BacaanController extends Controller
      */
     public function index()
     {
-        return response()->json(Bacaan::all());
+        return response()->json(Bacaan::withCount('sections')->get());
     }
 
     /**
@@ -67,9 +67,14 @@ class BacaanController extends Controller
      */
     public function show($id)
     {
-        return response()->json(Bacaan::with(['sections.items' => function($q) {
-            $q->orderBy('urutan', 'asc');
-        }])->findOrFail($id));
+        return response()->json(Bacaan::with([
+            'sections' => function($q) {
+                $q->orderBy('urutan', 'asc');
+            },
+            'sections.items' => function($q) {
+                $q->orderBy('urutan', 'asc');
+            }
+        ])->findOrFail($id));
     }
 
     /**

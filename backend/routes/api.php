@@ -46,6 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('admin/bacaan', AdminBacaanController::class);
 
+    Route::post('admin/sections/reorder', [AdminSectionController::class, 'reorder']);
     Route::apiResource('admin/sections', AdminSectionController::class)->except(['index', 'show']); // Managed via Bacaan detail usually
 
     Route::apiResource('admin/items', AdminItemController::class)->except(['index', 'show']);

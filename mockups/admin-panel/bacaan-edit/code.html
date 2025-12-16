@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Bacaan Detail Editor - Majmu' Manan</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;family=Spline+Sans:wght@300;400;500;600;700&amp;family=Scheherazade+New:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f9f506",
+              "background-light": "#f8f8f5",
+              "background-dark": "#23220f",
+              "surface-light": "#fcfcf8",
+              "input-bg": "#f4f4e6",
+              "text-dark": "#1c1c0d",
+              "text-muted": "#9e9d47",
+            },
+            fontFamily: {
+              "display": ["Spline Sans", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+              "arabic": ["Scheherazade New", "serif"],
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-dark font-display h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="hidden md:flex flex-col w-72 bg-surface-light border-r border-input-bg h-full flex-shrink-0">
+<div class="p-6 flex flex-col h-full justify-between">
+<div class="flex flex-col gap-8">
+<!-- Brand -->
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shadow-sm" data-alt="Majmu Manan App Icon showing abstract islamic geometric pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgq-KKsPxikp3iyBRK46buVnkAr_x6Mh24AwPK_VvijxFaEDGL22rlZEkO-TQ5fRwZhKAZbpQiQVzL6mWT_GN46JDd12Wwk0Op6cNrFK-ivM0Jw7nqYgMSA9WbKreBIAXBpKQWj8xjUEg9LbLF3UlUX6pbSQDXtFEUZn9mp1GoNYJglpOM0oW-T6_n5h6xY1kTK0xF0ae47l72p7VtE_TeBRkL3SIwevy_VXSBkLLac78wz5CloQr2ZpkwrP3G8KwaQ17MF7VrzPf2");'></div>
+<h1 class="text-text-dark text-lg font-bold leading-normal">Majmu' Manan</h1>
+</div>
+<!-- Nav Links -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-input-bg transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-text-dark">dashboard</span>
+<p class="text-text-dark text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-input-bg transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-text-dark">group</span>
+<p class="text-text-dark text-sm font-medium leading-normal">Users</p>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-full bg-input-bg" href="#">
+<span class="material-symbols-outlined text-text-dark fill-1">menu_book</span>
+<p class="text-text-dark text-sm font-bold leading-normal">Readings</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-input-bg transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-text-dark">settings</span>
+<p class="text-text-dark text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+<!-- Bottom Action -->
+<div class="px-2">
+<button class="flex w-full items-center gap-3 px-4 py-3 rounded-full hover:bg-red-50 text-red-600 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Log Out</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-w-0 bg-background-light relative">
+<!-- Top Navbar (Sticky) -->
+<header class="flex items-center justify-between border-b border-input-bg px-8 py-4 bg-surface-light/95 backdrop-blur-sm z-20 sticky top-0">
+<div class="flex items-center gap-8 flex-1">
+<div class="md:hidden flex items-center">
+<span class="material-symbols-outlined text-text-dark cursor-pointer">menu</span>
+</div>
+<!-- Breadcrumb / Page Title Context -->
+<div class="flex items-center gap-2 text-text-dark">
+<h2 class="text-lg font-bold tracking-tight">Admin Panel</h2>
+<span class="text-text-muted">/</span>
+<span class="text-sm font-medium text-text-muted">Readings Editor</span>
+</div>
+<!-- Search Bar -->
+<div class="hidden md:flex max-w-md w-full">
+<label class="flex w-full items-center bg-input-bg rounded-xl h-10 px-4 gap-2 focus-within:ring-2 focus-within:ring-primary/50 transition-shadow">
+<span class="material-symbols-outlined text-text-muted text-[20px]">search</span>
+<input class="bg-transparent border-none outline-none text-sm text-text-dark placeholder-text-muted w-full focus:ring-0" placeholder="Search content..."/>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-10 flex items-center justify-center rounded-full bg-input-bg hover:bg-primary/20 transition-colors text-text-dark relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-surface-light"></span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-input-bg cursor-pointer" data-alt="Admin user profile picture showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBNZk96mlI_WbUfLb4RXabcGeRS6JL1iDg5QXPmZ73Ztao6WXOe9AsrPCDR9BY0097tqWZ-mwA1U621fWdZybJP9gJ8lHknap-zSB06TCx4Z2ZvConhwgIAQ6nQxTC-ria0I5r4MIDBQkxzh7rWv0wOkchVwiSFGmo5WUplPsdqdEh37eoe8ADCRFl4cKC4339GvSUSpY3kYcXmNNP8BSZj_PUPEPN6dUsxdTZ9XbosasPIr1WKkn-cDNQfla_dfRRHEefZjprkjmTZ");'></div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto p-4 md:p-8 pb-20">
+<div class="max-w-4xl mx-auto flex flex-col gap-6">
+<!-- Header Actions & Title -->
+<div class="flex flex-col gap-4">
+<!-- Top Action Bar -->
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 px-4 h-10 rounded-full bg-white hover:bg-gray-100 border border-gray-100 shadow-sm transition-all text-sm font-bold text-text-dark">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                            Kembali
+                        </button>
+<button class="flex items-center gap-2 px-6 h-12 rounded-full bg-primary hover:bg-[#e6e205] shadow-md hover:shadow-lg transition-all text-base font-bold text-text-dark">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                            Simpan
+                        </button>
+</div>
+<!-- Page Title -->
+<div class="pt-2">
+<h1 class="text-3xl md:text-4xl font-bold text-text-dark tracking-tight">Edit: Tahlil Arwah</h1>
+<p class="text-text-muted mt-1">Last edited 2 hours ago by Admin</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex items-center gap-2 border-b border-input-bg pb-1 sticky top-0 bg-background-light pt-2 z-10">
+<button class="px-5 py-2 rounded-full bg-primary text-text-dark text-sm font-bold shadow-sm transition-colors">
+                        Info Dasar
+                    </button>
+<button class="px-5 py-2 rounded-full bg-transparent hover:bg-input-bg text-text-muted hover:text-text-dark text-sm font-bold transition-colors">
+                        Bab/Section
+                    </button>
+<button class="px-5 py-2 rounded-full bg-transparent hover:bg-input-bg text-text-muted hover:text-text-dark text-sm font-bold transition-colors">
+                        Konten
+                    </button>
+</div>
+<!-- Form Content (Info Dasar Tab) -->
+<div class="bg-surface-light rounded-[2rem] p-6 md:p-8 shadow-sm border border-input-bg/50 flex flex-col gap-8">
+<!-- Row 1: Title & Arabic Title -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-text-dark ml-1">Judul</label>
+<input class="w-full bg-input-bg border-none rounded-xl px-4 py-3 text-text-dark font-medium focus:ring-2 focus:ring-primary focus:bg-white transition-all placeholder-text-muted/70" type="text" value="Tahlil Arwah"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-text-dark ml-1 flex justify-between">
+<span>Judul Arab</span>
+<span class="text-xs font-normal text-text-muted">Arabic script</span>
+</label>
+<input class="w-full bg-input-bg border-none rounded-xl px-4 py-3 text-text-dark font-arabic text-xl focus:ring-2 focus:ring-primary focus:bg-white transition-all placeholder-text-muted/70" dir="rtl" type="text" value="تحليل الأرواح"/>
+</div>
+</div>
+<!-- Row 2: Slug -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-text-dark ml-1">Slug URL</label>
+<div class="flex items-center bg-input-bg rounded-xl px-4 focus-within:ring-2 focus-within:ring-primary focus-within:bg-white transition-all">
+<span class="text-text-muted text-sm select-none">majmu-manan.com/readings/</span>
+<input class="flex-1 bg-transparent border-none py-3 text-text-dark font-medium focus:ring-0" type="text" value="tahlil-arwah"/>
+</div>
+</div>
+<!-- Row 3: Description -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-text-dark ml-1">Deskripsi</label>
+<textarea class="w-full bg-input-bg border-none rounded-xl px-4 py-3 text-text-dark font-medium focus:ring-2 focus:ring-primary focus:bg-white transition-all resize-none placeholder-text-muted/70" rows="4">Bacaan tahlil lengkap untuk mendoakan arwah keluarga yang telah meninggal dunia. Dilengkapi dengan doa penutup.</textarea>
+</div>
+<!-- Row 4: Cover Image -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-text-dark ml-1">Gambar Cover</label>
+<div class="flex flex-col md:flex-row gap-6">
+<!-- Drag Drop Area -->
+<div class="flex-1 border-2 border-dashed border-text-muted/30 rounded-xl bg-input-bg/30 hover:bg-input-bg/60 transition-colors flex flex-col items-center justify-center p-8 gap-3 cursor-pointer group">
+<div class="size-12 rounded-full bg-input-bg flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-text-muted">cloud_upload</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-bold text-text-dark">Klik atau geser file ke sini</p>
+<p class="text-xs text-text-muted">JPG, PNG max 2MB</p>
+</div>
+</div>
+<!-- Preview -->
+<div class="w-full md:w-64 flex flex-col gap-3">
+<p class="text-xs font-bold text-text-muted uppercase tracking-wider ml-1">Preview</p>
+<div class="aspect-video w-full rounded-xl overflow-hidden relative shadow-sm group">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Preview of the uploaded cover image showing islamic calligraphy art" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBWy3aNskZNaT0-NjmowQNXBo6Xly6NC8CaKCHPy-S2LOTla_6FOGOTMQyih9e69ooA6EbYVQSQzTOLuoEtYJoOV_vqwt653EEBI2D-JDak6nDMrERbaiitJHJ9V9Vhd0n3Dkh6dcajYJBGvvTGTv_CV1lMX6RVCtNtjvESDy-LVEehb6w4y8fSFOCSPt_xZKvWVSgierHrx4bPlv0kLNVcxowmm7ndefipDzLddSW-zfT53O3rwgCfZ7BGT47-WupfuvS-g4rbRMWR");'></div>
+<!-- Hover Overlay Action -->
+<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="p-2 bg-white rounded-full text-text-dark hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 bg-red-500 text-white rounded-full hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

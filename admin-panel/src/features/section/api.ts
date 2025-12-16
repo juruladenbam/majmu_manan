@@ -14,3 +14,7 @@ export const updateSection = async (id: number, payload: Partial<Section>) => {
 export const deleteSection = async (id: number) => {
   await apiClient.delete(`/admin/sections/${id}`);
 };
+
+export const reorderSections = async (items: { id: number; urutan: number }[]) => {
+  await apiClient.post('/admin/sections/reorder', { items });
+};
