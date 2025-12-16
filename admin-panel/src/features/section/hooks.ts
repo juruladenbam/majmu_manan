@@ -32,3 +32,19 @@ export const useDeleteSection = () => {
     },
   });
 };
+
+import { reorderSections } from './api';
+
+export const useReorderSections = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: reorderSections,
+    onSuccess: () => {
+      // We might not know the bacaan_id here directly unless we pass it, 
+      // but typically we want to refetch the reading detail.
+      // For now, we'll optimistically depend on local state update or force refresh if needed.
+      // Actually better to invalidate 'bacaan-detail' generically or pass the ID.
+      queryClient.invalidateQueries({ queryKey: ['bacaan-detail'] });
+    },
+  });
+};

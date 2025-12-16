@@ -27,14 +27,16 @@ export const RichTextEditor = ({ value, onChange, placeholder, isRtl = false }: 
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <div className="editor-container">
+      <div className="editor-container h-full">
+        {/* Toolbar is internal to Editor container now, or we can externalize if needed. 
+            For now, keeping it here but styled via CSS/Tailwind */}
         <ToolbarPlugin />
         <div className="editor-content">
           <RichTextPlugin
             contentEditable={
-              <ContentEditable 
-                className="editor-input" 
-                dir={isRtl ? 'rtl' : 'ltr'} 
+              <ContentEditable
+                className="editor-input"
+                dir={isRtl ? 'rtl' : 'ltr'}
               />
             }
             placeholder={<div className="editor-placeholder">{placeholder}</div>}
