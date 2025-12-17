@@ -5,6 +5,7 @@ import { Button, Card } from '@/components/ui';
 import { LoadingPage } from '@/components/common';
 import { BookmarkButton } from '@/features/bookmarks/components';
 import { useBookmarks } from '@/features/bookmarks/hooks/useBookmarks';
+import { Helmet } from 'react-helmet-async';
 
 export const ReaderMenuPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -26,6 +27,9 @@ export const ReaderMenuPage = () => {
   if (isLoading) return <LoadingPage message="Memuat bacaan..." />;
   if (!bacaan) return (
     <div className="text-center py-12">
+      <Helmet>
+        <title>Bacaan Tidak Ditemukan - Majmu' Manan</title>
+      </Helmet>
       <p className="text-slate-500 dark:text-slate-400">Bacaan tidak ditemukan.</p>
       <Button variant="ghost" onClick={() => navigate('/')} className="mt-4">
         ← Kembali ke Beranda
@@ -43,6 +47,14 @@ export const ReaderMenuPage = () => {
 
   return (
     <div className="animate-fade-in pb-8">
+      <Helmet>
+        <title>{bacaan.judul} - Majmu' Manan</title>
+        <meta name="description" content={bacaan.deskripsi || `Bacaan ${bacaan.judul} di Majmu' Manan`} />
+        <meta property="og:title" content={`${bacaan.judul} - Majmu' Manan`} />
+        <meta property="og:description" content={bacaan.deskripsi || `Bacaan ${bacaan.judul} di Majmu' Manan`} />
+        <meta property="og:type" content="article" />
+      </Helmet>
+
       {/* Back button */}
       <Link to="/" className="inline-block mb-4">
         <Button variant="ghost" size="sm" className="text-primary-600 dark:text-primary-400">

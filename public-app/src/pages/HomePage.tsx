@@ -4,6 +4,7 @@ import { useBacaanList } from '@/features/reader/hooks';
 import { BacaanCard } from '@/features/reader/components';
 import { useBookmarks } from '@/features/bookmarks/hooks/useBookmarks';
 import { SearchBar, LoadingPage } from '@/components/common';
+import { Helmet } from 'react-helmet-async';
 
 export const HomePage = () => {
   const { data: bacaans, isLoading } = useBacaanList();
@@ -24,6 +25,14 @@ export const HomePage = () => {
 
   return (
     <div className="space-y-6 animate-fade-in pb-8">
+      <Helmet>
+        <title>Majmu' Manan - Keluarga BAM</title>
+        <meta name="description" content="Bacaan dan wirid harian keluarga BAM. Tersedia offline." />
+        <meta property="og:title" content="Majmu' Manan - Keluarga BAM" />
+        <meta property="og:description" content="Bacaan dan wirid harian keluarga BAM. Tersedia offline." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       {/* Search Bar */}
       <SearchBar
         value={searchTerm}
