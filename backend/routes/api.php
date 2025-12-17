@@ -12,6 +12,8 @@ use App\Http\Controllers\Api\Admin\SectionController as AdminSectionController;
 
 use App\Http\Controllers\Api\Admin\ItemController as AdminItemController;
 
+use App\Http\Controllers\Api\Admin\SettingsController as AdminSettingsController;
+
 use App\Http\Controllers\Api\Public\BacaanController as PublicBacaanController;
 
 
@@ -29,6 +31,8 @@ Route::get('/bacaan', [PublicBacaanController::class, 'index']);
 Route::get('/bacaan/{slug}', [PublicBacaanController::class, 'show']);
 
 Route::get('/bacaan/{slug}/{section_slug}', [PublicBacaanController::class, 'showSection']);
+
+Route::get('/settings/maintenance', [AdminSettingsController::class, 'checkMaintenance']);
 
 
 
@@ -50,5 +54,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('admin/sections', AdminSectionController::class)->except(['index', 'show']); // Managed via Bacaan detail usually
 
     Route::apiResource('admin/items', AdminItemController::class)->except(['index', 'show']);
+
+    Route::get('admin/settings', [AdminSettingsController::class, 'index']);
+    Route::put('admin/settings', [AdminSettingsController::class, 'update']);
 
 });
