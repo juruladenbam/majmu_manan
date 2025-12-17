@@ -9,6 +9,7 @@ export interface Bacaan {
   deskripsi: string | null;
   sections?: Section[];
   sections_count?: number;
+  is_multi_section?: boolean;
 }
 
 export interface Section {
