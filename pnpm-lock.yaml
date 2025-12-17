@@ -5114,9 +5114,11 @@ snapshots:
     dependencies:
       has-bigints: 1.1.0
 
-  is-binary-path@2.1.0:
+  is-symbol@1.1.1:
     dependencies:
-      binary-extensions: 2.3.0
+      call-bound: 1.0.4
+      has-symbols: 1.1.0
+      safe-regex-test: 1.1.0
 
   is-boolean-object@1.2.2:
     dependencies:
@@ -5127,7 +5129,7 @@ snapshots:
 
   is-core-module@2.16.1:
     dependencies:
-      hasown: 2.0.2
+      which-typed-array: 1.1.19
 
   is-data-view@1.0.2:
     dependencies:
