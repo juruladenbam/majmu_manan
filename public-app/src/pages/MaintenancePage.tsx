@@ -1,26 +1,21 @@
-import { Box, Container, Heading, Text, Icon, VStack } from '@chakra-ui/react';
-import { FaTools } from 'react-icons/fa';
 
-interface MaintenancePageProps {
+
+export interface MaintenancePageProps {
     message?: string | null;
 }
 
 export const MaintenancePage = ({ message }: MaintenancePageProps) => {
     return (
-        <Box minH="100vh" bg="gray.50" display="flex" alignItems="center" justifyContent="center">
-            <Container maxW="container.md" centerContent>
-                <VStack gap={6} textAlign="center" bg="white" p={10} borderRadius="xl" shadow="lg" width="full">
-                    <Icon as={FaTools} w={20} h={20} color="green.500" />
-
-                    <Heading size="xl" color="gray.800">
-                        Sedang Dalam Pemeliharaan
-                    </Heading>
-
-                    <Text fontSize="lg" color="gray.600">
-                        {message || 'Mohon maaf, aplikasi sedang dalam perbaikan. Silakan kembali lagi nanti.'}
-                    </Text>
-                </VStack>
-            </Container>
-        </Box>
+        <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center p-4">
+            <div className="text-center max-w-md">
+                <div className="text-6xl mb-6">🔧</div>
+                <h1 className="text-2xl font-heading font-bold text-slate-800 dark:text-slate-100 mb-4">
+                    Sedang Maintenance
+                </h1>
+                <p className="text-slate-600 dark:text-slate-400">
+                    {message || 'Aplikasi sedang dalam pemeliharaan. Silakan kembali beberapa saat lagi.'}
+                </p>
+            </div>
+        </div>
     );
 };

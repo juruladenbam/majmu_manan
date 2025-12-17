@@ -1,17 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
-import { PublicLayout } from './app/PublicLayout';
+import { PageLayout } from './components/layout';
 import { HomePage } from './pages/HomePage';
 import { ReaderMenuPage } from './pages/reader/ReaderMenuPage';
 import { ReaderContentPage } from './pages/reader/ReaderContentPage';
 import { MaintenancePage } from './pages/MaintenancePage';
+import { SettingsModal } from './features/settings/components';
 import { useEffect, useState } from 'react';
 import { apiClient } from './api/client';
-import { Center, Spinner } from '@chakra-ui/react';
+import { LoadingPage } from './components/common';
+import { Button } from './components/ui';
 
 function App() {
   const [isMaintenance, setIsMaintenance] = useState(false);
   const [maintenanceMessage, setMaintenanceMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   useEffect(() => {
     const checkMaintenance = async () => {
@@ -27,14 +30,16 @@ function App() {
     };
 
     checkMaintenance();
+
+    // Initialize theme from localStorage
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
   }, []);
 
   if (isLoading) {
-    return (
-      <Center h="100vh">
-        <Spinner size="xl" color="green.500" />
-      </Center>
-    );
+    return <LoadingPage message="Memuat aplikasi..." />;
   }
 
   if (isMaintenance) {
@@ -42,13 +47,34 @@ function App() {
   }
 
   return (
-    <Routes>
-      <Route element={<PublicLayout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/bacaan/:slug" element={<ReaderMenuPage />} />
-        <Route path="/bacaan/:slug/:sectionSlug" element={<ReaderContentPage />} />
-      </Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route
+          element={
+            <PageLayout
+              headerProps={{
+                rightContent: (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsSettingsOpen(true)}
+                    className="text-white/80 hover:text-white dark:text-slate-300"
+                  >
+                    ⚙️
+                  </Button>
+                ),
+              }}
+            />
+          }
+        >
+          <Route path="/" element={<HomePage />} />
+          <Route path="/bacaan/:slug" element={<ReaderMenuPage />} />
+          <Route path="/bacaan/:slug/:sectionSlug" element={<ReaderContentPage />} />
+        </Route>
+      </Routes>
+
+      <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
+    </>
   );
 }
 

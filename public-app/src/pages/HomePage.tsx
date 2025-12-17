@@ -1,9 +1,9 @@
-import { SimpleGrid, Spinner, Center, Text, Input, Box, Heading, Stack } from '@chakra-ui/react';
-import { useBacaanList } from '@/features/reader/hooks';
-import { BacaanCard } from '@/features/reader/components/BacaanCard';
 import { useState, useMemo } from 'react';
-import { useBookmarks } from '@/features/bookmarks/hooks/useBookmarks';
 import { Link } from 'react-router-dom';
+import { useBacaanList } from '@/features/reader/hooks';
+import { BacaanCard } from '@/features/reader/components';
+import { useBookmarks } from '@/features/bookmarks/hooks/useBookmarks';
+import { SearchBar, LoadingPage } from '@/components/common';
 
 export const HomePage = () => {
   const { data: bacaans, isLoading } = useBacaanList();
@@ -19,50 +19,68 @@ export const HomePage = () => {
   }, [bacaans, searchTerm]);
 
   if (isLoading) {
-    return (
-      <Center h="50vh">
-        <Spinner size="xl" color="green.500" />
-      </Center>
-    );
+    return <LoadingPage message="Memuat daftar bacaan..." />;
   }
 
   return (
-    <Box>
-      {bookmarks.length > 0 && (
-        <Stack mb={8}>
-          <Heading size="md" mb={3}>Bookmarks Anda</Heading>
-          <SimpleGrid columns={{ base: 1, sm: 2 }} gap={3}>
-            {bookmarks.map(b => (
-              <Link to={`/bacaan/${b.slug}`} key={b.slug}>
-                <Box p={3} borderWidth="1px" borderRadius="md" _hover={{ bg: 'gray.50' }}>
-                  <Text fontWeight="bold">{b.judul}</Text>
-                  <Text fontSize="sm" color="gray.500">Disimpan: {new Date(b.bookmarkedAt).toLocaleDateString()}</Text>
-                </Box>
-              </Link>
-            ))}
-          </SimpleGrid>
-        </Stack>
-      )}
-
-      <Heading size="lg" mb={4}>Daftar Bacaan</Heading>
-      <Input
-        placeholder="Cari bacaan..."
+    <div className="space-y-6 animate-fade-in pb-8">
+      {/* Search Bar */}
+      <SearchBar
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        mb={6}
-        size="lg"
+        placeholder="Cari bacaan..."
       />
-      <SimpleGrid columns={{ base: 1, sm: 2 }} gap={4}>
-        {filteredBacaans.length > 0 ? (
-          filteredBacaans.map((bacaan) => (
-            <BacaanCard key={bacaan.id} bacaan={bacaan} />
-          ))
-        ) : (
-          <Text textAlign="center" color="gray.500">
-            {searchTerm ? "Tidak ada hasil untuk pencarian ini." : "Tidak ada bacaan tersedia."}
-          </Text>
-        )}
-      </SimpleGrid>
-    </Box>
+
+      {/* Bookmarks Section */}
+      {bookmarks.length > 0 && (
+        <section className="bg-gradient-to-r from-accent-50 to-primary-50 dark:from-accent-900/20 dark:to-primary-900/20 rounded-2xl p-5">
+          <h3 className="flex items-center gap-2 text-lg font-heading font-semibold text-slate-800 dark:text-slate-100 mb-4">
+            <span className="text-xl">📌</span>
+            Bookmark Tersimpan
+          </h3>
+          <div className="flex gap-3 overflow-x-auto pb-2 -mx-2 px-2">
+            {bookmarks.map(b => (
+              <Link
+                to={`/bacaan/${b.slug}`}
+                key={b.slug}
+                className="flex-shrink-0 min-w-[200px] bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 border border-slate-200 dark:border-slate-700"
+              >
+                <h4 className="font-medium text-slate-800 dark:text-slate-100 truncate">
+                  {b.judul}
+                </h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  Disimpan: {new Date(b.bookmarkedAt).toLocaleDateString('id-ID')}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Reading List */}
+      <section>
+        <h3 className="flex items-center gap-2 text-lg font-heading font-semibold text-slate-800 dark:text-slate-100 mb-5">
+          <span className="text-xl">📚</span>
+          Daftar Bacaan
+        </h3>
+
+        <div className="columns-2 gap-3 md:gap-4 space-y-3 md:space-y-4">
+          {filteredBacaans.length > 0 ? (
+            filteredBacaans.map((bacaan, index) => (
+              <div key={bacaan.id} className="break-inside-avoid">
+                <BacaanCard bacaan={bacaan} delay={index * 0.05} />
+              </div>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-16 bg-slate-100 dark:bg-slate-800/50 rounded-2xl">
+              <div className="text-4xl mb-4">🔍</div>
+              <p className="text-slate-500 dark:text-slate-400">
+                {searchTerm ? 'Tidak ada hasil untuk pencarian ini.' : 'Tidak ada bacaan tersedia.'}
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
   );
 };
