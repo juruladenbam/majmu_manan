@@ -5,6 +5,7 @@ import { BacaanMetadataForm } from '@/features/bacaan/components/BacaanMetadataF
 import { SectionListItem } from '@/features/section/components/SectionListItem';
 import { PreviewModal } from '@/features/bacaan/components/preview/PreviewModal';
 import { CreateSectionModal } from '@/features/section/components/CreateSectionModal';
+import { SimpleItemsTab } from '@/features/bacaan/components/SimpleItemsTab';
 import { FaEye } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import clsx from 'clsx';
@@ -78,6 +79,8 @@ export const BacaanDetailPage = () => {
   // derived state from hash
   const activeTab = (location.hash === '#sections' || location.hash.startsWith('#section-')) ? 'sections' : 'info';
 
+  const isMultiSection = bacaan?.is_multi_section ?? false;
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -113,6 +116,11 @@ export const BacaanDetailPage = () => {
 
   const handleUpdate = (data: any) => {
     updateBacaan({ id: bacaanId, data });
+  };
+
+  const handleToggleMulti = () => {
+    const newValue = !isMultiSection;
+    updateBacaan({ id: bacaanId, data: { is_multi_section: newValue } });
   };
 
   const handleCreateSection = (title: string) => {
@@ -155,13 +163,27 @@ export const BacaanDetailPage = () => {
           </div>
         </div>
 
-        <div className="pt-2">
-          <div className="flex items-center gap-3 mb-1">
-            <span className="px-2 py-0.5 rounded text-xs font-bold bg-primary text-text-dark">ID: {bacaan.id}</span>
-            {bacaan.slug && <span className="text-xs font-mono text-text-secondary">{bacaan.slug}</span>}
+        <div className="pt-2 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-3 mb-1">
+              <span className="px-2 py-0.5 rounded text-xs font-bold bg-primary text-text-dark">ID: {bacaan.id}</span>
+              {bacaan.slug && <span className="text-xs font-mono text-text-secondary">{bacaan.slug}</span>}
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-text-main dark:text-white tracking-tight">{bacaan.judul}</h1>
+            {bacaan.judul_arab && <h2 className="text-2xl font-arabic text-text-secondary mt-1">{bacaan.judul_arab}</h2>}
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-text-main dark:text-white tracking-tight">{bacaan.judul}</h1>
-          {bacaan.judul_arab && <h2 className="text-2xl font-arabic text-text-secondary mt-1">{bacaan.judul_arab}</h2>}
+
+          {/* Toggle Multi Section */}
+          <div className="flex items-center gap-2 bg-surface-light dark:bg-surface-dark p-2 rounded-lg border border-border-light dark:border-border-dark shadow-sm">
+            <span className="text-xs font-bold text-text-secondary uppercase tracking-wider">Mode Multi Section</span>
+            <button
+              onClick={handleToggleMulti}
+              className={`w-12 h-6 flex items-center rounded-full p-1 transition-all duration-300 ${isMultiSection ? 'bg-primary' : 'bg-gray-300 dark:bg-gray-600'}`}
+              title={isMultiSection ? "Nonaktifkan Multi Section" : "Aktifkan Multi Section"}
+            >
+              <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isMultiSection ? 'translate-x-6' : 'translate-x-0'}`} />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -187,9 +209,9 @@ export const BacaanDetailPage = () => {
               : "bg-transparent text-text-secondary hover:bg-surface-accent dark:hover:bg-gray-800 hover:text-text-main dark:hover:text-white"
           )}
         >
-          Bab/Section
+          {isMultiSection ? 'Bab/Section' : 'Konten / Isi'}
           <span className="ml-2 opacity-60 text-xs bg-black/10 dark:bg-white/10 px-1.5 py-0.5 rounded-full">
-            {sections?.length || 0}
+            {isMultiSection ? (sections?.length || 0) : (sections?.[0]?.items?.length || 0)}
           </span>
         </button>
       </div>
@@ -206,51 +228,57 @@ export const BacaanDetailPage = () => {
         )}
 
         {activeTab === 'sections' && (
-          <div className="flex flex-col gap-4 mt-2 animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <div className="flex flex-wrap items-center justify-between gap-4 p-2 bg-surface-accent/30 dark:bg-surface-accent-dark/30 rounded-xl border border-dashed border-border-light dark:border-border-dark">
-              <div className="flex items-center gap-2 text-sm text-text-secondary dark:text-gray-400">
-                <span className="material-symbols-outlined text-[20px]">info</span>
-                <p>Atur urutan dan isi konten per bagian.</p>
-              </div>
-              <button
-                onClick={() => setIsCreateSectionOpen(true)}
-                className="flex items-center gap-2 bg-text-main dark:bg-white text-white dark:text-text-main px-5 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity shadow-lg shadow-black/5"
-              >
-                <span className="material-symbols-outlined text-[20px]">add</span>
-                <span>Tambah Bab</span>
-              </button>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <DndContext
-                sensors={sensors}
-                collisionDetection={closestCenter}
-                onDragEnd={handleDragEnd}
-              >
-                <SortableContext
-                  items={sections.map(s => s.id)}
-                  strategy={verticalListSortingStrategy}
-                >
-                  {sections.map(section => (
-                    <SortableSectionItem
-                      key={section.id}
-                      section={section}
-                      bacaanId={bacaanId}
-                      onDelete={(id: number) => deleteSection({ id, bacaanId })}
-                    />
-                  ))}
-                </SortableContext>
-              </DndContext>
-
-              {(!sections || sections.length === 0) && (
-                <div className="flex flex-col items-center justify-center p-12 border-2 border-dashed border-border-light dark:border-border-dark rounded-2xl text-text-secondary bg-surface-light/50 dark:bg-surface-dark/50">
-                  <span className="material-symbols-outlined text-4xl mb-2 opacity-50">post_add</span>
-                  <p className="font-medium">Belum ada bagian.</p>
-                  <p className="text-sm opacity-70">Klik "Tambah Bab" untuk mulai mengisi konten.</p>
+          <>
+            {!isMultiSection ? (
+              <SimpleItemsTab bacaan={bacaan} />
+            ) : (
+              <div className="flex flex-col gap-4 mt-2 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="flex flex-wrap items-center justify-between gap-4 p-2 bg-surface-accent/30 dark:bg-surface-accent-dark/30 rounded-xl border border-dashed border-border-light dark:border-border-dark">
+                  <div className="flex items-center gap-2 text-sm text-text-secondary dark:text-gray-400">
+                    <span className="material-symbols-outlined text-[20px]">info</span>
+                    <p>Atur urutan dan isi konten per bagian.</p>
+                  </div>
+                  <button
+                    onClick={() => setIsCreateSectionOpen(true)}
+                    className="flex items-center gap-2 bg-text-main dark:bg-white text-white dark:text-text-main px-5 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity shadow-lg shadow-black/5"
+                  >
+                    <span className="material-symbols-outlined text-[20px]">add</span>
+                    <span>Tambah Bab</span>
+                  </button>
                 </div>
-              )}
-            </div>
-          </div>
+
+                <div className="flex flex-col gap-3">
+                  <DndContext
+                    sensors={sensors}
+                    collisionDetection={closestCenter}
+                    onDragEnd={handleDragEnd}
+                  >
+                    <SortableContext
+                      items={sections.map(s => s.id)}
+                      strategy={verticalListSortingStrategy}
+                    >
+                      {sections.map(section => (
+                        <SortableSectionItem
+                          key={section.id}
+                          section={section}
+                          bacaanId={bacaanId}
+                          onDelete={(id: number) => deleteSection({ id, bacaanId })}
+                        />
+                      ))}
+                    </SortableContext>
+                  </DndContext>
+
+                  {(!sections || sections.length === 0) && (
+                    <div className="flex flex-col items-center justify-center p-12 border-2 border-dashed border-border-light dark:border-border-dark rounded-2xl text-text-secondary bg-surface-light/50 dark:bg-surface-dark/50">
+                      <span className="material-symbols-outlined text-4xl mb-2 opacity-50">post_add</span>
+                      <p className="font-medium">Belum ada bagian.</p>
+                      <p className="text-sm opacity-70">Klik "Tambah Bab" untuk mulai mengisi konten.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
 

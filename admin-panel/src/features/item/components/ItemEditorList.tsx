@@ -87,7 +87,8 @@ const ItemRow = ({ item, bacaanId, index }: { item: Item; bacaanId: number; inde
           {item.arabic ? (
             <div
               dangerouslySetInnerHTML={{ __html: item.arabic }}
-              className="font-arabic text-4xl text-right leading-[3.25rem] dir-rtl text-text-main dark:text-white"
+              dir="rtl"
+              className="font-arabic text-4xl text-right leading-[3.25rem] text-text-main dark:text-white"
             />
           ) : (
             <p className="text-sm text-text-secondary italic text-center py-2 opacity-50">-- Kosong --</p>

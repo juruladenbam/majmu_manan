@@ -10,7 +10,7 @@ class BacaanItem extends Model
 
     public function bacaan()
     {
-        return $this->belongsTo(Bacaan::class, 'bacaan_id', 'id_bacaan');
+        return $this->belongsTo(Bacaan::class, 'bacaan_id', 'id');
     }
 
     public function section()
