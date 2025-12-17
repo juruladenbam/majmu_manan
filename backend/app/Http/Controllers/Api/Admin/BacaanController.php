@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Bacaan;
 use Illuminate\Support\Str;
 
+use App\Models\BacaanSection;
+
 class BacaanController extends Controller
 {
     /**
@@ -35,7 +37,8 @@ class BacaanController extends Controller
      *              required={"judul"},
      *              @OA\Property(property="judul", type="string"),
      *              @OA\Property(property="judul_arab", type="string"),
-     *              @OA\Property(property="deskripsi", type="string")
+     *              @OA\Property(property="deskripsi", type="string"),
+     *              @OA\Property(property="is_multi_section", type="boolean")
      *          )
      *      ),
      *      @OA\Response(response=201, description="Created")
@@ -49,7 +52,17 @@ class BacaanController extends Controller
             'judul' => $request->judul,
             'judul_arab' => $request->judul_arab,
             'slug' => Str::slug($request->judul) . '-' . Str::random(5),
-            'deskripsi' => $request->deskripsi
+            'deskripsi' => $request->deskripsi,
+            'is_multi_section' => $request->has('is_multi_section') ? $request->is_multi_section : false
+        ]);
+
+        // Automatically create a default section if it's single section (or always create one to be safe as "General" section)
+        // Plan said: "Otomatis buat 1 section default saat bacaan baru dibuat"
+        // Even for multi-section, starting with 1 section is fine.
+        BacaanSection::create([
+            'bacaan_id' => $bacaan->id,
+            'judul_section' => null, // Default empty title for single section mode
+            'urutan' => 1
         ]);
 
         return response()->json($bacaan, 201);
@@ -89,7 +102,8 @@ class BacaanController extends Controller
      *          @OA\JsonContent(
      *              @OA\Property(property="judul", type="string"),
      *              @OA\Property(property="judul_arab", type="string"),
-     *              @OA\Property(property="deskripsi", type="string")
+     *              @OA\Property(property="deskripsi", type="string"),
+     *              @OA\Property(property="is_multi_section", type="boolean")
      *          )
      *      ),
      *      @OA\Response(response=200, description="Updated")
@@ -98,7 +112,18 @@ class BacaanController extends Controller
     public function update(Request $request, $id)
     {
         $bacaan = Bacaan::findOrFail($id);
-        $bacaan->update($request->only(['judul', 'judul_arab', 'deskripsi']));
+        $bacaan->update($request->only(['judul', 'judul_arab', 'deskripsi', 'is_multi_section']));
+        
+        // Ensure there is at least one section if switching back to single section? 
+        // Logic: If sections count is 0, create one.
+        if ($bacaan->sections()->count() == 0) {
+             BacaanSection::create([
+                'bacaan_id' => $bacaan->id,
+                'judul_section' => null,
+                'urutan' => 1
+            ]);
+        }
+
         return response()->json($bacaan);
     }
 

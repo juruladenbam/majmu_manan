@@ -8,6 +8,10 @@ class Bacaan extends Model
 {
     protected $table = 'bacaans';
     protected $guarded = ['id'];
+    
+    protected $casts = [
+        'is_multi_section' => 'boolean'
+    ];
 
     public function sections()
     {
