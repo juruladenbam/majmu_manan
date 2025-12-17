@@ -1,30 +1,23 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#2F855A" />
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" sizes="192x192">
-    <link rel="manifest" href="/manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
-    <title>Majmu' Manan</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-              console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-              console.log('SW registration failed: ', registrationError);
-            });
-        });
-      }
-    </script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/icons/icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10b981" />
+  <meta name="description" content="Dari Juruladen BAM untuk keluarga BAM" />
+  <meta name="keywords"
+    content="Majmu' Manan, majmu' manan, majmu' bam, majmu manan, majmu bam, Asmul Husna, asmul husna, Doa Birrulwalidain, Qosidah Romadhon, doa birrulwalidain, qosidah romadhon" />
+  <meta name="author" content="Juruladen BAM" />
+  <link rel="apple-touch-icon" href="/icons/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+  <title>Majmu' Manan</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

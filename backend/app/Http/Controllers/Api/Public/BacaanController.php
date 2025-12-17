@@ -19,7 +19,11 @@ class BacaanController extends Controller
      */
     public function index()
     {
-        return response()->json(Bacaan::select('id', 'judul', 'judul_arab', 'slug', 'gambar', 'deskripsi')->get());
+        return response()->json(
+            Bacaan::select('id', 'judul', 'judul_arab', 'slug', 'gambar', 'deskripsi', 'is_multi_section')
+                ->withCount('sections')
+                ->get()
+        );
     }
 
     /**
@@ -38,6 +42,14 @@ class BacaanController extends Controller
                 $q->orderBy('urutan', 'asc');
             }])
             ->firstOrFail();
+
+        // For single-section bacaans, include items directly
+        if (!$bacaan->is_multi_section) {
+            // Get items either from first section or items with null section_id
+            $bacaan->load(['items' => function($q) {
+                $q->orderBy('urutan', 'asc');
+            }]);
+        }
 
         return response()->json($bacaan);
     }

@@ -10,6 +10,7 @@ export interface Bacaan {
   sections?: Section[];
   sections_count?: number;
   is_multi_section?: boolean;
+  items?: Item[]; // For single-section bacaans
 }
 
 export interface Section {

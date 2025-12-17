@@ -1,15 +1,8 @@
-import {
-  Button,
-  Stack,
-  Slider,
-  Switch,
-  RadioGroup,
-  HStack,
-} from '@chakra-ui/react';
+import { Modal, ModalFooter, Button, Slider, Switch } from '@/components/ui';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import React from 'react';
+import { useEffect, useState } from 'react';
 
-interface SettingsModalProps {
+export interface SettingsModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
@@ -17,94 +10,122 @@ interface SettingsModalProps {
 export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
   const [fontSize, setFontSize] = useLocalStorage<number>('fontSize', 28);
   const [showTranslation, setShowTranslation] = useLocalStorage<boolean>('showTranslation', true);
-  const [themeMode, setThemeMode] = useLocalStorage<'light' | 'dark'>('themeMode', 'light');
+  const [showLatin, setShowLatin] = useLocalStorage<boolean>('showLatin', true);
+  const [themeMode, setThemeMode] = useLocalStorage<'light' | 'dark'>('theme', 'light');
 
-  const handleFontSizeChange = (e: { value: number[] }) => {
-    setFontSize(e.value[0]);
+  // Local state for live preview
+  const [localFontSize, setLocalFontSize] = useState(fontSize);
+
+  useEffect(() => {
+    setLocalFontSize(fontSize);
+  }, [fontSize, isOpen]);
+
+  const handleFontSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+    setLocalFontSize(value);
+    setFontSize(value);
   };
 
-  const handleTranslationToggle = (e: { checked: boolean }) => {
-    setShowTranslation(e.checked);
+  const handleThemeChange = (mode: 'light' | 'dark') => {
+    setThemeMode(mode);
+    const root = document.documentElement;
+    if (mode === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
   };
-
-  const handleThemeChange = (e: { value: string }) => {
-    setThemeMode(e.value as 'light' | 'dark');
-    document.body.setAttribute('data-theme', e.value);
-  };
-
-  React.useEffect(() => {
-    document.body.setAttribute('data-theme', themeMode);
-  }, [themeMode]);
-
-  if (!isOpen) return null;
 
   return (
-    <div style={{
-      position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-      backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000,
-      display: 'flex', alignItems: 'center', justifyContent: 'center'
-    }}>
-      <div style={{
-        backgroundColor: 'white', padding: '20px', borderRadius: '8px',
-        width: '90%', maxWidth: '400px',
-        color: 'black' 
-      }}>
-        <Stack gap="6">
-          <div style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>Pengaturan Bacaan</div>
-          
-          <Stack gap="2">
-            <label style={{ display: 'block', fontWeight: 'bold' }}>Ukuran Font (Arab)</label>
-            <Slider.Root 
-              defaultValue={[fontSize]} 
-              min={16} max={48} step={1}
-              onValueChange={handleFontSizeChange}
-              width="100%"
-              colorPalette="green"
+    <Modal isOpen={isOpen} onClose={onClose} title="⚙️ Pengaturan Bacaan" size="md">
+      <div className="space-y-6">
+        {/* Theme Selector */}
+        <div>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
+            Tema Tampilan
+          </label>
+          <div className="flex gap-3">
+            <button
+              onClick={() => handleThemeChange('light')}
+              className={`flex-1 flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${themeMode === 'light'
+                  ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30'
+                  : 'border-slate-200 dark:border-slate-700 hover:border-slate-300'
+                }`}
             >
-              <Slider.Control>
-                <Slider.Track bg="gray.200" height="6px" borderRadius="full">
-                  <Slider.Range bg="green.500" />
-                </Slider.Track>
-                <Slider.Thumb index={0} boxSize="20px" bg="white" shadow="md" border="1px solid" borderColor="gray.200" />
-              </Slider.Control>
-            </Slider.Root>
-            <div style={{ fontSize: '0.8rem', color: 'gray' }}>Ukuran saat ini: {fontSize}px</div>
-          </Stack>
+              <span className="text-2xl">☀️</span>
+              <span className="text-sm font-medium">Terang</span>
+            </button>
+            <button
+              onClick={() => handleThemeChange('dark')}
+              className={`flex-1 flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${themeMode === 'dark'
+                  ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30'
+                  : 'border-slate-200 dark:border-slate-700 hover:border-slate-300'
+                }`}
+            >
+              <span className="text-2xl">🌙</span>
+              <span className="text-sm font-medium">Gelap</span>
+            </button>
+          </div>
+        </div>
 
-          <Stack gap="2" direction="row" alignItems="center" justify="space-between">
-            <label style={{ fontWeight: 'bold' }}>Tampilkan Terjemahan</label>
-            <Switch.Root checked={showTranslation} onCheckedChange={handleTranslationToggle}>
-              <Switch.HiddenInput />
-              <Switch.Control>
-                <Switch.Thumb />
-              </Switch.Control>
-              <Switch.Label />
-            </Switch.Root>
-          </Stack>
+        {/* Divider */}
+        <hr className="border-slate-200 dark:border-slate-700" />
 
-          <Stack gap="2">
-            <label style={{ fontWeight: 'bold' }}>Mode Tema</label>
-            <RadioGroup.Root value={themeMode} onValueChange={handleThemeChange as any}>
-              <HStack gap="4">
-                <RadioGroup.Item value="light">
-                  <RadioGroup.ItemHiddenInput />
-                  <RadioGroup.ItemControl />
-                  <RadioGroup.ItemText>Terang</RadioGroup.ItemText>
-                </RadioGroup.Item>
-                <RadioGroup.Item value="dark">
-                  <RadioGroup.ItemHiddenInput />
-                  <RadioGroup.ItemControl />
-                  <RadioGroup.ItemText>Gelap</RadioGroup.ItemText>
-                </RadioGroup.Item>
-              </HStack>
-            </RadioGroup.Root>
-          </Stack>
+        {/* Font Size Slider */}
+        <div>
+          <Slider
+            label="Ukuran Font Arab"
+            value={localFontSize}
+            min={16}
+            max={48}
+            step={1}
+            onChange={handleFontSizeChange}
+          />
+          {/* Preview */}
+          <div className="mt-4 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
+            <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">Preview:</p>
+            <p
+              className="font-arabic text-right text-slate-800 dark:text-slate-200"
+              style={{ fontSize: `${localFontSize}px`, lineHeight: '2' }}
+            >
+              بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+            </p>
+          </div>
+        </div>
 
-          <HStack justify="flex-end">
-            <Button colorPalette="green" onClick={onClose}>Tutup</Button>
-          </HStack>
-        </Stack>
+        {/* Divider */}
+        <hr className="border-slate-200 dark:border-slate-700" />
+
+        {/* Toggle Options */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+              Tampilkan Terjemahan
+            </span>
+            <Switch
+              checked={showTranslation}
+              onChange={(e) => setShowTranslation(e.target.checked)}
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+              Tampilkan Latin
+            </span>
+            <Switch
+              checked={showLatin}
+              onChange={(e) => setShowLatin(e.target.checked)}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+
+      <ModalFooter>
+        <Button variant="primary" onClick={onClose}>
+          Tutup
+        </Button>
+      </ModalFooter>
+    </Modal>
   );
 };
+
+SettingsModal.displayName = 'SettingsModal';
