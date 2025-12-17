@@ -8,6 +8,7 @@ import { useBookmarks } from '@/features/bookmarks/hooks/useBookmarks';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 export const ReaderContentPage = () => {
   const { slug, sectionSlug } = useParams<{ slug: string; sectionSlug: string }>();
@@ -59,6 +60,9 @@ export const ReaderContentPage = () => {
   if (isLoading) return <LoadingPage message="Memuat konten..." />;
   if (!section) return (
     <div className="text-center py-12">
+      <Helmet>
+        <title>Section Tidak Ditemukan - Majmu' Manan</title>
+      </Helmet>
       <p className="text-slate-500 dark:text-slate-400">Section tidak ditemukan.</p>
       <Button variant="ghost" onClick={() => navigate(`/bacaan/${slug}`)} className="mt-4">
         ← Kembali ke Daftar Isi
@@ -68,6 +72,9 @@ export const ReaderContentPage = () => {
 
   return (
     <div className="min-h-[80vh] animate-fade-in pb-8">
+      <Helmet>
+        <title>{section.judul_section} - {bacaan?.judul || "Majmu' Manan"}</title>
+      </Helmet>
       {/* Sticky Navigation Header - positioned below navbar */}
       <div className="sticky top-[68px] md:top-[76px] z-10 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-sm py-3 mb-6 -mx-4 px-4 border-b border-slate-200 dark:border-slate-700">
         <div className="flex items-center justify-between max-w-3xl mx-auto">

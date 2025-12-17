@@ -1,5 +1,6 @@
 import { Modal, ModalFooter, Button, Slider, Switch } from '@/components/ui';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { usePWAInstall } from '@/hooks/usePWAInstall';
 import { useEffect, useState } from 'react';
 
 export interface SettingsModalProps {
@@ -12,6 +13,7 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
   const [showTranslation, setShowTranslation] = useLocalStorage<boolean>('showTranslation', true);
   const [showLatin, setShowLatin] = useLocalStorage<boolean>('showLatin', true);
   const [themeMode, setThemeMode] = useLocalStorage<'light' | 'dark'>('theme', 'light');
+  const { isHere, isIOS, isInstalled, promptInstall } = usePWAInstall();
 
   // Local state for live preview
   const [localFontSize, setLocalFontSize] = useState(fontSize);
@@ -48,8 +50,8 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
             <button
               onClick={() => handleThemeChange('light')}
               className={`flex-1 flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${themeMode === 'light'
-                  ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30'
-                  : 'border-slate-200 dark:border-slate-700 hover:border-slate-300'
+                ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30'
+                : 'border-slate-200 dark:border-slate-700 hover:border-slate-300'
                 }`}
             >
               <span className="text-2xl">☀️</span>
@@ -58,8 +60,8 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
             <button
               onClick={() => handleThemeChange('dark')}
               className={`flex-1 flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${themeMode === 'dark'
-                  ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30'
-                  : 'border-slate-200 dark:border-slate-700 hover:border-slate-300'
+                ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30'
+                : 'border-slate-200 dark:border-slate-700 hover:border-slate-300'
                 }`}
             >
               <span className="text-2xl">🌙</span>
@@ -116,6 +118,52 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
               onChange={(e) => setShowLatin(e.target.checked)}
             />
           </div>
+        </div>
+
+        {/* Divider */}
+        <hr className="border-slate-200 dark:border-slate-700" />
+
+        {/* PWA Install Section */}
+        <div className="space-y-3">
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+            Aplikasi
+          </label>
+
+          {!isInstalled ? (
+            <div className="bg-slate-50 dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+              <div className="flex items-center gap-3 mb-3">
+                <img src="/icons/icon.png" alt="Majmu icon" className="w-10 h-10 rounded-lg shadow-sm" />
+                <div>
+                  <h4 className="font-semibold text-slate-800 dark:text-slate-100">Install Aplikasi</h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">Akses cepat & offline</p>
+                </div>
+              </div>
+
+              {isIOS ? (
+                <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2 bg-white dark:bg-slate-900/50 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+                  <p className="font-medium">Cara Install di iOS:</p>
+                  <ol className="list-decimal pl-4 space-y-1 text-xs">
+                    <li>Tap tombol <strong>Share</strong> <span className="text-blue-500">⎋</span> di browser</li>
+                    <li>Scroll dan pilih <strong>"Add to Home Screen"</strong> (Tambah ke Utama)</li>
+                    <li>Tap <strong>Add</strong> (Tambah)</li>
+                  </ol>
+                </div>
+              ) : (
+                <Button
+                  onClick={promptInstall}
+                  disabled={!isHere}
+                  className="w-full justify-center bg-primary-600 hover:bg-primary-700 text-white"
+                >
+                  {isHere ? '📲 Install Sekarang' : 'Buka di Chrome untuk Install'}
+                </Button>
+              )}
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800">
+              <span>✅</span>
+              <span className="text-sm font-medium">Aplikasi sudah terinstall</span>
+            </div>
+          )}
         </div>
       </div>
 

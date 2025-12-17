@@ -17,7 +17,7 @@ export default defineConfig({
         name: "Majmu' Manan",
         short_name: 'Majmu',
         description: 'dari juruladen bam untuk keluarga bam',
-        theme_color: '#10b981', // Emerald 500
+        theme_color: '#0f172a',
         background_color: '#ffffff',
         display: 'standalone',
         scope: '/',
