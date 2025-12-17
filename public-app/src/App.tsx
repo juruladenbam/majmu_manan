@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { PageLayout } from './components/layout';
 import { HomePage } from './pages/HomePage';
 import { ReaderMenuPage } from './pages/reader/ReaderMenuPage';
@@ -9,12 +10,17 @@ import { useEffect, useState } from 'react';
 import { apiClient } from './api/client';
 import { LoadingPage } from './components/common';
 import { Button } from './components/ui';
+import { useLocalStorage } from './features/settings/hooks/useLocalStorage';
 
 function App() {
   const [isMaintenance, setIsMaintenance] = useState(false);
   const [maintenanceMessage, setMaintenanceMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [themeMode] = useLocalStorage<'light' | 'dark'>('theme', 'light');
+
+  // Determine theme color based on current mode
+  const themeColor = themeMode === 'dark' ? '#0f172a' : '#ffffff';
 
   useEffect(() => {
     const checkMaintenance = async () => {
@@ -48,6 +54,13 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <title>Majmu' Manan</title>
+        <meta name="theme-color" content={themeColor} />
+        <meta name="description" content="Dari Juruladen BAM untuk keluarga BAM" />
+        <meta name="keywords" content="Majmu' Manan, majmu' manan, majmu' bam, majmu manan, majmu bam, Asmul Husna, asmul husna, Doa Birrulwalidain, Qosidah Romadhon, doa birrulwalidain, qosidah romadhon" />
+        <meta name="author" content="Juruladen BAM" />
+      </Helmet>
       <Routes>
         <Route
           element={
