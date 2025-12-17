@@ -1,10 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSectionDetail, useBacaanDetail } from '@/features/reader/hooks';
-import { ReadingItem } from '@/features/reader/components/ReadingItem';
-import { Box, Button, Center, Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
+import { ReadingItem } from '@/features/reader/components';
+import { Button, Card } from '@/components/ui';
+import { LoadingPage } from '@/components/common';
+import { BookmarkButton } from '@/features/bookmarks/components';
+import { useBookmarks } from '@/features/bookmarks/hooks/useBookmarks';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
-import { BookmarkButton } from '@/features/bookmarks/components/BookmarkButton';
 import { useEffect } from 'react';
 
 export const ReaderContentPage = () => {
@@ -19,11 +21,24 @@ export const ReaderContentPage = () => {
   // Fetch Bacaan to know prev/next sections
   const { data: bacaan } = useBacaanDetail(slug!);
   const { data: section, isLoading } = useSectionDetail(slug!, sectionSlug!);
+  const { bookmarks, addBookmark, removeBookmark } = useBookmarks();
+
+  // Check if bookmarked
+  const isBookmarked = bookmarks.some(b => b.slug === slug);
+  const handleToggleBookmark = () => {
+    if (!bacaan) return;
+    if (isBookmarked) {
+      removeBookmark(slug!);
+    } else {
+      addBookmark(bacaan);
+    }
+  };
 
   // Calculate Navigation
   const currentIndex = bacaan?.sections?.findIndex(s => s.slug_section === sectionSlug) ?? -1;
+  const totalSections = bacaan?.sections?.length ?? 0;
   const prevSection = currentIndex > 0 ? bacaan?.sections?.[currentIndex - 1] : null;
-  const nextSection = currentIndex < (bacaan?.sections?.length ?? 0) - 1 ? bacaan?.sections?.[currentIndex + 1] : null;
+  const nextSection = currentIndex < totalSections - 1 ? bacaan?.sections?.[currentIndex + 1] : null;
 
   const handleNext = () => {
     if (nextSection) navigate(`/bacaan/${slug}/${nextSection.slug_section}`);
@@ -33,98 +48,117 @@ export const ReaderContentPage = () => {
     if (prevSection) navigate(`/bacaan/${slug}/${prevSection.slug_section}`);
   };
 
+  // Swipe: Right swipe = next (RTL reading direction)
   const handlers = useSwipeable({
-    onSwipedRight: () => handleNext(), // Swipe Right (Left->Right) -> Go to NEXT
-    onSwipedLeft: () => handlePrev(),  // Swipe Left (Right->Left) -> Go to PREV
+    onSwipedRight: () => handleNext(),
+    onSwipedLeft: () => handlePrev(),
     preventScrollOnSwipe: true,
-    trackMouse: true, 
+    trackMouse: true,
   });
 
-  if (isLoading) return <Center h="50vh"><Spinner /></Center>;
-  if (!section) return <Text>Section not found.</Text>;
+  if (isLoading) return <LoadingPage message="Memuat konten..." />;
+  if (!section) return (
+    <div className="text-center py-12">
+      <p className="text-slate-500 dark:text-slate-400">Section tidak ditemukan.</p>
+      <Button variant="ghost" onClick={() => navigate(`/bacaan/${slug}`)} className="mt-4">
+        ← Kembali ke Daftar Isi
+      </Button>
+    </div>
+  );
 
   return (
-    <Stack gap={0} minH="80vh">
-      {/* Sticky Navigation Header */}
-      <Box 
-        position="sticky" 
-        top="72px" 
-        zIndex={9} 
-        bg="gray.50" 
-        py={2}
-        borderBottom="1px solid"
-        borderColor="gray.200"
-        mb={6}
-      >
-        <Flex justify="space-between" align="center">
-          {/* RTL: Right side is Start/Previous, Left side is End/Next */}
-          
-          {/* Right Arrow (Previous) */}
-          <Button 
-            size="sm" 
-            variant="ghost" 
-            disabled={!nextSection} 
-            onClick={handleNext} 
-            colorScheme="green"
-            width="auto"
+    <div className="min-h-[80vh] animate-fade-in pb-8">
+      {/* Sticky Navigation Header - positioned below navbar */}
+      <div className="sticky top-[68px] md:top-[76px] z-10 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-sm py-3 mb-6 -mx-4 px-4 border-b border-slate-200 dark:border-slate-700">
+        <div className="flex items-center justify-between max-w-3xl mx-auto">
+          {/* Next button on LEFT (for RTL reading) */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleNext}
+            disabled={!nextSection}
+            className="text-primary-600 dark:text-primary-400 disabled:opacity-30"
           >
-            ←
+            ← Lanjut
           </Button>
 
-          <Heading 
-            size="sm" 
-            color="gray.500" 
-            flex="1" 
-            textAlign="center" 
-            mx={2} 
-            whiteSpace="nowrap" 
-            overflow="hidden" 
-            textOverflow="ellipsis"
-          >
-            {section.judul_section}
-          </Heading>
+          <div className="flex-1 text-center px-2">
+            <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">
+              {section.judul_section}
+            </h3>
+            <div className="flex items-center justify-center gap-2 mt-1">
+              {/* Progress dots - RTL direction (section 1 on right, last on left) */}
+              <div className="flex gap-1" dir="rtl">
+                {bacaan?.sections?.map((_, idx) => (
+                  <div
+                    key={idx}
+                    className={`w-2 h-2 rounded-full transition-colors ${idx === currentIndex
+                      ? 'bg-primary-500'
+                      : 'bg-slate-300 dark:bg-slate-600'
+                      }`}
+                  />
+                ))}
+              </div>
+              <span className="text-xs text-slate-400 dark:text-slate-500">
+                {currentIndex + 1}/{totalSections}
+              </span>
+            </div>
+          </div>
 
-          {/* Left Arrow (Next) */}
-          <Button 
-            size="sm" 
-            variant="ghost" 
-            disabled={!prevSection} 
+          {/* Prev button on RIGHT (for RTL reading) */}
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={handlePrev}
-            colorScheme="green"
-            width="auto"
+            disabled={!prevSection}
+            className="text-primary-600 dark:text-primary-400 disabled:opacity-30"
           >
-            →
+            Kembali →
           </Button>
-        </Flex>
-      </Box>
+        </div>
+      </div>
 
+      {/* Content */}
       <AnimatePresence mode="wait">
         <motion.div
           key={section.id}
-          // Animation for RTL: 
-          // Next enters from Left (x: -20) because we are moving Leftwards into the content?
-          // Let's standardise: Fade in with slight slide.
-          initial={{ opacity: 0, x: 0 }} 
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           {...handlers}
         >
-          <Box bg="white" p={6} rounded="lg" shadow="sm">
-            {bacaan && <BookmarkButton bacaan={bacaan} />} {/* Add BookmarkButton */}
-            {section.items?.map((item) => (
-              <ReadingItem key={item.id} item={item} />
-            ))}
-          </Box>
+          <Card className="p-4 md:p-6 shadow-lg">
+            {/* Bookmark Button */}
+            <div className="flex justify-end mb-4">
+              <BookmarkButton
+                bacaan={bacaan!}
+                isBookmarked={isBookmarked}
+                onToggle={handleToggleBookmark}
+              />
+            </div>
+
+            {/* Reading Items */}
+            <div className="divide-y divide-slate-100 dark:divide-slate-800">
+              {section.items?.map((item) => (
+                <ReadingItem key={item.id} item={item} />
+              ))}
+            </div>
+          </Card>
         </motion.div>
       </AnimatePresence>
 
       {/* Navigation Footer */}
-      <Flex justify="center" mt={8} gap={4}>
-         <Button onClick={() => navigate(`/bacaan/${slug}`)} variant="outline">
-           Kembali ke Daftar Isi
-         </Button>
-      </Flex>
-    </Stack>
+      <div className="flex flex-col items-center mt-8 gap-4">
+        <Button variant="outline" onClick={() => navigate(`/bacaan/${slug}`)}>
+          📑 Kembali ke Daftar Isi
+        </Button>
+
+        {/* Swipe Hint */}
+        <p className="text-sm text-slate-400 dark:text-slate-500">
+          ← geser untuk lanjut | geser untuk kembali →
+        </p>
+      </div>
+    </div>
   );
 };

@@ -1,96 +1,115 @@
-import { Box, VStack, Image } from '@chakra-ui/react';
-import type { Item }          from '@project/shared';
-import { useLocalStorage }    from '@/features/settings/hooks/useLocalStorage';
+import { cn } from '@/lib/utils';
+import type { Item } from '@project/shared';
+import { useLocalStorage } from '@/features/settings/hooks/useLocalStorage';
 
-export const ReadingItem = ({ item }: { item: Item }) => {
+export interface ReadingItemProps {
+  item: Item;
+  className?: string;
+}
+
+export const ReadingItem = ({ item, className }: ReadingItemProps) => {
   const [fontSize] = useLocalStorage<number>('fontSize', 28);
   const [showTranslation] = useLocalStorage<boolean>('showTranslation', true);
+  const [showLatin] = useLocalStorage<boolean>('showLatin', true);
+
+  // Dynamic font size style
+  const arabicStyle = { fontSize: `${fontSize}px` };
 
   const renderContent = () => {
     switch (item.tipe_tampilan) {
       case 'judul_tengah':
         return (
-          <Box 
-            fontSize={`${fontSize * 1.2}px`} 
-            textAlign="center" 
-            fontWeight="bold"
-            fontFamily="'Scheherazade New', serif" 
-            color="green.700"
-            py={2}
-            bg="green.50"
-            rounded="md"
-            sx={{ "& *": { fontFamily: "'Scheherazade New', serif !important" } }}
+          <div
+            className={cn(
+              'font-arabic text-center font-bold py-3 px-4',
+              'text-primary-700 dark:text-primary-400',
+              'bg-primary-50 dark:bg-primary-900/30 rounded-lg'
+            )}
+            style={{ fontSize: `${fontSize * 1.2}px`, lineHeight: '2.2' }}
             dangerouslySetInnerHTML={{ __html: item.arabic || '' }}
           />
         );
 
       case 'syiir':
         return (
-          <Box 
-            fontSize={`${fontSize}px`} 
-            textAlign="center" 
-            fontFamily="'Scheherazade New', serif" 
-            lineHeight="2.5"
-            px={8} // Indent for poetry feel
-            sx={{ "& *": { fontFamily: "'Scheherazade New', serif !important" } }}
+          <div
+            className="font-arabic text-center px-8 text-slate-800 dark:text-slate-200"
+            style={{ fontSize: `${fontSize}px`, lineHeight: '2.5' }}
             dangerouslySetInnerHTML={{ __html: item.arabic || '' }}
           />
         );
 
       case 'keterangan':
         return (
-          <Box 
-            fontSize={`${fontSize * 0.9}px`} 
-            textAlign="center" 
-            color="gray.500"
-            fontStyle="italic"
-            dangerouslySetInnerHTML={{ __html: item.arabic || '' }}
-          />
+          <div
+            className={cn(
+              'text-center py-3 px-4 mx-auto max-w-lg',
+              'text-slate-600 dark:text-slate-400 italic text-sm',
+              'bg-slate-100 dark:bg-slate-800/50 rounded-lg',
+              'border-l-4 border-l-accent-500'
+            )}
+            style={{ fontSize: `${fontSize * 0.7}px` }}
+          >
+            <span className="mr-2">📝</span>
+            <span dangerouslySetInnerHTML={{ __html: item.arabic || '' }} />
+          </div>
         );
 
       case 'image':
         return (
-          <Box textAlign="center">
-             {/* Assuming arabic contains the image URL or filename */}
-             <Image src={item.arabic || ''} alt="Gambar Bacaan" maxH="300px" mx="auto" />
-          </Box>
+          <div className="text-center">
+            <img
+              src={item.arabic || ''}
+              alt="Gambar Bacaan"
+              className="max-h-72 mx-auto rounded-lg"
+            />
+          </div>
         );
 
       case 'text':
       default:
         return (
-          <Box 
-            fontSize={`${fontSize}px`} 
-            textAlign="right" 
-            fontFamily="'Scheherazade New', serif" 
-            lineHeight="2"
-            sx={{ "& *": { fontFamily: "'Scheherazade New', serif !important" } }}
+          <div
+            className="font-arabic text-right text-slate-800 dark:text-slate-200"
+            style={{ ...arabicStyle, lineHeight: '2' }}
             dangerouslySetInnerHTML={{ __html: item.arabic || '' }}
           />
         );
     }
   };
 
+  const isPoetry = item.tipe_tampilan === 'syiir';
+  const isImage = item.tipe_tampilan === 'image';
+  const isNote = item.tipe_tampilan === 'keterangan';
+
   return (
-    <Box py={4} borderBottomWidth="1px" borderColor="gray.100">
-      <VStack gap={4} align="stretch">
+    <div className={cn('py-5 border-b border-slate-100 dark:border-slate-800', className)}>
+      <div className="flex flex-col gap-4">
         {/* Main Content (Arabic/Image/Title) */}
         {renderContent()}
 
-        {/* Latin Transliteration (Hidden for image/keterangan usually, but optional) */}
-        {item.tipe_tampilan !== 'image' && item.latin && (
-          <Box fontSize="md" color="green.600" fontStyle="italic" textAlign={item.tipe_tampilan === 'syiir' ? 'center' : 'left'}>
+        {/* Latin Transliteration */}
+        {showLatin && !isImage && !isNote && item.latin && (
+          <p className={cn(
+            'text-primary-600 dark:text-primary-400 italic',
+            isPoetry ? 'text-center' : 'text-left'
+          )}>
             {item.latin}
-          </Box>
+          </p>
         )}
 
         {/* Translation */}
-        {showTranslation && item.terjemahan && item.tipe_tampilan !== 'image' && ( 
-          <Box fontSize="md" color="gray.600" textAlign={item.tipe_tampilan === 'syiir' ? 'center' : 'left'}>
+        {showTranslation && !isImage && item.terjemahan && (
+          <p className={cn(
+            'text-slate-600 dark:text-slate-400',
+            isPoetry ? 'text-center' : 'text-left'
+          )}>
             {item.terjemahan}
-          </Box>
+          </p>
         )}
-      </VStack>
-    </Box>
+      </div>
+    </div>
   );
 };
+
+ReadingItem.displayName = 'ReadingItem';
