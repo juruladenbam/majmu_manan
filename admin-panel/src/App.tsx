@@ -5,9 +5,7 @@ import { ProtectedRoute } from './app/ProtectedRoute';
 import { BacaanListPage } from './pages/bacaan/BacaanListPage';
 import { BacaanDetailPage } from './pages/bacaan/BacaanDetailPage';
 import { SettingsPage } from './pages/SettingsPage';
-
-// Dashboard Placeholder
-const DashboardPage = () => <div>Dashboard Content</div>;
+import { DashboardPage } from './pages/DashboardPage';
 
 function App() {
   return (

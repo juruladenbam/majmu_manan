@@ -16,6 +16,8 @@ use App\Http\Controllers\Api\Admin\SettingsController as AdminSettingsController
 
 use App\Http\Controllers\Api\Public\BacaanController as PublicBacaanController;
 
+use App\Http\Controllers\Api\Admin\DashboardController as AdminDashboardController;
+
 
 
 // Auth
@@ -57,5 +59,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('admin/settings', [AdminSettingsController::class, 'index']);
     Route::put('admin/settings', [AdminSettingsController::class, 'update']);
+
+    Route::get('admin/dashboard/stats', [AdminDashboardController::class, 'stats']);
 
 });
