@@ -32,3 +32,32 @@ export interface Item {
   tipe_tampilan: 'text' | 'syiir' | 'judul_tengah' | 'image' | 'keterangan';
   urutan: number;
 }
+
+// Dashboard
+export interface DashboardStats {
+  total_bacaan: number;
+  total_sections: number;
+  total_items: number;
+  multi_section_count: number;
+}
+
+export interface RecentActivity {
+  id: number;
+  judul: string;
+  slug: string;
+  updated_at: string;
+  created_at: string;
+}
+
+export interface ContentHealth {
+  bacaan_without_image: number;
+  empty_sections: number;
+  items_without_translation: number;
+}
+
+export interface DashboardData {
+  stats: DashboardStats;
+  recent_activity: RecentActivity[];
+  content_health: ContentHealth;
+  maintenance_mode: boolean;
+}
