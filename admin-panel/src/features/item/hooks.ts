@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createItem, updateItem, deleteItem } from './api';
+import { createItem, updateItem, deleteItem, reorderItems } from './api';
 import type { Item } from '@project/shared';
 
 export const useCreateItem = () => {
@@ -31,6 +31,16 @@ export const useDeleteItem = () => {
     mutationFn: (variables: { id: number; bacaanId: number }) => deleteItem(variables.id),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ['bacaan-detail', variables.bacaanId] });
+    },
+  });
+};
+
+export const useReorderItems = (bacaanId: number) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: reorderItems,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['bacaan-detail', bacaanId] });
     },
   });
 };

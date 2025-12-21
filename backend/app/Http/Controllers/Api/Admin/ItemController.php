@@ -79,4 +79,42 @@ class ItemController extends Controller
         BacaanItem::destroy($id);
         return response()->json(['message' => 'Deleted']);
     }
+
+    /**
+     * @OA\Post(
+     *      path="/api/admin/items/reorder",
+     *      tags={"Admin Items"},
+     *      security={{"sanctum":{}}},
+     *      summary="Reorder Items",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(
+     *              required={"items"},
+     *              @OA\Property(
+     *                  property="items",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      @OA\Property(property="id", type="integer"),
+     *                      @OA\Property(property="urutan", type="integer")
+     *                  )
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(response=200, description="Reordered")
+     * )
+     */
+    public function reorder(Request $request)
+    {
+        $request->validate([
+            'items' => 'required|array',
+            'items.*.id' => 'required|integer|exists:bacaan_items,id',
+            'items.*.urutan' => 'required|integer|min:0'
+        ]);
+
+        foreach ($request->items as $item) {
+            BacaanItem::where('id', $item['id'])->update(['urutan' => $item['urutan']]);
+        }
+
+        return response()->json(['message' => 'Items reordered']);
+    }
 }

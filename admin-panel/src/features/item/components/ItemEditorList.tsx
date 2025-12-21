@@ -1,8 +1,25 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { Item } from '@project/shared';
-import { useCreateItem, useUpdateItem, useDeleteItem } from '../hooks';
+import { useCreateItem, useUpdateItem, useDeleteItem, useReorderItems } from '../hooks';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { RichTextEditor } from '@/components/editor/RichTextEditor';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+  useSortable
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 interface ItemEditorListProps {
   bacaanId: number;
@@ -12,25 +29,104 @@ interface ItemEditorListProps {
 
 export const ItemEditorList = ({ bacaanId, sectionId, items }: ItemEditorListProps) => {
   const { mutate: createItem } = useCreateItem();
+  const { mutate: reorderItems } = useReorderItems(bacaanId);
+  const [newItemId, setNewItemId] = useState<number | null>(null);
+  const [localItems, setLocalItems] = useState<Item[]>(items);
+  const endOfListRef = useRef<HTMLDivElement>(null);
+
+  // Sync local items with props
+  useEffect(() => {
+    setLocalItems(items);
+  }, [items]);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (over && active.id !== over.id) {
+      setLocalItems((currentItems) => {
+        const oldIndex = currentItems.findIndex((item) => item.id === active.id);
+        const newIndex = currentItems.findIndex((item) => item.id === over.id);
+
+        const newItems = arrayMove(currentItems, oldIndex, newIndex).map((item, index) => ({
+          ...item,
+          urutan: index
+        }));
+
+        // Send reorder request to backend
+        const reorderedPayload = newItems.map((item) => ({
+          id: item.id,
+          urutan: item.urutan
+        }));
+
+        reorderItems(reorderedPayload);
+
+        return newItems;
+      });
+    }
+  };
 
   const handleAddItem = () => {
+    const maxUrutan = localItems.length > 0
+      ? Math.max(...localItems.map(i => i.urutan))
+      : 0;
+    const newUrutan = maxUrutan + 1;
+
     createItem({
       bacaan_id: bacaanId,
       section_id: sectionId,
       arabic: '',
       terjemahan: '',
       tipe_tampilan: 'text',
-      urutan: items.length + 1
+      urutan: newUrutan
+    }, {
+      onSuccess: (data) => {
+        setNewItemId(data.id);
+      }
     });
   };
 
+  // Auto-scroll when new item is added
+  useEffect(() => {
+    if (newItemId && localItems.some(item => item.id === newItemId)) {
+      setTimeout(() => {
+        endOfListRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+  }, [localItems, newItemId]);
+
   return (
     <div className="flex flex-col gap-4 w-full">
-      <div className="flex flex-col gap-4">
-        {items.map((item, index) => (
-          <ItemRow key={item.id} item={item} bacaanId={bacaanId} index={index} />
-        ))}
-      </div>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <SortableContext
+          items={localItems.map(i => i.id)}
+          strategy={verticalListSortingStrategy}
+        >
+          <div className="flex flex-col gap-4">
+            {localItems.map((item, index) => (
+              <SortableItemRow
+                key={item.id}
+                item={item}
+                bacaanId={bacaanId}
+                index={index}
+                isNewItem={item.id === newItemId}
+                onEditComplete={() => setNewItemId(null)}
+              />
+            ))}
+            <div ref={endOfListRef} />
+          </div>
+        </SortableContext>
+      </DndContext>
 
       <button
         onClick={handleAddItem}
@@ -43,12 +139,68 @@ export const ItemEditorList = ({ bacaanId, sectionId, items }: ItemEditorListPro
   );
 };
 
-const ItemRow = ({ item, bacaanId, index }: { item: Item; bacaanId: number; index: number }) => {
+// Sortable wrapper for ItemRow
+const SortableItemRow = (props: {
+  item: Item;
+  bacaanId: number;
+  index: number;
+  isNewItem?: boolean;
+  onEditComplete?: () => void;
+}) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging
+  } = useSortable({ id: props.item.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <ItemRow
+      {...props}
+      sortableRef={setNodeRef}
+      sortableStyle={style}
+      sortableAttributes={attributes}
+      sortableListeners={listeners}
+      isDragging={isDragging}
+    />
+  );
+};
+
+const ItemRow = ({
+  item,
+  bacaanId,
+  index,
+  isNewItem = false,
+  onEditComplete,
+  sortableRef,
+  sortableStyle,
+  sortableAttributes,
+  sortableListeners,
+  isDragging
+}: {
+  item: Item;
+  bacaanId: number;
+  index: number;
+  isNewItem?: boolean;
+  onEditComplete?: () => void;
+  sortableRef?: (node: HTMLElement | null) => void;
+  sortableStyle?: React.CSSProperties;
+  sortableAttributes?: any;
+  sortableListeners?: any;
+  isDragging?: boolean;
+}) => {
   const { mutate: updateItem } = useUpdateItem();
   const { mutate: deleteItem } = useDeleteItem();
   const [data, setData] = useState(item);
   const [isDirty, setIsDirty] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(isNewItem);
 
   const handleChange = (field: keyof Item, value: any) => {
     setData({ ...data, [field]: value });
@@ -56,9 +208,12 @@ const ItemRow = ({ item, bacaanId, index }: { item: Item; bacaanId: number; inde
   };
 
   const handleSave = () => {
-    updateItem({ id: item.id, data });
+    // Exclude urutan from update - it's managed by drag reorder only
+    const { urutan, ...updateData } = data;
+    updateItem({ id: item.id, data: updateData });
     setIsDirty(false);
     setIsEditing(false);
+    onEditComplete?.();
   };
 
   const handleDelete = () => {
@@ -71,11 +226,26 @@ const ItemRow = ({ item, bacaanId, index }: { item: Item; bacaanId: number; inde
     setData(item);
     setIsDirty(false);
     setIsEditing(false);
+    onEditComplete?.();
   };
 
   if (!isEditing) {
     return (
-      <div className="group relative bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-border-light dark:border-border-dark shadow-sm hover:shadow-md transition-all flex gap-4">
+      <div
+        ref={sortableRef}
+        style={sortableStyle}
+        className={`group relative bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-border-light dark:border-border-dark shadow-sm hover:shadow-md transition-all flex gap-4 ${isDragging ? 'opacity-50 z-50 shadow-xl ring-2 ring-primary' : ''}`}
+      >
+        {/* Drag Handle */}
+        <div
+          className="flex-shrink-0 px-1 cursor-grab text-text-secondary dark:text-gray-400 group-hover:text-primary transition-colors touch-none"
+          title="Drag to reorder"
+          {...sortableAttributes}
+          {...sortableListeners}
+        >
+          <span className="material-symbols-outlined">drag_indicator</span>
+        </div>
+
         {/* Number Badge */}
         <div className="flex-shrink-0">
           <div className="size-8 rounded-lg bg-surface-accent dark:bg-gray-800 flex items-center justify-center text-xs font-bold text-text-secondary border border-border-light dark:border-gray-700 font-mono">
@@ -141,7 +311,11 @@ const ItemRow = ({ item, bacaanId, index }: { item: Item; bacaanId: number; inde
   }
 
   return (
-    <div className="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border-2 border-primary/20 shadow-lg flex flex-col gap-6 animate-in fade-in zoom-in-95 duration-200">
+    <div
+      ref={sortableRef}
+      style={sortableStyle}
+      className="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border-2 border-primary/20 shadow-lg flex flex-col gap-6 animate-in fade-in zoom-in-95 duration-200"
+    >
       <div className="flex items-center justify-between border-b border-border-light dark:border-border-dark pb-4">
         <h4 className="font-bold text-lg text-text-main dark:text-white">Edit Item #{index + 1}</h4>
         <span className="text-xs font-mono text-text-secondary bg-surface-accent dark:bg-gray-800 px-2 py-1 rounded">ID: {item.id}</span>
