@@ -47,6 +47,9 @@ export interface RecentActivity {
   slug: string;
   updated_at: string;
   created_at: string;
+  latest_activity?: string;
+  change_source?: 'bacaan' | 'section' | 'item';
+  change_preview?: string;
 }
 
 export interface ContentHealth {

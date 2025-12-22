@@ -35,7 +35,7 @@ export const SimpleItemsTab = ({ bacaan }: SimpleItemsTabProps) => {
                     <ItemEditorList
                         bacaanId={bacaan.id}
                         sectionId={firstSection.id}
-                        items={firstSection.items || []}
+                        items={[...(firstSection.items || [])].sort((a, b) => a.urutan - b.urutan)}
                     />
                 </div>
             </div>

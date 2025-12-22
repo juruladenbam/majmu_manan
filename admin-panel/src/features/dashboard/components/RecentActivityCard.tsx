@@ -35,16 +35,26 @@ export const RecentActivityCard = ({ activities }: Props) => (
           to={`/bacaan/${a.id}`}
           className="flex items-center justify-between p-4 hover:bg-surface-accent/50 dark:hover:bg-surface-accent-dark/50 transition-colors"
         >
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-lg bg-surface-accent dark:bg-surface-accent-dark flex items-center justify-center">
+          <div className="flex items-center gap-3 min-w-0 flex-1">
+            <div className="size-10 rounded-lg bg-surface-accent dark:bg-surface-accent-dark flex items-center justify-center flex-shrink-0">
               <span className="material-symbols-outlined text-text-secondary">auto_stories</span>
             </div>
-            <div>
-              <div className="font-medium text-text-dark dark:text-white">{a.judul}</div>
-              <div className="text-xs text-text-secondary dark:text-gray-400">/{a.slug}</div>
+            <div className="min-w-0 flex-1">
+              <div className="font-medium text-text-dark dark:text-white truncate">{a.judul}</div>
+              <div className="flex items-center gap-2 mt-0.5">
+                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${a.change_source === 'item' ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300' :
+                    a.change_source === 'section' ? 'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300' :
+                      'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-300'
+                  }`}>
+                  {a.change_source === 'item' ? 'Item' : a.change_source === 'section' ? 'Section' : 'Bacaan'}
+                </span>
+                <span className="text-xs text-text-secondary dark:text-gray-400 truncate">
+                  {a.change_preview || `/${a.slug}`}
+                </span>
+              </div>
             </div>
           </div>
-          <div className="text-sm text-text-secondary dark:text-gray-400">{formatTime(a.updated_at)}</div>
+          <div className="text-sm text-text-secondary dark:text-gray-400 flex-shrink-0 ml-2">{formatTime(a.latest_activity || a.updated_at)}</div>
         </Link>
       ))}
     </div>

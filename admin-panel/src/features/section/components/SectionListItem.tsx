@@ -162,7 +162,7 @@ export const SectionListItem = ({
           <ItemEditorList
             bacaanId={bacaanId}
             sectionId={section.id}
-            items={section.items || []}
+            items={[...(section.items || [])].sort((a, b) => a.urutan - b.urutan)}
           />
         </div>
       )}
