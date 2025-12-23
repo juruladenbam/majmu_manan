@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@project/shared": "workspace:*",
+    "@tanstack/query-persist-client-core": "^5.91.11",
     "@tanstack/react-query": "^5.90.12",
     "axios": "^1.13.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.26",
+    "idb-keyval": "^6.2.2",
     "lucide-react": "^0.562.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

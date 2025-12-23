@@ -13,6 +13,24 @@ export default defineConfig({
         enabled: true
       },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /^https?:\/\/.*\/api\/bacaan.*/i,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'api-bacaan-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+        ],
+      },
       manifest: {
         name: "Majmu' Manan",
         short_name: 'Majmu',
