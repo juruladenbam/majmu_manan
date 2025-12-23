@@ -129,7 +129,7 @@ export const ReaderContentPage = () => {
       <div className="flex flex-col items-center my-4 gap-4">
         {/* Swipe Hint */}
         <p className="text-sm text-slate-400 dark:text-slate-500">
-          ← Usap kiri untuk kembali | Usap kanan untuk lanjut →
+          ← Usap kiri kembali | Usap kanan lanjut →
         </p>
       </div>
 
@@ -171,7 +171,7 @@ export const ReaderContentPage = () => {
 
         {/* Swipe Hint */}
         <p className="text-sm text-slate-400 dark:text-slate-500">
-          ← Usap kiri untuk kembali | Usap kanan untuk lanjut →
+          ← Usap kiri kembali | Usap kanan lanjut →
         </p>
       </div>
     </div>
