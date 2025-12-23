@@ -148,14 +148,25 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
                     <li>Tap <strong>Add</strong> (Tambah)</li>
                   </ol>
                 </div>
-              ) : (
+              ) : isHere ? (
                 <Button
                   onClick={promptInstall}
-                  disabled={!isHere}
                   className="w-full justify-center bg-primary-600 hover:bg-primary-700 text-white"
                 >
-                  {isHere ? '📲 Install Sekarang' : 'Buka di Chrome untuk Install'}
+                  📲 Install Sekarang
                 </Button>
+              ) : (
+                <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2 bg-white dark:bg-slate-900/50 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+                  <p className="font-medium">Cara Install di Android Chrome:</p>
+                  <ol className="list-decimal pl-4 space-y-1 text-xs">
+                    <li>Tap tombol <strong>menu ⋮</strong> di pojok kanan atas</li>
+                    <li>Pilih <strong>"Install app"</strong> atau <strong>"Add to Home screen"</strong></li>
+                    <li>Tap <strong>Install</strong></li>
+                  </ol>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 italic">
+                    💡 Jika tidak muncul opsi install, coba scroll halaman terlebih dahulu
+                  </p>
+                </div>
               )}
             </div>
           ) : (

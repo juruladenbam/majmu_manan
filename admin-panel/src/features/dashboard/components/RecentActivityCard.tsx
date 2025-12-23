@@ -6,18 +6,20 @@ interface Props {
 }
 
 const formatTime = (date: string): string => {
-  const d = new Date(date);
+  // Backend sends UTC time, convert to Asia/Jakarta (+7)
+  const utcDate = new Date(date + (date.includes('Z') || date.includes('+') ? '' : 'Z'));
   const now = new Date();
-  const diff = now.getTime() - d.getTime();
+  const diff = now.getTime() - utcDate.getTime();
   const mins = Math.floor(diff / 60000);
   const hours = Math.floor(diff / 3600000);
   const days = Math.floor(diff / 86400000);
 
+  if (mins < 1) return 'baru saja';
   if (mins < 60) return `${mins} menit lalu`;
   if (hours < 24) return `${hours} jam lalu`;
   if (days === 1) return 'kemarin';
   if (days < 7) return `${days} hari lalu`;
-  return d.toLocaleDateString('id-ID');
+  return utcDate.toLocaleDateString('id-ID', { timeZone: 'Asia/Jakarta' });
 };
 
 export const RecentActivityCard = ({ activities }: Props) => (
@@ -43,8 +45,8 @@ export const RecentActivityCard = ({ activities }: Props) => (
               <div className="font-medium text-text-dark dark:text-white truncate">{a.judul}</div>
               <div className="flex items-center gap-2 mt-0.5">
                 <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${a.change_source === 'item' ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300' :
-                    a.change_source === 'section' ? 'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300' :
-                      'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-300'
+                  a.change_source === 'section' ? 'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300' :
+                    'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-300'
                   }`}>
                   {a.change_source === 'item' ? 'Item' : a.change_source === 'section' ? 'Section' : 'Bacaan'}
                 </span>
