@@ -9,7 +9,7 @@ import { SettingsModal } from './features/settings/components';
 import { UpdatePrompt } from './components/UpdatePrompt';
 import { useEffect, useState } from 'react';
 import { apiClient } from './api/client';
-import { LoadingPage } from './components/common';
+import { LoadingPage, OfflineIndicator } from './components/common';
 import { Button } from './components/ui';
 import { useLocalStorage } from './features/settings/hooks/useLocalStorage';
 
@@ -87,6 +87,7 @@ function App() {
         </Route>
       </Routes>
 
+      <OfflineIndicator />
       <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
       <UpdatePrompt />
     </>
