@@ -125,6 +125,14 @@ export const ReaderContentPage = () => {
         </div>
       </div>
 
+      {/* Navigation Footer */}
+      <div className="flex flex-col items-center m-4 gap-4">
+        {/* Swipe Hint */}
+        <p className="text-sm text-slate-400 dark:text-slate-500">
+          ← Usap kiri untuk kembali | Usap kanan untuk lanjut →
+        </p>
+      </div>
+
       {/* Content */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -163,7 +171,7 @@ export const ReaderContentPage = () => {
 
         {/* Swipe Hint */}
         <p className="text-sm text-slate-400 dark:text-slate-500">
-          ← geser untuk lanjut | geser untuk kembali →
+          ← Usap kiri untuk kembali | Usap kanan untuk lanjut →
         </p>
       </div>
     </div>
