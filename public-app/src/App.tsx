@@ -6,6 +6,7 @@ import { ReaderMenuPage } from './pages/reader/ReaderMenuPage';
 import { ReaderContentPage } from './pages/reader/ReaderContentPage';
 import { MaintenancePage } from './pages/MaintenancePage';
 import { SettingsModal } from './features/settings/components';
+import { UpdatePrompt } from './components/UpdatePrompt';
 import { useEffect, useState } from 'react';
 import { apiClient } from './api/client';
 import { LoadingPage } from './components/common';
@@ -87,6 +88,7 @@ function App() {
       </Routes>
 
       <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
+      <UpdatePrompt />
     </>
   );
 }
