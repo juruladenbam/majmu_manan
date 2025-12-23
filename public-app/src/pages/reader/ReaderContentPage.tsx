@@ -126,7 +126,7 @@ export const ReaderContentPage = () => {
       </div>
 
       {/* Navigation Footer */}
-      <div className="flex flex-col items-center m-4 gap-4">
+      <div className="flex flex-col items-center my-4 gap-4">
         {/* Swipe Hint */}
         <p className="text-sm text-slate-400 dark:text-slate-500">
           ← Usap kiri untuk kembali | Usap kanan untuk lanjut →
