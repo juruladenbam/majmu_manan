@@ -67,7 +67,7 @@ if (!self.define) {
     });
   };
 }
-define(['./workbox-eb0a64e1'], (function (workbox) { 'use strict';
+define(['./workbox-9ecea3a3'], (function (workbox) { 'use strict';
 
   self.skipWaiting();
   workbox.clientsClaim();
@@ -82,11 +82,20 @@ define(['./workbox-eb0a64e1'], (function (workbox) { 'use strict';
     "revision": "3ca0b8505b4bec776b69afdba2768812"
   }, {
     "url": "index.html",
-    "revision": "0.58s5judrb5o"
+    "revision": "0.c5b0kchbaao"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
     allowlist: [/^\/$/]
   }));
+  workbox.registerRoute(/^https?:\/\/.*\/api\/bacaan.*/i, new workbox.StaleWhileRevalidate({
+    "cacheName": "api-bacaan-cache",
+    plugins: [new workbox.ExpirationPlugin({
+      maxEntries: 50,
+      maxAgeSeconds: 604800
+    }), new workbox.CacheableResponsePlugin({
+      statuses: [0, 200]
+    })]
+  }), 'GET');
 
 }));
