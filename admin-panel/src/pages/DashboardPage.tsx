@@ -26,7 +26,7 @@ export const DashboardPage = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto flex flex-col gap-8 pb-20">
+    <div className="max-w-6xl mx-auto flex flex-col gap-8 pb-20 mt-8">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>

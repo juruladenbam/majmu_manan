@@ -19,6 +19,15 @@ export const BacaanListItem = ({ bacaan, onDelete }: BacaanListItemProps) => {
           <Link to={`/bacaan/${bacaan.id}`} className="size-8 rounded-full hover:bg-surface-accent dark:hover:bg-surface-accent-dark flex items-center justify-center text-text-secondary hover:text-blue-600 transition-colors" title="Edit">
             <span className="material-symbols-outlined text-[18px]">edit</span>
           </Link>
+          <a
+            href={`/print/bacaan/${bacaan.id}`}
+            target="_blank"
+            rel="noreferrer"
+            className="size-8 rounded-full hover:bg-surface-accent dark:hover:bg-surface-accent-dark flex items-center justify-center text-text-secondary hover:text-green-600 transition-colors"
+            title="Cetak PDF"
+          >
+            <span className="material-symbols-outlined text-[18px]">print</span>
+          </a>
           <button
             type="button"
             className="size-8 rounded-full hover:bg-surface-accent dark:hover:bg-surface-accent-dark flex items-center justify-center text-text-secondary hover:text-red-500 transition-colors"

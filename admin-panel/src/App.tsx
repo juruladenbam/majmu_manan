@@ -6,6 +6,8 @@ import { BacaanListPage } from './pages/bacaan/BacaanListPage';
 import { BacaanDetailPage } from './pages/bacaan/BacaanDetailPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { DashboardPage } from './pages/DashboardPage';
+import { AllBacaanPrintView } from './features/bacaan/components/print/AllBacaanPrintView';
+import { BacaanPrintView } from './features/bacaan/components/print/BacaanPrintView';
 
 function App() {
   return (
@@ -13,6 +15,10 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
 
       <Route element={<ProtectedRoute />}>
+        {/* Print Routes - Standalone (No Layout) */}
+        <Route path="/print/bacaan/all" element={<AllBacaanPrintView />} />
+        <Route path="/print/bacaan/:id" element={<BacaanPrintView />} />
+
         <Route element={<AdminLayout />}>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<DashboardPage />} />

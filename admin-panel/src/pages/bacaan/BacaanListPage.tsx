@@ -37,20 +37,31 @@ export const BacaanListPage = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto flex flex-col gap-8 pb-20">
+    <div className="max-w-6xl mx-auto flex flex-col gap-8 pb-20 mt-8">
       {/* Page Header & Actions */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-text-dark dark:text-white">Daftar Bacaan</h2>
           <p className="text-text-secondary dark:text-gray-400 mt-1">Kelola semua konten bacaan dan doa dalam aplikasi.</p>
         </div>
-        <button
-          onClick={() => setIsCreateModalOpen(true)}
-          className="flex items-center justify-center gap-2 h-12 px-6 bg-primary hover:brightness-95 transition-all text-text-dark font-bold rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 group"
-        >
-          <span className="material-symbols-outlined group-hover:rotate-90 transition-transform">add</span>
-          <span>Tambah Bacaan</span>
-        </button>
+        <div className="flex gap-2">
+          <a
+            href="/print/bacaan/all"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-center gap-2 h-12 px-6 bg-white dark:bg-surface-dark text-text-secondary border border-border-light dark:border-border-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-all font-bold rounded-full shadow-sm hover:shadow-md"
+          >
+            <span className="material-symbols-outlined">print</span>
+            <span>Cetak Semua</span>
+          </a>
+          <button
+            onClick={() => setIsCreateModalOpen(true)}
+            className="flex items-center justify-center gap-2 h-12 px-6 bg-primary hover:brightness-95 transition-all text-text-dark font-bold rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 group"
+          >
+            <span className="material-symbols-outlined group-hover:rotate-90 transition-transform">add</span>
+            <span>Tambah Bacaan</span>
+          </button>
+        </div>
       </div>
 
       {/* Search & Filter Bar */}
