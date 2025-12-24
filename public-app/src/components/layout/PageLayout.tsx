@@ -23,7 +23,7 @@ export const PageLayout = ({
         <div className={cn('min-h-screen bg-slate-50 dark:bg-slate-900', className)}>
             {showHeader && <Header {...headerProps} />}
 
-            <main className="py-6">
+            <main className="pb-6">
                 <Container size={containerSize}>
                     {children || <Outlet />}
                 </Container>

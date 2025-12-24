@@ -1,9 +1,11 @@
 import type { Section } from '@project/shared';
+import type { LexicalEditor } from 'lexical';
 import { ItemEditorList } from '@/features/item/components/ItemEditorList';
-import { useState, useEffect } from 'react'; // Added useEffect
+import { SharedToolbar } from '@/components/editor/SharedToolbar';
+import { useState, useEffect } from 'react';
 import { useUpdateSection } from '../hooks';
 import { FaEdit, FaCheck, FaTimes } from 'react-icons/fa';
-import { useNavigate, useLocation } from 'react-router-dom'; // Added router hooks
+import { useNavigate, useLocation } from 'react-router-dom';
 
 interface SectionListItemProps {
   section: Section;
@@ -32,6 +34,7 @@ export const SectionListItem = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [title, setTitle] = useState(section.judul_section);
+  const [activeEditor, setActiveEditor] = useState<LexicalEditor | null>(null);
   const { mutate: updateSection } = useUpdateSection();
 
   useEffect(() => {
@@ -67,10 +70,11 @@ export const SectionListItem = ({
     <div
       ref={sortableRef}
       style={sortableStyle}
-      className={`group relative bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden ${isDragging ? 'opacity-50 z-50 shadow-xl ring-2 ring-primary' : ''}`}
+      className={`group relative bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl shadow-sm hover:shadow-md transition-all ${isDragging ? 'opacity-50 z-50 shadow-xl ring-2 ring-primary' : ''}`}
       id={`section-${section.id}`}
     >
-      <div className="p-5 flex flex-wrap items-center gap-4 bg-surface-light dark:bg-surface-dark z-10 relative">
+      <div className={`p-5 flex flex-wrap items-center gap-4 bg-surface-light dark:bg-surface-dark z-10 relative ${isOpen ? 'rounded-t-xl' : 'rounded-xl'}`}>
+
         {/* Drag Handle & Number (Visual) */}
         <div className="flex items-center gap-4">
           <div
@@ -158,12 +162,20 @@ export const SectionListItem = ({
       </div>
 
       {isOpen && (
-        <div className="p-4 md:p-6 bg-surface-accent/30 dark:bg-black/20 border-t border-border-light dark:border-border-dark animate-in slide-in-from-top-2 duration-200">
-          <ItemEditorList
-            bacaanId={bacaanId}
-            sectionId={section.id}
-            items={[...(section.items || [])].sort((a, b) => a.urutan - b.urutan)}
-          />
+        <div className="border-t border-border-light dark:border-border-dark">
+          {/* Sticky Toolbar for this section */}
+          <div className="sticky top-0 z-40 bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark">
+            <SharedToolbar editor={activeEditor} />
+          </div>
+
+          <div className="p-4 md:p-6 bg-surface-accent/30 dark:bg-black/20 animate-in slide-in-from-top-2 duration-200 rounded-b-xl">
+            <ItemEditorList
+              bacaanId={bacaanId}
+              sectionId={section.id}
+              items={[...(section.items || [])].sort((a, b) => a.urutan - b.urutan)}
+              onActiveEditorChange={setActiveEditor}
+            />
+          </div>
         </div>
       )}
     </div>

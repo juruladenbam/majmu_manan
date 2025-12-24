@@ -8,7 +8,7 @@ export const Layout = () => {
             <Sidebar />
             <main className="flex-1 flex flex-col h-full min-w-0 overflow-hidden relative">
                 <Navbar />
-                <div className="flex-1 overflow-y-auto p-8 relative">
+                <div className="flex-1 overflow-y-auto px-8 relative">
                     <Outlet />
                 </div>
             </main>

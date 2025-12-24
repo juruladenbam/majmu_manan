@@ -142,7 +142,7 @@ export const BacaanDetailPage = () => {
   if (!bacaan) return <div className="text-center p-10 text-text-secondary">Not Found</div>;
 
   return (
-    <div className="max-w-4xl mx-auto flex flex-col gap-6 pb-20">
+    <div className="max-w-4xl mx-auto flex flex-col gap-6 pb-20 mt-8">
       {/* Header Actions & Title */}
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">

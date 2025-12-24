@@ -46,7 +46,7 @@ export const ReaderMenuPage = () => {
     : [];
 
   return (
-    <div className="animate-fade-in pb-8">
+    <div className="animate-fade-in py-8">
       <Helmet>
         <title>{bacaan.judul} - Majmu' Manan</title>
         <meta name="description" content={bacaan.deskripsi || `Bacaan ${bacaan.judul} di Majmu' Manan`} />

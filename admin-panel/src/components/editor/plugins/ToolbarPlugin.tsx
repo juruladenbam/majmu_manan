@@ -6,7 +6,11 @@ import {
   FaUndo, FaRedo
 } from 'react-icons/fa';
 
-export const ToolbarPlugin = () => {
+interface ToolbarPluginProps {
+  isSticky?: boolean;
+}
+
+export const ToolbarPlugin = ({ isSticky = false }: ToolbarPluginProps) => {
   const [editor] = useLexicalComposerContext();
 
   const onClick = (command: any, payload: any = undefined) => {
@@ -24,8 +28,13 @@ export const ToolbarPlugin = () => {
     </button>
   );
 
+  // Simple sticky with top-0 - works within scrollable ancestor
+  const stickyClasses = isSticky
+    ? 'sticky top-0 z-40 shadow-md'
+    : '';
+
   return (
-    <div className="editor-toolbar flex items-center justify-center">
+    <div className={`editor-toolbar ${stickyClasses}`}>
       {/* History Controls */}
       <ToolbarButton onClick={() => onClick(UNDO_COMMAND)} icon={FaUndo} label="Undo" />
       <ToolbarButton onClick={() => onClick(REDO_COMMAND)} icon={FaRedo} label="Redo" />

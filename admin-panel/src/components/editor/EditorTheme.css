@@ -3,7 +3,7 @@
 }
 
 .editor-toolbar {
-  @apply flex flex-wrap items-center gap-1 p-2 border-b border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark rounded-t-xl;
+  @apply flex flex-wrap items-center justify-center gap-1 p-2 border-b border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark;
 }
 
 .editor-content {

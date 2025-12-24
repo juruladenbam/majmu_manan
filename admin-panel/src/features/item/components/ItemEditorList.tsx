@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import type { Item } from '@project/shared';
+import type { LexicalEditor } from 'lexical';
 import { useCreateItem, useUpdateItem, useDeleteItem, useReorderItems } from '../hooks';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { RichTextEditor } from '@/components/editor/RichTextEditor';
@@ -25,13 +26,15 @@ interface ItemEditorListProps {
   bacaanId: number;
   sectionId: number | null;
   items: Item[];
+  onActiveEditorChange?: (editor: LexicalEditor | null) => void;
 }
 
-export const ItemEditorList = ({ bacaanId, sectionId, items }: ItemEditorListProps) => {
+export const ItemEditorList = ({ bacaanId, sectionId, items, onActiveEditorChange }: ItemEditorListProps) => {
   const { mutate: createItem } = useCreateItem();
   const { mutate: reorderItems } = useReorderItems(bacaanId);
   const [newItemId, setNewItemId] = useState<number | null>(null);
   const [localItems, setLocalItems] = useState<Item[]>(items);
+  const [editingItemId, setEditingItemId] = useState<number | null>(null);
   const endOfListRef = useRef<HTMLDivElement>(null);
 
   // Sync local items with props
@@ -88,6 +91,7 @@ export const ItemEditorList = ({ bacaanId, sectionId, items }: ItemEditorListPro
     }, {
       onSuccess: (data) => {
         setNewItemId(data.id);
+        setEditingItemId(data.id);
       }
     });
   };
@@ -119,8 +123,14 @@ export const ItemEditorList = ({ bacaanId, sectionId, items }: ItemEditorListPro
                 item={item}
                 bacaanId={bacaanId}
                 index={index}
-                isNewItem={item.id === newItemId}
-                onEditComplete={() => setNewItemId(null)}
+                isEditing={editingItemId === item.id}
+                onStartEdit={() => setEditingItemId(item.id)}
+                onEndEdit={() => {
+                  setEditingItemId(null);
+                  if (item.id === newItemId) setNewItemId(null);
+                  onActiveEditorChange?.(null);
+                }}
+                onActiveEditorChange={onActiveEditorChange}
               />
             ))}
             <div ref={endOfListRef} />
@@ -144,8 +154,10 @@ const SortableItemRow = (props: {
   item: Item;
   bacaanId: number;
   index: number;
-  isNewItem?: boolean;
-  onEditComplete?: () => void;
+  isEditing: boolean;
+  onStartEdit: () => void;
+  onEndEdit: () => void;
+  onActiveEditorChange?: (editor: LexicalEditor | null) => void;
 }) => {
   const {
     attributes,
@@ -177,8 +189,10 @@ const ItemRow = ({
   item,
   bacaanId,
   index,
-  isNewItem = false,
-  onEditComplete,
+  isEditing,
+  onStartEdit,
+  onEndEdit,
+  onActiveEditorChange,
   sortableRef,
   sortableStyle,
   sortableAttributes,
@@ -188,8 +202,10 @@ const ItemRow = ({
   item: Item;
   bacaanId: number;
   index: number;
-  isNewItem?: boolean;
-  onEditComplete?: () => void;
+  isEditing: boolean;
+  onStartEdit: () => void;
+  onEndEdit: () => void;
+  onActiveEditorChange?: (editor: LexicalEditor | null) => void;
   sortableRef?: (node: HTMLElement | null) => void;
   sortableStyle?: React.CSSProperties;
   sortableAttributes?: any;
@@ -200,7 +216,15 @@ const ItemRow = ({
   const { mutate: deleteItem } = useDeleteItem();
   const [data, setData] = useState(item);
   const [isDirty, setIsDirty] = useState(false);
-  const [isEditing, setIsEditing] = useState(isNewItem);
+
+  // Reset data when item changes (e.g., when edit is cancelled externally)
+  useEffect(() => {
+    if (!isEditing) {
+      setData(item);
+      setIsDirty(false);
+      onActiveEditorChange?.(null);
+    }
+  }, [isEditing, item, onActiveEditorChange]);
 
   const handleChange = (field: keyof Item, value: any) => {
     setData({ ...data, [field]: value });
@@ -212,8 +236,7 @@ const ItemRow = ({
     const { urutan, ...updateData } = data;
     updateItem({ id: item.id, data: updateData });
     setIsDirty(false);
-    setIsEditing(false);
-    onEditComplete?.();
+    onEndEdit();
   };
 
   const handleDelete = () => {
@@ -225,9 +248,13 @@ const ItemRow = ({
   const handleCancel = () => {
     setData(item);
     setIsDirty(false);
-    setIsEditing(false);
-    onEditComplete?.();
+    onEndEdit();
   };
+
+  // Editor IDs for this item
+  const arabicEditorId = `item-${item.id}-arabic`;
+  const latinEditorId = `item-${item.id}-latin`;
+  const terjemahanEditorId = `item-${item.id}-terjemahan`;
 
   if (!isEditing) {
     return (
@@ -292,7 +319,7 @@ const ItemRow = ({
 
         <div className="flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 right-4 md:static">
           <button
-            onClick={() => setIsEditing(true)}
+            onClick={onStartEdit}
             className="size-9 rounded-full bg-surface-light dark:bg-gray-800 border border-border-light dark:border-gray-700 hover:bg-primary hover:border-primary hover:text-text-dark flex items-center justify-center text-text-secondary transition-colors shadow-sm"
             title="Edit"
           >
@@ -314,93 +341,102 @@ const ItemRow = ({
     <div
       ref={sortableRef}
       style={sortableStyle}
-      className="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border-2 border-primary/20 shadow-lg flex flex-col gap-6 animate-in fade-in zoom-in-95 duration-200"
+      className="bg-surface-light dark:bg-surface-dark rounded-2xl border-2 border-primary/20 shadow-lg flex flex-col animate-in fade-in zoom-in-95 duration-200"
     >
-      <div className="flex items-center justify-between border-b border-border-light dark:border-border-dark pb-4">
-        <h4 className="font-bold text-lg text-text-main dark:text-white">Edit Item #{index + 1}</h4>
-        <span className="text-xs font-mono text-text-secondary bg-surface-accent dark:bg-gray-800 px-2 py-1 rounded">ID: {item.id}</span>
-      </div>
-
-      {/* Grid Layout for Form */}
-      <div className="grid grid-cols-1 gap-6">
-        {/* Arabic Editor */}
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-bold text-text-main dark:text-white ml-1">Arabic Content</label>
-          <div className="bg-surface-accent dark:bg-gray-800 rounded-xl border-none overflow-hidden focus-within:ring-2 focus-within:ring-primary h-auto transition-all">
-            <RichTextEditor
-              value={data.arabic || ''}
-              onChange={(val: string) => handleChange('arabic', val)}
-              placeholder="Paste or type Arabic text here..."
-              isRtl={true}
-            />
-          </div>
+      <div className="p-6 flex flex-col gap-6">
+        <div className="flex items-center justify-between border-b border-border-light dark:border-border-dark pb-4">
+          <h4 className="font-bold text-lg text-text-main dark:text-white">Edit Item #{index + 1}</h4>
+          <span className="text-xs font-mono text-text-secondary bg-surface-accent dark:bg-gray-800 px-2 py-1 rounded">ID: {item.id}</span>
         </div>
 
-        {/* Latin & Terjemahan */}
+        {/* Grid Layout for Form */}
         <div className="grid grid-cols-1 gap-6">
+          {/* Arabic Editor */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-bold text-text-main dark:text-white ml-1">Ungkapan Latin</label>
-            <div className="bg-surface-accent dark:bg-gray-800 rounded-xl border-none overflow-hidden focus-within:ring-2 focus-within:ring-primary h-auto transition-all">
+            <label className="text-sm font-bold text-text-main dark:text-white ml-1">Arabic Content</label>
+            <div className="bg-surface-accent dark:bg-gray-800 border-none focus-within:ring-2 focus-within:ring-primary h-auto transition-all">
               <RichTextEditor
-                value={data.latin || ''}
-                onChange={(val: string) => handleChange('latin', val)}
-                placeholder="Isi teks latin untuk transliterasi..."
-                isRtl={false}
+                value={data.arabic || ''}
+                onChange={(val: string) => handleChange('arabic', val)}
+                placeholder="Paste or type Arabic text here..."
+                isRtl={true}
+                editorId={arabicEditorId}
+                onEditorFocus={onActiveEditorChange}
               />
             </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-bold text-text-main dark:text-white ml-1">Terjemahan</label>
-            <div className="bg-surface-accent dark:bg-gray-800 rounded-xl border-none overflow-hidden focus-within:ring-2 focus-within:ring-primary h-auto transition-all">
-              <RichTextEditor
-                value={data.terjemahan || ''}
-                onChange={(val: string) => handleChange('terjemahan', val)}
-                placeholder="Isi terjemahan bahasa Indonesia..."
-                isRtl={false}
-              />
+
+          {/* Latin & Terjemahan */}
+          <div className="grid grid-cols-1 gap-6">
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-bold text-text-main dark:text-white ml-1">Ungkapan Latin</label>
+              <div className="bg-surface-accent dark:bg-gray-800 border-none focus-within:ring-2 focus-within:ring-primary h-auto transition-all">
+                <RichTextEditor
+                  value={data.latin || ''}
+                  onChange={(val: string) => handleChange('latin', val)}
+                  placeholder="Isi teks latin untuk transliterasi..."
+                  isRtl={false}
+                  editorId={latinEditorId}
+                  onEditorFocus={onActiveEditorChange}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-bold text-text-main dark:text-white ml-1">Terjemahan</label>
+              <div className="bg-surface-accent dark:bg-gray-800 border-none focus-within:ring-2 focus-within:ring-primary h-auto transition-all">
+                <RichTextEditor
+                  value={data.terjemahan || ''}
+                  onChange={(val: string) => handleChange('terjemahan', val)}
+                  placeholder="Isi terjemahan bahasa Indonesia..."
+                  isRtl={false}
+                  editorId={terjemahanEditorId}
+                  onEditorFocus={onActiveEditorChange}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Footer Controls */}
-      <div className="flex flex-wrap justify-between items-center gap-4 pt-2 border-t border-border-light dark:border-border-dark mt-2">
-        <div className="flex flex-col gap-1.5 w-full sm:w-auto">
-          <label className="text-xs font-bold text-text-secondary ml-1 uppercase">Tipe Tampilan</label>
-          <div className="relative">
-            <select
-              value={data.tipe_tampilan}
-              onChange={(e) => handleChange('tipe_tampilan', e.target.value as any)}
-              className="appearance-none w-full sm:w-[200px] bg-surface-accent dark:bg-gray-800 border-none rounded-xl px-4 py-2.5 text-sm font-bold text-text-main dark:text-white focus:ring-2 focus:ring-primary cursor-pointer"
+        {/* Footer Controls */}
+        <div className="flex flex-wrap justify-between items-center gap-4 pt-2 border-t border-border-light dark:border-border-dark mt-2">
+          <div className="flex flex-col gap-1.5 w-full sm:w-auto">
+            <label className="text-xs font-bold text-text-secondary ml-1 uppercase">Tipe Tampilan</label>
+            <div className="relative">
+              <select
+                value={data.tipe_tampilan}
+                onChange={(e) => handleChange('tipe_tampilan', e.target.value as any)}
+                className="appearance-none w-full sm:w-[200px] bg-surface-accent dark:bg-gray-800 border-none rounded-xl px-4 py-2.5 text-sm font-bold text-text-main dark:text-white focus:ring-2 focus:ring-primary cursor-pointer"
+              >
+                <option value="text">Teks Biasa</option>
+                <option value="syiir">Syiir (Puisi)</option>
+                <option value="judul_tengah">Judul Tengah</option>
+                <option value="image">Gambar</option>
+                <option value="keterangan">Keterangan</option>
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-text-secondary">
+                <span className="material-symbols-outlined text-[20px]">expand_more</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+            <button
+              onClick={handleCancel}
+              className="px-6 py-2.5 rounded-full font-bold text-text-secondary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
-              <option value="text">Teks Biasa</option>
-              <option value="syiir">Syiir (Puisi)</option>
-              <option value="judul_tengah">Judul Tengah</option>
-              <option value="image">Gambar</option>
-              <option value="keterangan">Keterangan</option>
-            </select>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-text-secondary">
-              <span className="material-symbols-outlined text-[20px]">expand_more</span>
-            </div>
+              Batal
+            </button>
+            <button
+              onClick={handleSave}
+              disabled={!isDirty}
+              className="px-8 py-2.5 rounded-full bg-primary hover:brightness-95 text-text-dark font-bold shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              Simpan
+            </button>
           </div>
-        </div>
-
-        <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-          <button
-            onClick={handleCancel}
-            className="px-6 py-2.5 rounded-full font-bold text-text-secondary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-          >
-            Batal
-          </button>
-          <button
-            onClick={handleSave}
-            disabled={!isDirty}
-            className="px-8 py-2.5 rounded-full bg-primary hover:brightness-95 text-text-dark font-bold shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98] transition-all"
-          >
-            Simpan
-          </button>
         </div>
       </div>
     </div>
   );
 };
+

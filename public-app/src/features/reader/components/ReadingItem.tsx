@@ -33,7 +33,7 @@ export const ReadingItem = ({ item, className }: ReadingItemProps) => {
       case 'syiir':
         return (
           <div
-            className="font-arabic text-center px-8 text-slate-800 dark:text-slate-200"
+            className="font-arabic text-center text-slate-800 dark:text-slate-200"
             style={{ fontSize: `${fontSize}px`, lineHeight: '2.5' }}
             dangerouslySetInnerHTML={{ __html: item.arabic || '' }}
           />

@@ -24,7 +24,7 @@ export const HomePage = () => {
   }
 
   return (
-    <div className="space-y-6 animate-fade-in pb-8">
+    <div className="space-y-6 animate-fade-in py-8">
       <Helmet>
         <title>Majmu' Manan - Keluarga BAM</title>
         <meta name="description" content="Bacaan dan wirid harian keluarga BAM. Tersedia offline." />
