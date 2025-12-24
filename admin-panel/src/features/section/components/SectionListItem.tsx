@@ -2,7 +2,7 @@ import type { Section } from '@project/shared';
 import type { LexicalEditor } from 'lexical';
 import { ItemEditorList } from '@/features/item/components/ItemEditorList';
 import { SharedToolbar } from '@/components/editor/SharedToolbar';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useUpdateSection } from '../hooks';
 import { FaEdit, FaCheck, FaTimes } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -31,25 +31,18 @@ export const SectionListItem = ({
 }: SectionListItemProps) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
+  const isOpen = location.hash === `#section-${section.id}`;
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [title, setTitle] = useState(section.judul_section);
   const [activeEditor, setActiveEditor] = useState<LexicalEditor | null>(null);
   const { mutate: updateSection } = useUpdateSection();
 
-  useEffect(() => {
-    if (location.hash === `#section-${section.id}`) {
-      setIsOpen(true);
-      // Optional: scroll into view logic could go here
-    }
-  }, [location.hash, section.id]);
+
 
   const handleToggleOpen = () => {
     if (isOpen) {
-      setIsOpen(false);
       navigate('#sections', { replace: true });
     } else {
-      setIsOpen(true);
       navigate(`#section-${section.id}`, { replace: true });
     }
   };
