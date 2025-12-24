@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { getBacaanList, getBacaanDetail } from '@/features/reader/api';
+import { getBacaanList, getBacaanDetail, getSectionDetail } from '@/features/reader/api';
 import { useOnlineStatus } from './useOnlineStatus';
 
 /**
@@ -27,17 +27,28 @@ export const usePrefetchBacaan = () => {
 
                 console.log(`[Prefetch] Syncing ${bacaanList.length} bacaan...`);
 
-                // 2. Prefetch each bacaan detail in background (sequentially to avoid overwhelming API)
+                // 2. Prefetch each bacaan detail in background
                 for (const bacaan of bacaanList) {
-                    await queryClient.prefetchQuery({
+                    const bacaanDetail = await queryClient.fetchQuery({
                         queryKey: ['public-bacaan-detail', bacaan.slug],
                         queryFn: () => getBacaanDetail(bacaan.slug),
                         staleTime: 1000 * 60 * 60,
                     });
+
+                    // 3. If multi-section, also prefetch each section detail
+                    if (bacaanDetail.is_multi_section && bacaanDetail.sections) {
+                        for (const section of bacaanDetail.sections) {
+                            await queryClient.prefetchQuery({
+                                queryKey: ['public-section-detail', bacaan.slug, section.slug_section],
+                                queryFn: () => getSectionDetail(bacaan.slug, section.slug_section),
+                                staleTime: 1000 * 60 * 60,
+                            });
+                        }
+                    }
                 }
 
                 hasPrefetched.current = true;
-                console.log('[Prefetch] All bacaan synced and cached!');
+                console.log('[Prefetch] All bacaan & sections synced!');
             } catch (error) {
                 console.error('[Prefetch] Failed to sync:', error);
             }
