@@ -7,7 +7,7 @@
     },
     "content": [
         {
-            "chapter": "BAB 1",
+            "chapter": "Bab 1",
             "blocks": [
                 {
                     "type": "prose",
@@ -27,12 +27,12 @@
                 {
                     "type": "poetry",
                     "description": "Nazhom Tawassul (Page 4)",
-                    "text": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br>يَا رَبَّنَا بِالْهَيْكَلِ النُّوْرَانِ * الْبَازِ عَبْدِ الْقَادِرِ الْجِيْلَانِي<br>أَسْلُكْ بِنَا نَهْجَ الْهِدَايَةِ * وَاحْمِنَا مِنْ شَرِّ كُلِّ مُعَانِدٍ أَوْجَانِي<br>بِأَبِيْهِ عَبْدِ اللَّهِ فَرِّجْ كَرْبَنَا * وَاقْضِ حَوَائِجَ عَبْدِكَ الْوِلْهَانِ<br>وَبِجَنْكِ دُسْتٍ يَا الهِيْ اَغْنِي * وَاجْعَلْنِي فِي بَحْرِ الْمَحَبَّةِ فَانِي<br>بِالْقُطْبِ عَبْدِ اللَّهِ دَاوِ عِلَّتِيْ * وَبِيَحْيِي أَحْيِ الْقَلْبَ بِالْعِرْفَانِ<br>وَبِمُحَمَّدٍ وَأَبِيْهِ دَاوُدَ اكْسُنِي * تَوْبَ الْبَهَا وَالْوُدِّ فِي الْأَزْمَانِ<br>بِأَبِيْهِ عَبْدِ اللَّهِ أَصْلِحْ شَأْنَنَا * وَلِدِيْنِنَا فَاحْفَظْ مِنَ النُّقْصَانِ<br>وَالْطُفْ بِنَا فِي كُلِّ مَا قَدَّرْتَهُ * بِالْجُوْنِ مُوسَى جُدْ بِخَيْرِ جِنَانِ<br>وَالْمَحْضِ عَبْدِ اللَّهِ لِلْإِحْسَانِ مَحْضًا * رَقِنِي ثُمَّ اكْسُنِي بِمَعَانِي<br>بِالْأَنْوَرِ الْحَسَنِ الْمُثَنَّى نَوْرَنْ * عَقْلِي وَلَا تَتْرُكْنِ لِلْأَكْوَانِ<br>وَأَبِيْهِ أَوَّلِ كُلِّ قُطْبٍ بَاهِرِ * سِبْطِ النَّبِيِّ الْمُصْطَفَى الْعَدْنَانِيُّ<br>حَسَنِ الزَّكِيِّ ابْنِ الْإِمَامِ الْمُرْتَضَى * حَامِي الْوَغَى غَيْثِ النَّدَى الْهَتَّانِ<br>يَسِّرْ لَنَا كُلَّ الْأُمُورِ وَعَافِنَا * مِنْ كُلِّ هَمْ أَوْ بَلَا أَوْ عَانِي<br>اللَّهُمَّ انْشُرْ نَفَحَاتِ الرِّضْوَانِ عَلَيْهِ وَأَمِدَّنَا بِالْأَسْرَارِ الَّتِي أَوْدَعْتَهَا لَدَيْهِ"
+                    "text": "<p class=\"editor-paragraph\" style=\"text-align: center;\"><span style=\"white-space: pre-wrap;\">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">يَا رَبَّنَا بِالْهَيْكَلِ النُّوْرَانِ *<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">الْبَازِ عَبْدِ الْقَادِرِ الْجِيْلَانِي<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">أَسْلُكْ بِنَا نَهْجَ الْهِدَايَةِ وَاحْمِنَا * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\"> مِنْ شَرِّ كُلِّ مُعَانِدٍ أَوْجَانِي<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">بِأَبِيْهِ عَبْدِ اللَّهِ فَرِّجْ كَرْبَنَا * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">وَاقْضِ حَوَائِجَ عَبْدِكَ الْوِلْهَانِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَبِجَنْكِ دُسْتٍ يَا الهِيْ اَغْنِي * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">وَاجْعَلْنِي فِي بَحْرِ الْمَحَبَّةِ فَانِي<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">بِالْقُطْبِ عَبْدِ اللَّهِ دَاوِ عِلَّتِيْ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">وَبِيَحْيِي أَحْيِ الْقَلْبَ بِالْعِرْفَانِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَبِمُحَمَّدٍ وَأَبِيْهِ دَاوُدَ اكْسُنِي * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">تَوْبَ الْبَهَا وَالْوُدِّ فِي الْأَزْمَانِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">بِأَبِيْهِ عَبْدِ اللَّهِ أَصْلِحْ شَأْنَنَا * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">وَلِدِيْنِنَا فَاحْفَظْ مِنَ النُّقْصَانِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَالْطُفْ بِنَا فِي كُلِّ مَا قَدَّرْتَهُ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">بِالْجُوْنِ مُوسَى جُدْ بِخَيْرِ جِنَانِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَالْمَحْضِ عَبْدِ اللَّهِ لِلْإِحْسَانِ مَحْضًا * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">رَقِنِي ثُمَّ اكْسُنِي بِمَعَانِي<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">بِالْأَنْوَرِ الْحَسَنِ الْمُثَنَّى نَوْرَنْ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">عَقْلِي وَلَا تَتْرُكْنِ لِلْأَكْوَانِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَأَبِيْهِ أَوَّلِ كُلِّ قُطْبٍ بَاهِرِ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">سِبْطِ النَّبِيِّ الْمُصْطَفَى الْعَدْنَانِيُّ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">حَسَنِ الزَّكِيِّ ابْنِ الْإِمَامِ الْمُرْتَضَى * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">حَامِي الْوَغَى غَيْثِ النَّدَى الْهَتَّانِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">يَسِّرْ لَنَا كُلَّ الْأُمُورِ وَعَافِنَا * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">مِنْ كُلِّ هَمْ أَوْ بَلَا أَوْ عَانِي<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: center;\"><br><span style=\"white-space: pre-wrap;\">اللَّهُمَّ انْشُرْ نَفَحَاتِ الرِّضْوَانِ عَلَيْهِ، وَأَمِدَّنَا بِالْأَسْرَارِ الَّتِي أَوْدَعْتَهَا لَدَيْهِ<\/span><\/p>"
                 }
             ]
         },
         {
-            "chapter": "BAB 2",
+            "chapter": "Bab 2",
             "blocks": [
                 {
                     "type": "prose",
@@ -47,7 +47,7 @@
             ]
         },
         {
-            "chapter": "BAB 3",
+            "chapter": "Bab 3",
             "blocks": [
                 {
                     "type": "prose",
@@ -72,7 +72,7 @@
             ]
         },
         {
-            "chapter": "BAB 4",
+            "chapter": "Bab 4",
             "blocks": [
                 {
                     "type": "prose",
@@ -86,7 +86,7 @@
                 },
                 {
                     "type": "prose",
-                    "description": "Syarat Menjadi Guru/Mursyid",
+                    "description": "Syarat Menjadi Guru\/Mursyid",
                     "text": "وَكَانَ رَضِيَ اللهُ عَنْهُ يَقُوْلُ: لَا يَنْبَغِي لِفَقِيْرٍ أَنْ يَتَصَدَّى، وَيَتَصَدَّرَ لإِرْشَادِ النَّاسِ إِلَّا أَنْ أَعْطَاهُ اللهُ عِلْمَ الْعُلَمَاءِ، وَسِيَاسَةَ الْمُلُوكِ وَحِكْمَةَ الْحُكَمَاءِ."
                 },
                 {
@@ -102,7 +102,7 @@
             ]
         },
         {
-            "chapter": "BAB 5",
+            "chapter": "Bab 5",
             "blocks": [
                 {
                     "type": "prose",
@@ -127,7 +127,7 @@
             ]
         },
         {
-            "chapter": "BAB 6",
+            "chapter": "Bab 6",
             "blocks": [
                 {
                     "type": "prose",
@@ -192,7 +192,7 @@
             ]
         },
         {
-            "chapter": "BAB 7",
+            "chapter": "Bab 7",
             "blocks": [
                 {
                     "type": "prose",
@@ -217,7 +217,7 @@
             ]
         },
         {
-            "chapter": "BAB 8",
+            "chapter": "Bab 8",
             "blocks": [
                 {
                     "type": "prose",
@@ -227,7 +227,7 @@
                 {
                     "type": "poetry",
                     "description": "Nadhom Ibadallah & Aqtab (Istighotsah)",
-                    "text": "عِبَادَ اللهِ رِجَالَ اللَّهِ * أَغِيْتُوْنَا لأَجْلِ اللَّهِ<br>وَكُوْنُوْا عَوْنَنَا لِلهِ * عَسَى نَحْطَى بِفَضْلِ اللَّهِ<br>عَلَى الْكَافِي صَلَاةُ اللَّهِ * عَلَى الشَّافِي سَلَامُ اللَّهِ<br>بِمُحْيِ الدِّيْنِ خَلَّصْنَا * مِنَ الْبَلْوَاءِ يَا اللَّهُ<br>وَيَا أَقْطَابُ وَيَا أَنْجَابُ * وَيَا سَادَاتْ وَيَا أَحْبَابُ<br>وَأَنْتُمْ يَا أُولِي الْأَلْبَابِ * تَعَالَوْا وَانْصُرُوا لِلَّهِ<br>سَأَلْنَاكُمْ سَأَلْنَاكُمْ * وَلِلزُّلْفَى رَجَوْنَاكُمْ<br>وَفِي أَمْرٍ قَصَدْنَاكُمْ * فَشُدُّوْا عَزْمَكُمْ لِلَّهِ<br>فَيَا رَبِّي بِسَادَتِي * تَحَقَّقْ لِي إِشَارَتِي<br>عَسَى تَأْتِي بِشَارَتِي * وَيَصْفُوْ وَقْتُنَا لِلَّهِ<br>بِكَشْفِ الحُجْبِ عَنْ عَيْنِي * وَرَفْعِ الْبَيْنِ مِنْ بَيْنِي<br>وَطَمْسِ الْكَيْفِ وَالْأَيْنِ * بِنُوْرِ الْوَجْهِ يَا اللَّهُ<br>صَلَاةُ اللَّهِ مَوْلَانَا * عَلَى مَنْ بِالْهُدَى جَانَا<br>وَمَنْ بِالْحَقِّ أَوْلَانَا * شَفِيْعِ الْخَلْقِ عِنْدَ اللَّهِ"
+                    "text": "<p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">عِبَادَ اللهِ رِجَالَ اللَّهِ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">أَغِيْتُوْنَا لأَجْلِ اللَّهِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَكُوْنُوْا عَوْنَنَا لِلهِ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">عَسَى نَحْطَى بِفَضْلِ اللَّهِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">عَلَى الْكَافِي صَلَاةُ اللَّهِ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">عَلَى الشَّافِي سَلَامُ اللَّهِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">بِمُحْيِ الدِّيْنِ خَلَّصْنَا * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">مِنَ الْبَلْوَاءِ يَا اللَّهُ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَيَا أَقْطَابُ وَيَا أَنْجَابُ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">وَيَا سَادَاتْ وَيَا أَحْبَابُ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَأَنْتُمْ يَا أُولِي الْأَلْبَابِ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">تَعَالَوْا وَانْصُرُوا لِلَّهِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">سَأَلْنَاكُمْ سَأَلْنَاكُمْ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">وَلِلزُّلْفَى رَجَوْنَاكُمْ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَفِي أَمْرٍ قَصَدْنَاكُمْ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">فَشُدُّوْا عَزْمَكُمْ لِلَّهِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">فَيَا رَبِّي بِسَادَتِي * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">تَحَقَّقْ لِي إِشَارَتِي<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">عَسَى تَأْتِي بِشَارَتِي * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">وَيَصْفُوْ وَقْتُنَا لِلَّهِ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">بِكَشْفِ الحُجْبِ عَنْ عَيْنِي * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">وَرَفْعِ الْبَيْنِ مِنْ بَيْنِي<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَطَمْسِ الْكَيْفِ وَالْأَيْنِ * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">بِنُوْرِ الْوَجْهِ يَا اللَّهُ<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">صَلَاةُ اللَّهِ مَوْلَانَا * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">عَلَى مَنْ بِالْهُدَى جَانَا<\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: right;\"><span style=\"white-space: pre-wrap;\">وَمَنْ بِالْحَقِّ أَوْلَانَا * <\/span><\/p><p class=\"editor-paragraph\" style=\"text-align: left;\"><span style=\"white-space: pre-wrap;\">شَفِيْعِ الْخَلْقِ عِنْدَ اللَّهِ<\/span><\/p>"
                 },
                 {
                     "type": "prose",
@@ -237,7 +237,7 @@
             ]
         },
         {
-            "chapter": "BAB 9",
+            "chapter": "Bab 9",
             "blocks": [
                 {
                     "type": "prose",
@@ -252,7 +252,7 @@
                 {
                     "type": "poetry",
                     "description": "Qasidah Munajat (Ya Arhamar Rahimin)",
-                    "text": "يَا أَرْحَمَ الرَّاحِمِينَ يَا أَرْحَمَ الرَّاحِمِينَ * يَا أَرْحَمَ الرَّاحِمِيْنَ فَرِّجْ عَلَى الْمُسْلِمِينَ<br>يَا رَبَّنَايَا كَرِيمُ * يَا رَبَّنَايَا رَحِيمُ<br>أَنْتَ الْجَوَّادُ الْحَلِيمُ * وَأَنْتَ نِعْمَ الْمُعِيْنُ<br>وَلَيْسَ نَرْجُوْ سِوَاكَ * فَادْرِكْ إِلهِي دَرَاكَ<br>قَبْلَ الْفَنَا وَالْهَلَاكِ * يَعُمُّ دُنْيَا وَدِيْنَ<br>وَمَا لَنَا رَبَّنَا * سِوَاكَ يَا حَسْبَنَا<br>يَاذَا الْعُلَى وَالْغِنَى * وَيَا قَوِيُّ يَا مَتِيْنُ<br>نَسْأَلُكَ وَالِي يُقِيمُ * الْعَدْلَ كَيْ نَسْتَقِيمُ<br>عَلَى هُدَاكَ الْقَوِيمُ * وَلَا تُطِيعُ الَّلعِيْنُ<br>يَا رَبَّنَا يَا مُجِيْبُ * أَنْتَ السَّمِيعُ الْقَرِيبُ<br>ضَاقَ الْوَسِيْعُ الرَّحِيْبُ * فَانْظُرْ إِلَى الْمُؤْمِنِيْنَ<br>نَظْرَةً تُزِيْلُ الْعَنَا * عَنَّا وَتُدْنِي الْمُنَا<br>مِنَّا وَكُلَّ الْهَنَا * نُعْطَاهُ فِي كُلِّ حِيْنٍ<br>أَسْئَلُكَ بِجَاهِ الْجُدُوْدِ * وَالِي يُقِيمُ الْحُدُوْدَ<br>فِيْنَا فَيَكْفِي الْحَسُوْدَ * وَيَدْفَعُ الظَّالِمِينَ<br>يُزِيلُ لِلْمُنْكَرَاتِ * يُقِيمُ لِلصَّلَوَاتِ<br>يَأْمُرُ بِالصَّالِحَاتِ * مُحِبُّ لِلصَّالِحِيْنَ<br>يُزِيحُ كُلَّ الْحَرَامِ * يَقْهَرُ كُلَّ الطَّغَامِ<br>يَعْدِلُ بَيْنَ الْأَنَامِ * يُؤَمِّنُ الخَائِفِينَ<br>رَبِّ اسْقِنَا غَيْثَ عَامٍ * نَافِعْ مُبَارَكٌ دَوَامَ<br>يَدُوْمُ فِي كُلِّ عَامٍ * عَلَى مَمَرِ السِّنِينَ<br>رَبِّ احْيِنَا شَاكِرِينَ * وَتَوَفَّنَا مُسْلِمِينَ<br>نُبْعَثْ مِنَ الْأُمِنِيْنَ * فِي زُمْرَةِ السَّابِقِيْنَ<br>بِجَاهِ طَهَ الرَّسُوْلِ * جُدْ رَبَّنَا بِالْقَبُوْلِ<br>وَهَبْ لَنَا كُلَّ سُوْلٍ * رَبِّ اسْتَجِبْ لِي أَمِيْنَ<br>عَطَاكَ رَبِّي جَزِيْلٌ * وَكُلٌّ فِعْلِكَ جَمِيلٌ<br>وَفِيْكَ أَمَلْنَا طَوِيْلٌ * فَجُدْ عَلَى الطَّامِعِيْنَ<br>يَا رَبِّ ضَاقَ الْخِنَاقُ * مِنْ فِعْلِ مَا لَا يُطَاقُ<br>فَامْنُنْ بِفَكِ الْغِلَاقٍ * لِمَنْ بِذَنْبِهِ رَهِيْنٌ<br>وَاغْفِرْ لِكُلِّ الذُّنُوْبِ * وَاسْتُرْ لِكُلِّ الْعُيُوبِ<br>وَاكْشِفْ لِكُلِّ الْكُرُوْبِ * وَاكْفِ أَذَى الْمُؤْذِبِيْنَ<br>وَاخْتِمْ بِأَحْسَنْ خِتَامٍ * إِذَا دَنَا الْإِنْصِرَامُ<br>وَحَانَ حِيْنُ الْحِمَامِ * وَزَادَ رَشْحُ الْجَبِيْنِ<br>ثُمَّ الصَّلَاةُ وَالسَّلَامُ * عَلَى شَفِيْعِ الْأَنَامِ<br>وَالْآلِ نِعْمَ الْكِرَامُ * وَالصَّحْبِ وَالتَّابِعِينَ"
+                    "text": "<p class=\"editor-paragraph\"><span style=\"white-space: pre-wrap;\">يَا أَرْحَمَ الرَّاحِمِينَ * يَا أَرْحَمَ الرَّاحِمِينَ <\/span><\/p><p class=\"editor-paragraph\"><span style=\"white-space: pre-wrap;\">يَا أَرْحَمَ الرَّاحِمِيْنَ * فَرِّجْ عَلَى الْمُسْلِمِينَ<\/span><br><span style=\"white-space: pre-wrap;\">يَا رَبَّنَايَا كَرِيمُ * يَا رَبَّنَايَا رَحِيمُ<\/span><br><span style=\"white-space: pre-wrap;\">أَنْتَ الْجَوَّادُ الْحَلِيمُ * وَأَنْتَ نِعْمَ الْمُعِيْنُ<\/span><br><span style=\"white-space: pre-wrap;\">وَلَيْسَ نَرْجُوْ سِوَاكَ * فَادْرِكْ إِلهِي دَرَاكَ<\/span><br><span style=\"white-space: pre-wrap;\">قَبْلَ الْفَنَا وَالْهَلَاكِ * يَعُمُّ دُنْيَا وَدِيْنَ<\/span><br><span style=\"white-space: pre-wrap;\">وَمَا لَنَا رَبَّنَا * سِوَاكَ يَا حَسْبَنَا<\/span><br><span style=\"white-space: pre-wrap;\">يَاذَا الْعُلَى وَالْغِنَى * وَيَا قَوِيُّ يَا مَتِيْنُ<\/span><br><span style=\"white-space: pre-wrap;\">نَسْأَلُكَ وَالِي يُقِيمُ * الْعَدْلَ كَيْ نَسْتَقِيمُ<\/span><br><span style=\"white-space: pre-wrap;\">عَلَى هُدَاكَ الْقَوِيمُ * وَلَا تُطِيعُ الَّلعِيْنُ<\/span><br><span style=\"white-space: pre-wrap;\">يَا رَبَّنَا يَا مُجِيْبُ * أَنْتَ السَّمِيعُ الْقَرِيبُ<\/span><br><span style=\"white-space: pre-wrap;\">ضَاقَ الْوَسِيْعُ الرَّحِيْبُ * فَانْظُرْ إِلَى الْمُؤْمِنِيْنَ<\/span><br><span style=\"white-space: pre-wrap;\">نَظْرَةً تُزِيْلُ الْعَنَا * عَنَّا وَتُدْنِي الْمُنَا<\/span><br><span style=\"white-space: pre-wrap;\">مِنَّا وَكُلَّ الْهَنَا * نُعْطَاهُ فِي كُلِّ حِيْنٍ<\/span><br><span style=\"white-space: pre-wrap;\">أَسْئَلُكَ بِجَاهِ الْجُدُوْدِ * وَالِي يُقِيمُ الْحُدُوْدَ<\/span><br><span style=\"white-space: pre-wrap;\">فِيْنَا فَيَكْفِي الْحَسُوْدَ * وَيَدْفَعُ الظَّالِمِينَ<\/span><br><span style=\"white-space: pre-wrap;\">يُزِيلُ لِلْمُنْكَرَاتِ * يُقِيمُ لِلصَّلَوَاتِ<\/span><br><span style=\"white-space: pre-wrap;\">يَأْمُرُ بِالصَّالِحَاتِ * مُحِبُّ لِلصَّالِحِيْنَ<\/span><br><span style=\"white-space: pre-wrap;\">يُزِيحُ كُلَّ الْحَرَامِ * يَقْهَرُ كُلَّ الطَّغَامِ<\/span><br><span style=\"white-space: pre-wrap;\">يَعْدِلُ بَيْنَ الْأَنَامِ * يُؤَمِّنُ الخَائِفِينَ<\/span><br><span style=\"white-space: pre-wrap;\">رَبِّ اسْقِنَا غَيْثَ عَامٍ * نَافِعْ مُبَارَكٌ دَوَامَ<\/span><br><span style=\"white-space: pre-wrap;\">يَدُوْمُ فِي كُلِّ عَامٍ * عَلَى مَمَرِ السِّنِينَ<\/span><br><span style=\"white-space: pre-wrap;\">رَبِّ احْيِنَا شَاكِرِينَ * وَتَوَفَّنَا مُسْلِمِينَ<\/span><br><span style=\"white-space: pre-wrap;\">نُبْعَثْ مِنَ الْأُمِنِيْنَ * فِي زُمْرَةِ السَّابِقِيْنَ<\/span><br><span style=\"white-space: pre-wrap;\">بِجَاهِ طَهَ الرَّسُوْلِ * جُدْ رَبَّنَا بِالْقَبُوْلِ<\/span><br><span style=\"white-space: pre-wrap;\">وَهَبْ لَنَا كُلَّ سُوْلٍ * رَبِّ اسْتَجِبْ لِي أَمِيْنَ<\/span><br><span style=\"white-space: pre-wrap;\">عَطَاكَ رَبِّي جَزِيْلٌ * وَكُلٌّ فِعْلِكَ جَمِيلٌ<\/span><br><span style=\"white-space: pre-wrap;\">وَفِيْكَ أَمَلْنَا طَوِيْلٌ * فَجُدْ عَلَى الطَّامِعِيْنَ<\/span><br><span style=\"white-space: pre-wrap;\">يَا رَبِّ ضَاقَ الْخِنَاقُ * مِنْ فِعْلِ مَا لَا يُطَاقُ<\/span><br><span style=\"white-space: pre-wrap;\">فَامْنُنْ بِفَكِ الْغِلَاقٍ * لِمَنْ بِذَنْبِهِ رَهِيْنٌ<\/span><br><span style=\"white-space: pre-wrap;\">وَاغْفِرْ لِكُلِّ الذُّنُوْبِ * وَاسْتُرْ لِكُلِّ الْعُيُوبِ<\/span><br><span style=\"white-space: pre-wrap;\">وَاكْشِفْ لِكُلِّ الْكُرُوْبِ * وَاكْفِ أَذَى الْمُؤْذِبِيْنَ<\/span><br><span style=\"white-space: pre-wrap;\">وَاخْتِمْ بِأَحْسَنْ خِتَامٍ * إِذَا دَنَا الْإِنْصِرَامُ<\/span><br><span style=\"white-space: pre-wrap;\">وَحَانَ حِيْنُ الْحِمَامِ * وَزَادَ رَشْحُ الْجَبِيْنِ<\/span><br><span style=\"white-space: pre-wrap;\">ثُمَّ الصَّلَاةُ وَالسَّلَامُ * عَلَى شَفِيْعِ الْأَنَامِ<\/span><br><span style=\"white-space: pre-wrap;\">وَالْآلِ نِعْمَ الْكِرَامُ * وَالصَّحْبِ وَالتَّابِعِينَ<\/span><\/p>"
                 }
             ]
         }
