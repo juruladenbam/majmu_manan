@@ -40,7 +40,7 @@ export default defineConfig({
         display: 'standalone',
         scope: '/',
         start_url: '/',
-        orientation: 'portrait',
+        orientation: 'any',
         icons: [
           {
             src: 'icons/icon.png',
