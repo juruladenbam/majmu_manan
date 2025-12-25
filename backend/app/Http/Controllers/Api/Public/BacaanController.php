@@ -20,9 +20,11 @@ class BacaanController extends Controller
     public function index()
     {
         return response()->json(
-            Bacaan::select('id', 'judul', 'judul_arab', 'slug', 'gambar', 'deskripsi', 'is_multi_section')
-                ->withCount('sections')
-                ->get()
+            \Illuminate\Support\Facades\Cache::remember('bacaan_index', 60 * 60, function () {
+                return Bacaan::select('id', 'judul', 'judul_arab', 'slug', 'gambar', 'deskripsi', 'is_multi_section')
+                    ->withCount('sections')
+                    ->get();
+            })
         );
     }
 
