@@ -5,6 +5,8 @@ import { HomePage } from './pages/HomePage';
 import { ReaderMenuPage } from './pages/reader/ReaderMenuPage';
 import { ReaderContentPage } from './pages/reader/ReaderContentPage';
 import { MaintenancePage } from './pages/MaintenancePage';
+import { NotFoundPage } from './pages/errors/NotFoundPage';
+import { UnauthorizedPage } from './pages/errors/UnauthorizedPage';
 import { SettingsModal } from './features/settings/components';
 import { UpdatePrompt } from './components/UpdatePrompt';
 import { useEffect, useState } from 'react';
@@ -88,6 +90,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/bacaan/:slug" element={<ReaderMenuPage />} />
           <Route path="/bacaan/:slug/:sectionSlug" element={<ReaderContentPage />} />
+          <Route path="/unauthorized" element={<UnauthorizedPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
 

@@ -8,6 +8,8 @@ import { SettingsPage } from './pages/SettingsPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { AllBacaanPrintView } from './features/bacaan/components/print/AllBacaanPrintView';
 import { BacaanPrintView } from './features/bacaan/components/print/BacaanPrintView';
+import { NotFoundPage } from './pages/errors/NotFoundPage';
+import { UnauthorizedPage } from './pages/errors/UnauthorizedPage';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/bacaan" element={<BacaanListPage />} />
           <Route path="/bacaan/:id" element={<BacaanDetailPage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/unauthorized" element={<UnauthorizedPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>
     </Routes>
