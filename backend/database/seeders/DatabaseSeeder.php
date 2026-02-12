@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             SmartLegacySeeder::class,
+            MajmuLamaSeeder::class,
             AdminUserSeeder::class,
         ]);
     }

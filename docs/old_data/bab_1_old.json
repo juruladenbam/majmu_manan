@@ -1,0 +1,74 @@
+{
+    "bacaan": {
+        "judul": "Sholat Jenazah",
+        "judul_arab": "الصَّلَاةُ عَلَى الْجَنَازَةِ",
+        "slug": "sholat-jenazah",
+        "is_multi_section": 1,
+        "sections": [
+            {
+                "judul_section": "Niat & Tata Cara",
+                "slug_section": "niat-tata-cara",
+                "urutan": 1,
+                "items": [
+                    {
+                        "urutan": 1,
+                        "arabic": "<p>اُصَلِّى عَلَى هٰذَا الْمَيِّتِ اَرْبَعَ تَكْبِيْرَاتٍ فَرْضَ كِفَايَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</p>",
+                        "latin": "<p>Ushollii 'alaa haadzal mayyiti arba'a takbiiraatin fardho kifaayati ma'muuman lillaahi ta'aalaa.</p>",
+                        "terjemahan": "<p>Aku niat shalat atas mayit laki-laki ini empat kali takbir fardhu kifayah makmum karena Allah Ta'ala.</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat untuk jenazah laki-laki"
+                    },
+                    {
+                        "urutan": 2,
+                        "arabic": "<p>اُصَلِّى عَلَى هٰذِهِ الْمَيِّتَةِ اَرْبَعَ تَكْبِيْرَاتٍ فَرْضَ كِفَايَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</p>",
+                        "latin": "<p>Ushollii 'alaa haadzihil mayyitati arba'a takbiiraatin fardho kifaayati ma'muuman lillaahi ta'aalaa.</p>",
+                        "terjemahan": "<p>Aku niat shalat atas mayit perempuan ini empat kali takbir fardhu kifayah makmum karena Allah Ta'ala.</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat untuk jenazah perempuan"
+                    }
+                ]
+            },
+            {
+                "judul_section": "Doa Setelah Takbir Ketiga",
+                "slug_section": "doa-takbir-ketiga",
+                "urutan": 2,
+                "items": [
+                    {
+                        "urutan": 1,
+                        "arabic": "<p>اَللّٰهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ وَعَافِهِ وَاعْفُ عَنْهُ وَاَكْرِمْ نُزُلَهُ وَوَسِّعْ مَدْخَلَهُ وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الْاَبْيَضَ مِنَ الدَّنَسِ وَاَبْدِلْهُ دَارًا خَيْرًا مِنْ دَارِهِ وَاَهْلًا خَيْرًا مِنْ اَهْلِهِ وَزَوْجًا خَيْرًا مِنْ زَوْجِهِ وَاَدْخِلْهُ الْجَنَّةَ وَاَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَمِنْ عَذَابِ النَّارِ</p>",
+                        "latin": "<p>Allaahummaghfir lahu warhamhu wa 'aafihi wa'fu 'anhu wa akrim nuzulahu wa wassi' madkholahu waghsilhu bil maa-i wats tsalji wal barodi wa naqqihi minal khothooyaa kamaa naqqoitats tsaubal abyadho minad danas wa abdilhu daaron khoiron min daarihi wa ahlan khoiron min ahlihi wa zaujan khoiron min zaujihi wa adkhilhul jannata wa a'idzhu min 'adzaabil qobri wa min 'adzaabin naar.</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Ganti 'hu' menjadi 'ha' jika jenazah perempuan"
+                    }
+                ]
+            },
+            {
+                "judul_section": "Doa Setelah Takbir Keempat",
+                "slug_section": "doa-takbir-keempat",
+                "urutan": 3,
+                "items": [
+                    {
+                        "urutan": 1,
+                        "arabic": "<p>اَللّٰهُمَّ لَا تَحْرِمْنَا اَجْرَهُ وَلَا تَفْتِنَّا بَعْدَهُ وَاغْفِرْ لَنَا وَلَهُ</p>",
+                        "latin": "<p>Allaahumma laa tahrimnaa ajrahu wa laa taftinnaa ba'dahu waghfir lanaa wa lahu.</p>",
+                        "terjemahan": "<p>Ya Allah, janganlah kiranya Engkau menghalangi kami memperoleh pahalanya dan janganlah Engkau memberi fitnah kepada kami sepeninggalnya, dan ampunilah kami dan dia.</p>",
+                        "tipe_tampilan": "text"
+                    }
+                ]
+            },
+            {
+                "judul_section": "Doa Setelah Salam",
+                "slug_section": "doa-setelah-salam-jenazah",
+                "urutan": 4,
+                "items": [
+                    {
+                        "urutan": 1,
+                        "arabic": "<p>اَعُوْذُ بِاللّٰهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ . بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ. اَلْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِيْنَ حَمْدًا يُوَافِيْ نِعَمَهُ وَيُكَافِئُ مَزِيْدَهُ، يَا رَبَّنَا لَكَ الْحَمْدُ كَمَا يَنْبَغِيْ لِجَلَالِ وَجْهِكَ وَلِعَظِيْمِ سُلْطَانِكَ...</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Lanjutan doa panjang di halaman 11-12"
+                    }
+                ]
+            }
+        ]
+    }
+}

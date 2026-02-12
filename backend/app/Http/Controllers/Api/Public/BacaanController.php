@@ -20,12 +20,10 @@ class BacaanController extends Controller
     public function index()
     {
         return response()->json(
-            \Illuminate\Support\Facades\Cache::remember('bacaan_index', 60 * 60, function () {
-                return Bacaan::select('id', 'judul', 'judul_arab', 'slug', 'gambar', 'deskripsi', 'is_multi_section')
-                    ->withCount('sections')
-                    ->get();
-            })
-        )->header('Cache-Control', 'public, max-age=3600');
+            Bacaan::select('id', 'judul', 'judul_arab', 'slug', 'gambar', 'deskripsi', 'is_multi_section')
+                ->withCount('sections')
+                ->get()
+        );
     }
 
     /**
@@ -39,24 +37,24 @@ class BacaanController extends Controller
      */
     public function show($slug)
     {
-        $bacaan = \Illuminate\Support\Facades\Cache::remember("bacaan_show_{$slug}", 60 * 60, function () use ($slug) {
-            $bacaan = Bacaan::where('slug', $slug)
-                ->with(['sections' => function($q) {
+        $bacaan = Bacaan::where('slug', $slug)
+            ->with([
+                'sections' => function ($q) {
                     $q->orderBy('urutan', 'asc');
-                }])
-                ->firstOrFail();
+                }
+            ])
+            ->firstOrFail();
 
-            // For single-section bacaans, include items directly
-            if (!$bacaan->is_multi_section) {
-                // Get items either from first section or items with null section_id
-                $bacaan->load(['items' => function($q) {
+        // For single-section bacaans, include items directly
+        if (!$bacaan->is_multi_section) {
+            $bacaan->load([
+                'items' => function ($q) {
                     $q->orderBy('urutan', 'asc');
-                }]);
-            }
-            return $bacaan;
-        });
+                }
+            ]);
+        }
 
-        return response()->json($bacaan)->header('Cache-Control', 'public, max-age=3600');
+        return response()->json($bacaan);
     }
 
     /**
@@ -71,17 +69,17 @@ class BacaanController extends Controller
      */
     public function showSection($slug, $sectionSlug)
     {
-        $section = \Illuminate\Support\Facades\Cache::remember("bacaan_section_{$slug}_{$sectionSlug}", 60 * 60, function () use ($slug, $sectionSlug) {
-            $bacaan = Bacaan::where('slug', $slug)->firstOrFail();
-            
-            return BacaanSection::where('bacaan_id', $bacaan->id)
-                ->where('slug_section', $sectionSlug)
-                ->with(['items' => function($q) {
-                    $q->orderBy('urutan', 'asc');
-                }])
-                ->firstOrFail();
-        });
+        $bacaan = Bacaan::where('slug', $slug)->firstOrFail();
 
-        return response()->json($section)->header('Cache-Control', 'public, max-age=3600');
+        $section = BacaanSection::where('bacaan_id', $bacaan->id)
+            ->where('slug_section', $sectionSlug)
+            ->with([
+                'items' => function ($q) {
+                    $q->orderBy('urutan', 'asc');
+                }
+            ])
+            ->firstOrFail();
+
+        return response()->json($section);
     }
 }

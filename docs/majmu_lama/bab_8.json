@@ -1,0 +1,142 @@
+{
+    "bacaan": {
+        "judul": "Nawafilush Sholah",
+        "judul_arab": "نَوَافِلُ الصَّلَاةِ",
+        "slug": "nawafilush-sholah",
+        "is_multi_section": 1,
+        "sections": [
+            {
+                "judul_section": "Sholat Sunnah Fajar (Qobliyah Subuh)",
+                "slug_section": "sholat-sunnah-fajar",
+                "items": [
+                    {
+                        "arabic": "<p>نِيَة: أُصَلِّي سُنَّةَ رَكْعَتَيِ الْفَجْرِ لِلّٰهِ تَعَالَى ، اَللّٰهُ أَكْبَرُ.</p><p>رَكْعَةُ الْأَوَّلِ بَعْدَ الْفَاتِحَة: سُوْرَةُ الْاِنْشِرَاحِ</p><p>رَكْعَةُ الثَّانِي بَعْدَ الْفَاتِحَة: سُوْرَةُ الْفِيْلِ</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat + Surat (Halaman 93)",
+                        "urutan": 1
+                    },
+                    {
+                        "arabic": "<p>اَللّٰهُمَّ رَبَّ جِبْرِيْلَ وَمِيْكَائِيْلَ وَإِسْرَافِيْلَ وَعِزْرَائِيْلَ وَرَبَّ مُحَمَّدٍ صَلَّى اللّٰهُ عَلَيْهِ وَسَلَّمَ أَجِرْنِيْ مِنَ النَّارِ، اَشْهَدُ بِمَا شَهِدَ اللّٰهُ بِهِ لِنَفْسِهِ وَشَهِدَتْ بِهِ مَلَائِكَتُهُ وَأُوْلُوْا الْعِلْمِ مِنْ خَلْقِهِ، وَأَسْتَوْدِعُ اللّٰهَ هٰذِهِ الشَّهَادَةَ، وَهِيَ لِي عِنْدَ اللّٰهِ وَدِيْعَةٌ. اَللّٰهُمَّ احْطُطْ عَنِّيْ بِهَا وِزْرًا، وَاجْعَلْهَا لِي عِنْدَكَ ذُخْرًا. وَاحْفَظْهَا لِي حَتَّى أَلْقَاكَ بِهَا غَيْرَ مُبَدِّلٍ تَبْدِيْلًا.</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Doa setelah sholat sambil miring ke kanan (Halaman 93)",
+                        "urutan": 2
+                    }
+                ],
+                "urutan": 1
+            },
+            {
+                "judul_section": "Sholat Dhuha",
+                "slug_section": "sholat-dhuha",
+                "items": [
+                    {
+                        "arabic": "<p>نِيَة: أُصَلِّي سُنَّةَ الضُّحَى رَكْعَتَيْنِ لِلّٰهِ تَعَالَى ، اَللّٰهُ أَكْبَرُ.</p><p>رَكْعَةُ الْأَوَّلِ بَعْدَ الْفَاتِحَة: وَالشَّمْسِ وَضُحَاهَا...</p><p>رَكْعَةُ الثَّانِي بَعْدَ الْفَاتِحَة: سُوْرَةُ الْإِخْلَاصِ</p><p>رَكْعَةُ الْأَوَّلِ بَعْدَ الْفَاتِحَة: الضُّحَى</p><p>رَكْعَةُ الثَّانِي بَعْدَ الْفَاتِحَة: سُوْرَةُ الْكَافِرُوْنِ</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat + Surat bacaan (Halaman 94)",
+                        "urutan": 1
+                    },
+                    {
+                        "arabic": "<p>اَللّٰهُمَّ اغْفِرْ لِيْ وَارْحَمْنِيْ وَتُبْ عَلَيَّ (×٤٠)</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Dzikir sesudah sholat (Halaman 94)",
+                        "urutan": 2
+                    },
+                    {
+                        "arabic": "<p>حَمْدًا يُوَافِي نِعَمَهُ وَيُكَافِئُ مَزِيْدَهُ يَارَبَّنَا لَكَ الْحَمْدُ كَمَا يَنْبَغِي لِجَلَالِ وَجْهِكَ وَعَظِيْمِ سُلْطَانِكَ. سُبْحَانَكَ لَا نُحْصِي ثَنَاءً عَلَيْكَ أَنْتَ كَمَا أَثْنَيْتَ عَلَى نَفْسِكَ. اَللّٰهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ صَلَاةً تُوَسِّعُ بِهَا عَلَيْنَا الْأَرْزَاقَ. وَتُحَسِّنُ بِهَا لَنَا الْأَخْلَاقَ. وَعَلَى اٰلِهِ وَصَحْبِهِ وَسَلِّمْ. اَللّٰهُمَّ اِنَّ الضُّحَاءَ ضُحَاؤُكَ وَالْبَهَاءَ بَهَاؤُكَ وَالْجَمَالَ جَمَالُكَ وَالْقُوَّةَ قُوَّتُكَ وَالْقُدْرَةَ قُدْرَتُكَ وَالْعِصْمَةَ عِصْمَتُكَ. اَللّٰهُمَّ إِنْ كَانَ رِزْقُنَا فِي السَّمَاءِ فَأَنْزِلْهُ. فَإِنْ كَانَ فِي الْأَرْضِ فَأَخْرِجْهُ فَإِنْ كَانَ بَعِيْدًا فَقَرِّبْهُ فَإِنْ كَانَ حَرَامًا فَطَهِّرْهُ فَإِنْ كَانَ مُعَسِّرًا فَيَسِّرْهُ فَبَارِكْ لَنَا فِيْهِ. وَارْزُقْنَا مِنْ حَيْثُ نَحْتَسِبُ. وَمِنْ حَيْثُ لَا نَحْتَسِبُ رِزْقًا حَلَالًا طَيِّبًا غَدَقًا سَحًّا مُبَارَكًا. حَتَّى لَا تَكُوْنَ لِأَحَدٍ مِنْ خَلْقِكَ عَلَيْهِ مِنَّةٌ. بِحَقِّ ضُحَائِكَ وَبَهَائِكَ وَجَمَالِكَ وَقُوَّتِكَ وَقُدْرَتِكَ. اٰتِنَا مَا اٰتَيْتَ عِبَادَكَ الصَّالِحِيْنَ. اَللّٰهُمَّ اغْفِرْ لِي ذُنُوْبِي وَلِوَالِدَيَّ وَارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيْرًا. رَبَّنَا اٰتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْاٰخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ. وَصَلَّى اللّٰهُ عَلَى سَيِّدِنَا مُحَمَّدٍ النَّبِيِّ الْأُمِّيِّ وَعَلَى اٰلِهِ وَصَحْبِهِ وَسَلَّمَ.</p><p>سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُوْنَ وَسَلَامٌ عَلَى الْمُرْسَلِيْنَ. وَالْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِيْنَ.. اَلْفَاتِحَة..</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Doa Sholat Dhuha Lengkap (Halaman 94-96)",
+                        "urutan": 3
+                    }
+                ],
+                "urutan": 2
+            },
+            {
+                "judul_section": "Sholat Awwabin & Lihifzhil Iman",
+                "slug_section": "sholat-awwabin-iman",
+                "items": [
+                    {
+                        "arabic": "<p>اَلصَّلَاةُ الَّتِي بَيْنَ الْعِشَاءِ وَالْمَغْرِبِ</p><p>١. اَلصَّلَاةُ الْأَوَّابِيْنَ</p><p>نِيَة: أُصَلِّي سُنَّةَ الْأَوَّابِيْنَ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى ، اَللّٰهُ أَكْبَرُ.</p><p>رَكْعَةُ الْأَوَّلِ بَعْدَ الْفَاتِحَة: سُوْرَةُ الْكَافِرُوْنِ</p><p>رَكْعَةُ الثَّانِي بَعْدَ الْفَاتِحَة: سُوْرَةُ الْإِخْلَاصِ</p><p>Selesai sholat dianjurkan membaca kalimat thoyyibah: istighfar, tasbih, sholawat, qur'an atau mengerjakan sholat ini berulang-ulang sampai tiba waktu isya'.</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat Awwabin + Surat (Halaman 96)",
+                        "urutan": 1
+                    },
+                    {
+                        "arabic": "<p>٢. اَلصَّلَاةُ لِثُبُوْتِ الْإِيْمَانِ</p><p>نِيَة: أُصَلِّي سُنَّةً لِثُبُوْتِ الْإِيْمَانِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى ، اَللّٰهُ أَكْبَرُ.</p><p>رَكْعَةُ الْأَوَّلِ بَعْدَ الْفَاتِحَة: سُوْرَةُ الْإِخْلَاصِ ×٦</p><p>رَكْعَةُ الثَّانِي بَعْدَ الْفَاتِحَة: سُوْرَةُ الْفَلَقِ ، النَّاسِ</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat Litsubutil Iman + Surat (Halaman 96)",
+                        "urutan": 2
+                    },
+                    {
+                        "arabic": "<p>اَللّٰهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ النُّوْرِ الذَّاتِيِّ. وَالسِّرِّ السَّارِي فِي سَائِرِ الْأَسْمَاءِ وَالصِّفَاتِ. وَعَلَى اٰلِهِ وَصَحْبِهِ وَسَلِّمْ (×١١)</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Sholawat setelah sholat (Halaman 97)",
+                        "urutan": 3
+                    },
+                    {
+                        "arabic": "<p>اَللّٰهُمَّ إِنِّي أَسْتَوْدِعُكَ إِيْمَانِي فِي حَيَاتِي وَعِنْدَ مَمَاتِي ، فَاحْفَظْهُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيْرٌ (×٣)</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Doa ketetapan iman (Halaman 97)",
+                        "urutan": 4
+                    }
+                ],
+                "urutan": 3
+            },
+            {
+                "judul_section": "Sholat Birrul Walidain",
+                "slug_section": "sholat-birrul-walidain",
+                "items": [
+                    {
+                        "arabic": "<p>٣. صَلَاةُ لِبِرِّ الْوَالِدَيْنِ</p><p>نِيَة: أُصَلِّي سُنَّةً لِبِرِّ الْوَالِدَيْنِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى ، اَللّٰهُ أَكْبَرُ.</p><p>Tiap-tiap rokaat ba'dal fatihah membaca:</p><p>- آيَةُ الْكُرْسِي ×٥</p><p>- سُوْرَةُ الْفَلَقِ ×٥</p><p>- سُوْرَةُ النَّاسِ ×٥</p><p>Sesudah salam membaca istighfar dan sholawat ×١٥. Kemudian niat semoga Allah menerima amalannya dan dihadiahkan pahalanya untuk kedua orang tua.</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat + Tata cara (Halaman 97)",
+                        "urutan": 1
+                    }
+                ],
+                "urutan": 4
+            },
+            {
+                "judul_section": "Sholat Lailatul Qadar",
+                "slug_section": "sholat-lailatul-qadar",
+                "items": [
+                    {
+                        "arabic": "<p>نِيَة: أُصَلِّي سُنَّةً لَيْلَةَ الْقَدْرِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى ، اَللّٰهُ أَكْبَرُ.</p><p>Tiap-tiap rokaat ba'dal fatihah membaca سُوْرَةُ الْإِخْلَاصِ ×٧</p><p>Sesudah salam membaca:</p><p>أَسْتَغْفِرُ اللّٰهَ وَأَتُوْبُ إِلَيْهِ (×٧٠)</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat + Istighfar (Halaman 98)",
+                        "urutan": 1
+                    }
+                ],
+                "urutan": 5
+            },
+            {
+                "judul_section": "Sholat Hari Raya (Idul Fitri & Idul Adha)",
+                "slug_section": "sholat-ied",
+                "items": [
+                    {
+                        "arabic": "<p>أُصَلِّي سُنَّةً لِعِيْدِ الْفِطْرِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى ، اَللّٰهُ أَكْبَرُ...</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat Idul Fitri (Halaman 98)",
+                        "urutan": 1
+                    },
+                    {
+                        "arabic": "<p>أُصَلِّي سُنَّةً لِعِيْدِ الْأَضْحَى رَكْعَتَيْنِ لِلّٰهِ تَعَالَى ، اَللّٰهُ أَكْبَرُ...</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Niat Idul Adha (Halaman 98)",
+                        "urutan": 2
+                    },
+                    {
+                        "arabic": "<p>Sunnah Sholat Hari Raya:</p>\n<p>١. Disunnahkan berjama'ah.</p>\n<p>٢. Takbir Tujuh kali sesudah membaca doa iftitah dan sebelum membaca Ta'awwudh pada rakaat pertama, dan Lima Takbir pada rakaat kedua selain takbir berdiri.</p>\n<p>٣. Mengangkat dua tangan setinggi bahu pada tiap-tiap Takbir.</p>\n<p>٤. Membaca Tasbih diantara beberapa takbir.</p>\n<p>٥. Membaca Surat Qaf sesudah Fatihah di rakaat pertama dan Surat Al-Qomar di rakaat kedua atau Surat Al-A'la di rakaat pertama dan Surat Al-Ghosyiyah di rakaat kedua.</p>\n<p>٦. Menyaringkan (mengeraskan) bacaan, kecuali makmum.</p>\n<p>٧. Khutbah dua kali sesudah Sholat Hari Raya.</p>\n<p>٨. Disunnahkan mandi, memakai pakaian sebaik-baiknya dan memakai wangi-wangian.</p>\n<p>٩. Disunnahkan makan sebelum pergi Sholat pada Hari Raya Fitri dan pada Hari Raya Qurban disunnahkan tidak makan kecuali setelah Sholat.</p>\n<p>١٠. Disunnahkan membaca takbir diluar Sholat pada Hari Raya Fitri dan Qurban. Waktunya mulai dari terbenamnya matahari pada malam hari raya sampai Imam memulai sholat. Takbir ini namanya \"Takbir Muthlaq\". Adapun pada Hari Raya Qurban juga disunnatkan Takbir sesudah tiap-tiap Sholat, baik fardhu ataupun sunnah. Waktunya dimulai dari terbenamnya matahari pada malam hari raya sampai Ashar terakhir hari Tasriq (tgl 11, 12 dan 13 Dzulhijjah), ini dinamakan \"Takbir Muqoyyad\".</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Sunnah Sholat Hari Raya (Halaman 98-99)",
+                        "urutan": 3
+                    },
+                    {
+                        "arabic": "<p>اَللّٰهُ أَكْبَرُ ×٣ لَا اِلٰهَ اِلَّا اللّٰهُ وَاللّٰهُ أَكْبَرُ، اَللّٰهُ أَكْبَرُ وَلِلّٰهِ الْحَمْدُ. اَللّٰهُ أَكْبَرُ كَبِيْرًا وَالْحَمْدُ لِلّٰهِ كَثِيْرًا وَسُبْحَانَ اللّٰهِ بُكْرَةً وَأَصِيْلًا، لَا اِلٰهَ اِلَّا اللّٰهُ وَحْدَهُ، صَدَقَ وَعْدَهُ، وَنَصَرَ عَبْدَهُ وَأَعَزَّ جُنْدَهُ وَهَزَمَ الْأَحْزَابَ وَحْدَهُ، لَا اِلٰهَ اِلَّا اللّٰهُ وَلَا نَعْبُدُ اِلَّا إِيَّاهُ، مُخْلِصِيْنَ لَهُ الدِّيْنَ، وَلَوْ كَرِهَ الْكَافِرُوْنَ، وَلَوْ كَرِهَ الْمُنَافِقُوْنَ، وَلَوْ كَرِهَ الْمُشْرِكُوْنَ، لَا اِلٰهَ اِلَّا اللّٰهُ وَاللّٰهُ أَكْبَرُ، اَللّٰهُ أَكْبَرُ وَلِلّٰهِ الْحَمْدُ.</p>",
+                        "tipe_tampilan": "text",
+                        "note_kaki": "Lafadz Takbiran Lengkap (Halaman 99)",
+                        "urutan": 4
+                    }
+                ],
+                "urutan": 6
+            }
+        ]
+    }
+}

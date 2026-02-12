@@ -14,7 +14,7 @@ import { apiClient } from './api/client';
 import { LoadingPage, OfflineIndicator } from './components/common';
 import { Button } from './components/ui';
 import { useLocalStorage } from './features/settings/hooks/useLocalStorage';
-import { usePrefetchBacaan } from './hooks/usePrefetchBacaan';
+
 
 function App() {
   const [isMaintenance, setIsMaintenance] = useState(false);
@@ -26,8 +26,7 @@ function App() {
   // Determine theme color based on current mode
   const themeColor = themeMode === 'dark' ? '#0f172a' : '#ffffff';
 
-  // Auto-prefetch all bacaan data when online for offline access
-  usePrefetchBacaan();
+
 
   useEffect(() => {
     const checkMaintenance = async () => {
