@@ -28,7 +28,7 @@ export default {
             fontFamily: {
                 "display": ["Spline Sans", "sans-serif"],
                 "body": ["Noto Sans", "sans-serif"],
-                "arabic": ["Noto Naskh Arabic", "serif"],
+                "arabic": ["LPMQ IsepMisbah", "Noto Naskh Arabic", "serif"],
             },
             borderRadius: {
                 "DEFAULT": "1rem",

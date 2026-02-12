@@ -83,32 +83,47 @@ export const ReadingItem = ({ item, className }: ReadingItemProps) => {
   const isNote = item.tipe_tampilan === 'keterangan';
 
   return (
-    <div className={cn('py-5 border-b border-slate-100 dark:border-slate-800', className)}>
-      <div className="flex flex-col gap-4">
-        {/* Main Content (Arabic/Image/Title) */}
-        {renderContent()}
+    <>
+      <style>
+        {`
+          ol, menu {
+            list-style: auto !important;
+            padding: 0 40px 0 !important;
+          }
+          ol > li > ol{
+            list-style: lower-alpha !important;
+          }
+        `}
+      </style>
+      <div className={cn('py-5 border-b border-slate-100 dark:border-slate-800', className)}>
+        <div className="flex flex-col gap-4">
+          {/* Main Content (Arabic/Image/Title) */}
+          {renderContent()}
 
-        {/* Latin Transliteration */}
-        {showLatin && !isImage && !isNote && item.latin && (
-          <p className={cn(
-            'text-primary-600 dark:text-primary-400 italic',
-            isPoetry ? 'text-center' : 'text-left'
-          )}>
-            {item.latin}
-          </p>
-        )}
+          {/* Latin Transliteration */}
+          {showLatin && !isImage && !isNote && item.latin && (
+            <p
+              className={cn(
+                'text-primary-600 dark:text-primary-400 italic',
+                isPoetry ? 'text-center' : 'text-left'
+              )}
+              dangerouslySetInnerHTML={{ __html: item.latin }}
+            />
+          )}
 
-        {/* Translation */}
-        {showTranslation && !isImage && item.terjemahan && (
-          <p className={cn(
-            'text-slate-600 dark:text-slate-400',
-            isPoetry ? 'text-center' : 'text-left'
-          )}>
-            {item.terjemahan}
-          </p>
-        )}
+          {/* Translation */}
+          {showTranslation && !isImage && item.terjemahan && (
+            <p
+              className={cn(
+                'text-slate-600 dark:text-slate-400',
+                isPoetry ? 'text-center' : 'text-left'
+              )}
+              dangerouslySetInnerHTML={{ __html: item.terjemahan }}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+@font-face {
+  font-family: 'LPMQ IsepMisbah';
+  src: url('/fonts/LPMQ_IsepMisbah.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +15,7 @@
 @layer base {
   html {
     @apply scroll-smooth;
-    overscroll-behavior: none;
+    /* overscroll-behavior: none; */
   }
 
   body {
@@ -53,8 +61,13 @@
   }
 
   /* Arabic text styling */
+  .font-arabic {
+    font-family: 'LPMQ IsepMisbah' !important;
+  }
+
   .arabic-text {
     @apply font-arabic text-right leading-loose;
+    font-family: "LPMQ IsepMisbah" !important;
     direction: rtl;
   }
 

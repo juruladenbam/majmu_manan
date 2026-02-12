@@ -24,7 +24,7 @@ export default {
         },
       },
       fontFamily: {
-        arabic: ['"Scheherazade New"', 'Amiri', 'serif'],
+        arabic: ['"LPMQ IsepMisbah"', '"Scheherazade New"', 'Amiri', 'serif'],
         heading: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
       },
