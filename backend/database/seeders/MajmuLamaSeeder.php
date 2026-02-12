@@ -26,6 +26,7 @@ class MajmuLamaSeeder extends Seeder
         'bab_10.json',
         'bab_11.json',
         'bab_12.json',
+        'bab_13.json',
     ];
 
     public function run(): void
