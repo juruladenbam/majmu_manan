@@ -10,6 +10,8 @@ import { AllBacaanPrintView } from './features/bacaan/components/print/AllBacaan
 import { BacaanPrintView } from './features/bacaan/components/print/BacaanPrintView';
 import { NotFoundPage } from './pages/errors/NotFoundPage';
 import { UnauthorizedPage } from './pages/errors/UnauthorizedPage';
+import { ReportListPage } from './pages/reports/ReportListPage';
+import { ReportDetailPage } from './pages/reports/ReportDetailPage';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/bacaan" element={<BacaanListPage />} />
           <Route path="/bacaan/:id" element={<BacaanDetailPage />} />
+          <Route path="/reports" element={<ReportListPage />} />
+          <Route path="/reports/:id" element={<ReportDetailPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/unauthorized" element={<UnauthorizedPage />} />
           <Route path="*" element={<NotFoundPage />} />

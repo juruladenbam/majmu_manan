@@ -1,8 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
+import { useReportCount } from '@/features/reports/hooks';
 
 export const Sidebar = () => {
     const location = useLocation();
+    const { data } = useReportCount();
+    const pendingCount = data?.pending_count || 0;
 
     const isActive = (path: string) => location.pathname.startsWith(path);
 
@@ -32,6 +35,13 @@ export const Sidebar = () => {
                     icon="book_2"
                     label="Bacaan"
                     active={isActive('/bacaan')}
+                />
+                <NavItem
+                    to="/reports"
+                    icon="flag"
+                    label="Laporan"
+                    active={isActive('/reports')}
+                    badge={pendingCount > 0 ? pendingCount : undefined}
                 />
                 <NavItem
                     to="/users"
@@ -66,12 +76,12 @@ export const Sidebar = () => {
     );
 };
 
-const NavItem = ({ to, icon, label, active }: { to: string; icon: string; label: string; active?: boolean }) => {
+const NavItem = ({ to, icon, label, active, badge }: { to: string; icon: string; label: string; active?: boolean; badge?: number }) => {
     return (
         <Link
             to={to}
             className={clsx(
-                "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group",
+                "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group relative",
                 active
                     ? "bg-primary/20 text-text-main dark:text-white"
                     : "text-text-secondary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -83,7 +93,12 @@ const NavItem = ({ to, icon, label, active }: { to: string; icon: string; label:
                     ? "text-stone-800 dark:text-yellow-200"
                     : "text-text-secondary group-hover:text-text-main dark:group-hover:text-gray-200"
             )}>{icon}</span>
-            <span className={clsx("text-sm", active ? "font-bold" : "font-medium")}>{label}</span>
+            <span className="flex-1 text-sm font-medium">{label}</span>
+            {badge !== undefined && (
+                <span className="flex items-center justify-center size-5 rounded-full bg-red-500 text-white text-[10px] font-bold">
+                    {badge}
+                </span>
+            )}
         </Link>
     );
 };

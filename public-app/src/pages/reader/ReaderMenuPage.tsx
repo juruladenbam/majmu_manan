@@ -6,12 +6,24 @@ import { LoadingPage } from '@/components/common';
 import { BookmarkButton } from '@/features/bookmarks/components';
 import { useBookmarks } from '@/features/bookmarks/hooks/useBookmarks';
 import { Helmet } from 'react-helmet-async';
+import { ReportModal } from '@/features/reports/components/ReportModal';
+import { useState } from 'react';
 
 export const ReaderMenuPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { data: bacaan, isLoading } = useBacaanDetail(slug!);
   const { bookmarks, addBookmark, removeBookmark } = useBookmarks();
+
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [reportType, setReportType] = useState<'bacaan' | 'section' | 'item'>('bacaan');
+  const [reportTarget, setReportTarget] = useState<any>(null);
+
+  const openReportModal = (type: 'bacaan' | 'section', target: any) => {
+    setReportType(type);
+    setReportTarget(target);
+    setShowReportModal(true);
+  };
 
   // Check if bookmarked
   const isBookmarked = bookmarks.some(b => b.slug === slug);
@@ -46,6 +58,7 @@ export const ReaderMenuPage = () => {
     : [];
 
   return (
+    <>
     <div className="animate-fade-in py-8">
       <Helmet>
         <title>{bacaan.judul} - Majmu' Manan</title>
@@ -63,7 +76,17 @@ export const ReaderMenuPage = () => {
       </Link>
 
       {/* Header Section */}
-      <div className="text-center py-6 mb-6 bg-gradient-to-b from-primary-50 to-transparent dark:from-primary-900/20 dark:to-transparent rounded-2xl">
+      <div className="text-center py-6 mb-6 bg-gradient-to-b from-primary-50 to-transparent dark:from-primary-900/20 dark:to-transparent rounded-2xl relative">
+        {/* Quick Actions (Report) */}
+        <div className="absolute top-4 right-4 flex items-center gap-2">
+          <button
+            onClick={() => openReportModal('bacaan', bacaan)}
+            className="p-2.5 rounded-full bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 text-slate-500 hover:text-primary transition-all shadow-sm flex items-center justify-center"
+            title="Lapor Kesalahan"
+          >
+            <span className="text-lg">📝</span>
+          </button>
+        </div>
         {bacaan.judul_arab && (
           <h1 className="font-arabic text-4xl md:text-5xl text-primary-700 dark:text-primary-400 mb-4 leading-relaxed">
             {bacaan.judul_arab}
@@ -127,10 +150,23 @@ export const ReaderMenuPage = () => {
                   {section.judul_section}
                 </span>
 
-                {/* Arrow */}
-                <span className="text-slate-400 group-hover:text-primary-500 group-hover:translate-x-1 transition-all">
-                  →
-                </span>
+                {/* Arrow & Report */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      openReportModal('section', section);
+                    }}
+                    className="p-2 opacity-0 group-hover:opacity-100 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-full transition-all text-slate-400 hover:text-primary"
+                    title="Lapor Section"
+                  >
+                    📝
+                  </button>
+                  <span className="text-slate-400 group-hover:text-primary-500 group-hover:translate-x-1 transition-all">
+                    →
+                  </span>
+                </div>
               </div>
             </Link>
           ))}
@@ -146,5 +182,14 @@ export const ReaderMenuPage = () => {
         </div>
       )}
     </div>
+
+    <ReportModal
+      isOpen={showReportModal}
+      onClose={() => setShowReportModal(false)}
+      type={reportType}
+      target={reportTarget}
+      bacaanId={bacaan.id}
+    />
+  </>
   );
 };

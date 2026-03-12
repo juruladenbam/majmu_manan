@@ -17,6 +17,8 @@ use App\Http\Controllers\Api\Admin\SettingsController as AdminSettingsController
 use App\Http\Controllers\Api\Public\BacaanController as PublicBacaanController;
 
 use App\Http\Controllers\Api\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Api\Public\ReportController as PublicReportController;
+use App\Http\Controllers\Api\Admin\ReportController as AdminReportController;
 
 
 
@@ -35,6 +37,8 @@ Route::get('/bacaan/{slug}', [PublicBacaanController::class, 'show']);
 Route::get('/bacaan/{slug}/{section_slug}', [PublicBacaanController::class, 'showSection']);
 
 Route::get('/settings/maintenance', [AdminSettingsController::class, 'checkMaintenance']);
+
+Route::post('/reports', [PublicReportController::class, 'store']);
 
 
 
@@ -62,5 +66,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('admin/settings', [AdminSettingsController::class, 'update']);
 
     Route::get('admin/dashboard/stats', [AdminDashboardController::class, 'stats']);
+
+    Route::get('admin/reports', [AdminReportController::class, 'index']);
+    Route::get('admin/reports/count', [AdminReportController::class, 'count']);
+    Route::get('admin/reports/{id}', [AdminReportController::class, 'show']);
+    Route::post('admin/reports/{id}/setuju', [AdminReportController::class, 'setuju']);
+    Route::post('admin/reports/{id}/tolak', [AdminReportController::class, 'tolak']);
 
 });

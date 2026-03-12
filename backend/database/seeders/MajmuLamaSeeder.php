@@ -38,14 +38,30 @@ class MajmuLamaSeeder extends Seeder
             return;
         }
 
-        $this->command->info('=== Importing Majmu Lama Data ===');
+        $this->command->info('=== Majmu Lama Data Seeder ===');
+
+        // Allow picking specific bab via choice if in console
+        $filesToImport = $this->babFiles;
+        
+        $choice = $this->command->choice(
+            'Bab mana yang ingin di-import?',
+            array_merge(['All'], $this->babFiles),
+            0
+        );
+
+        if ($choice !== 'All') {
+            $filesToImport = [$choice];
+        }
+
+        $this->command->newLine();
+        $this->command->info('Importing: ' . ($choice === 'All' ? 'Semua Bab' : $choice));
         $this->command->newLine();
 
         $totalBacaan = 0;
         $totalSections = 0;
         $totalItems = 0;
 
-        foreach ($this->babFiles as $filename) {
+        foreach ($filesToImport as $filename) {
             $filePath = $basePath . '/' . $filename;
 
             if (!File::exists($filePath)) {
@@ -162,6 +178,7 @@ class MajmuLamaSeeder extends Seeder
             'arabic' => $data['arabic'] ?? null,
             'latin' => $data['latin'] ?? null,
             'terjemahan' => $data['terjemahan'] ?? null,
+            'indonesia' => $data['indonesia'] ?? null,
             'tipe_tampilan' => $tipeTampilan,
             'note_kaki' => $data['note_kaki'] ?? null,
         ]);

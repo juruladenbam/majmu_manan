@@ -85,7 +85,9 @@ export const ItemEditorList = ({ bacaanId, sectionId, items, onActiveEditorChang
       bacaan_id: bacaanId,
       section_id: sectionId,
       arabic: '',
+      latin: '',
       terjemahan: '',
+      indonesia: '',
       tipe_tampilan: 'text',
       urutan: newUrutan
     }, {
@@ -287,11 +289,16 @@ const ItemRow = ({
               dir="rtl"
               className="font-arabic text-4xl text-right leading-[3.25rem] text-text-main dark:text-white"
             />
+          ) : item.indonesia ? (
+             <div
+              dangerouslySetInnerHTML={{ __html: item.indonesia }}
+              className="text-lg text-left text-text-main dark:text-white font-medium"
+            />
           ) : (
             <p className="text-sm text-text-secondary italic text-center py-2 opacity-50">-- Kosong --</p>
           )}
 
-          {(item.latin || item.terjemahan) && (
+          {(item.latin || item.terjemahan || (item.arabic && item.indonesia)) && (
             <div className="flex flex-col gap-1 border-t border-border-light dark:border-border-dark pt-3 mt-1">
               {item.latin && (
                 <p className="text-base font-medium text-primary-dark/80 dark:text-primary italic">
@@ -302,6 +309,12 @@ const ItemRow = ({
               {item.terjemahan && (
                 <p className="text-sm text-text-secondary dark:text-gray-400">
                   {item.terjemahan}
+                </p>
+              )}
+
+              {item.arabic && item.indonesia && (
+                <p className="text-sm text-text-main dark:text-white font-medium">
+                  {item.indonesia}
                 </p>
               )}
             </div>
@@ -390,6 +403,19 @@ const ItemRow = ({
                   placeholder="Isi terjemahan bahasa Indonesia..."
                   isRtl={false}
                   editorId={terjemahanEditorId}
+                  onEditorFocus={onActiveEditorChange}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-bold text-text-main dark:text-white ml-1">Konten Indonesia</label>
+              <div className="bg-surface-accent dark:bg-gray-800 border-none focus-within:ring-2 focus-within:ring-primary h-auto transition-all">
+                <RichTextEditor
+                  value={data.indonesia || ''}
+                  onChange={(val: string) => handleChange('indonesia', val)}
+                  placeholder="Isi konten bahasa Indonesia..."
+                  isRtl={false}
+                  editorId={`item-${item.id}-indonesia`}
                   onEditorFocus={onActiveEditorChange}
                 />
               </div>

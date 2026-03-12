@@ -1,14 +1,13 @@
 {
   "name": "majmu-manan-monorepo",
   "private": true,
-  "workspaces": [
-    "admin-panel",
-    "public-app",
-    "shared-lib"
-  ],
   "scripts": {
-    "dev:admin": "npm run dev --workspace=admin-panel",
-    "dev:public": "npm run dev --workspace=public-app",
-    "build": "npm run build --workspaces"
+    "dev": "pnpm --filter public-app --filter admin-panel --filter backend --parallel dev",
+    "dev:public": "pnpm --filter public-app dev",
+    "dev:admin": "pnpm --filter admin-panel dev",
+    "dev:backend": "pnpm --filter backend dev",
+    "build": "pnpm --filter admin-panel --filter public-app build",
+    "build:admin": "pnpm --filter admin-panel build",
+    "build:public": "pnpm --filter public-app build"
   }
 }

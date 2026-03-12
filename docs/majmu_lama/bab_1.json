@@ -11,163 +11,193 @@
         "items": [
             {
                 "urutan": 1,
-                "arabic": null,
-                "latin": "<p><strong>Cara Mensholati Jenazah</strong></p><ol><li>Mengatur Posisi Mayat<ol type=\"a\"><li>Kaki mayat ada disebelah selatan</li><li>Kepala mayat ada disebelah utara</li><li>Wajah mayat dihadapkan ke kiblat, dengan cara mengganjal punggung atau badan ke sebelah kiri dengan bantal atau benda lain.</li></ol></li><li>Posisi Imam<ol type=\"a\"><li>Bila mayatnya laki-laki, posisi imam lurus dengan kepala mayat.</li><li>Bila mayatnya perempuan, posisi imam lurus dengan pusar(perut) mayat.</li></ol></li><li>Usahakan bilangan shaf ganjil</li><li>Dibelakang imam persis dikosongkan.</li><li>Tata cara Sholat:<ol><li>Niat dengan Ihlas<br>untuk mayat laki-laki:</li></ol></li></ol>",
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "Cara Mensholati Jenazah",
+                "tipe_tampilan": "judul_tengah"
             },
             {
                 "urutan": 2,
-                "arabic": "<p>أُصَلِّى عَلَى هٰذَا الْمَيِّتِ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلّٰهِ تَعَالٰى . اَللّٰهُ أَكْبَرُ...</p>",
-                "latin": null,
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "1. Mengatur Posisi Mayat:",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 3,
-                "arabic": null,
-                "latin": "<p>untuk mayat perempuan:</p>",
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "a. Kaki mayat ada disebelah selatan",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 4,
-                "arabic": "<p>أُصَلِّى عَلَى هٰذِهِ الْمَيِّتَةِ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلّٰهِ تَعَالٰى .اَللّٰهُ أَكْبَرُ...</p>",
-                "latin": null,
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "b. Kepala mayat ada disebelah utara",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 5,
-                "arabic": null,
-                "latin": "<p>untuk makmum yang tidak tahu nama mayatnya:</p>",
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "c. Wajah mayat dihadapkan ke kiblat, dengan cara mengganjal punggung atau badan ke sebelah kiri dengan bantal atau benda lain.",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 6,
-                "arabic": "<p>أُصَلِّى عَلَى مَنْ صَلَّى عَلَيْهِ الإِمَامُ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلّٰهِ تَعَالٰى .اَللّٰهُ أَكْبَرُ...</p>",
-                "latin": null,
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "2. Posisi Imam:",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 7,
-                "arabic": null,
-                "latin": "<ol start=\"2\"><li>Berdiri dengan posisi yang benar</li><li>Takbir 4 kali dengan mengangkat kedua tangan sebahu.</li><li>Takbir pertama membaca Ta'awwudz dan Surat Al-Fatihah</li></ol>",
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "a. Bila mayatnya laki-laki, posisi imam lurus dengan kepala mayat.",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 8,
-                "arabic": "<p>أَعُوْذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ . بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ<br>اَلْحَمْـدُ لِلّٰهِ رَبِّ الْعَالَمِيْنَ ۞ اَلرَّحْمٰنِ الرَّحِيْمِ ۞ الآية...</p>",
-                "latin": null,
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "b. Bila mayatnya perempuan, posisi imam lurus dengan pusar (perut) mayat.",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 9,
-                "arabic": null,
-                "latin": "<p>Membaca Tahlil</p>",
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "3. Usahakan bilangan shaf ganjil",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 10,
-                "arabic": "<p>لاَإِلٰهَ إِلاَّاللّٰهُ ........................................ ×١١</p>",
-                "latin": null,
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "4. Dibelakang imam persis dikosongkan.",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 11,
-                "arabic": null,
-                "latin": "<p>Membaca Tasbih</p>",
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "5. Tata cara Sholat:",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 12,
-                "arabic": "<p>سُبْحَانَ اللهِ وَبِحَمْدِهِ ، سُبْحَانَ اللهِ الْعَظِيْمِ .. ×١١</p>",
-                "latin": null,
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "1. Niat dengan Ihlas",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 13,
-                "arabic": null,
-                "latin": "<p>Membaca Sholawat</p>",
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "untuk mayat laki-laki:",
+                "tipe_tampilan": "keterangan"
             },
             {
                 "urutan": 14,
-                "arabic": "<p>اَللّٰهُمَّ صَلِّ عَلَى حَبِيْبِكَ سَيِّدِنَا مُحَمَّدٍ وَعَلٰى<br>آلِهِ وَصَحْبِهِ وَبَارِكْ وَسَلِّمْ ..................×٣</p>",
-                "latin": null,
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "arabic": "أُصَلِّى عَلَى هٰذَا الْمَيِّتِ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلّٰهِ تَعَالٰى . اَللّٰهُ أَكْبَرُ",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 15,
-                "arabic": null,
-                "latin": "<p>7. Kemudian berdo'a</p>",
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "untuk mayat perempuan:",
+                "tipe_tampilan": "keterangan"
             },
             {
                 "urutan": 16,
-                "arabic": "<p>أَعُوْذُ بِااللهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ ، بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ<br>حَمْدًا يُوَافِى نِعَمَهُ وَيُكَافِئُ مَزِيْدَهُ ، يَارَبَّنَا لَكَ الْحَمْدُ كَمَا يَنْبَغِى<br>لِجَلاَلِكَ وَلِعَظِيْمِ سُلْطَانِكَ ، سُبْحَانَكَ لاَنُحْصِي نَـتَآءَ<br>عَلَيْكَ أَنْتَ كَمَا أَثْنَيْتَ عَلٰى نَفْسِكَ ، اَللّٰهُمَّ صَلِّ عَلَى<br>سَيِّدِنَا مُحَمَّدٍ . وَعَلٰى آلِ سَيِّدِنَا مُحَمَّدٍ .اَللّٰهُمَّ اغْفِرْلَهُ (هَا)<br>وَارْحَمْهُ(هَا) وَعَافِهِ(هَا)وَاعْفُ عَنْهُ(هَا) وَأَكْرِمْ نُزُلَهُ(هَا)<br>وَوَسِّعْ مُدْخَلَهُ(هَا)وَاغْسِلْهُ(هَا)بِالْمَآءِ وَالثَّلْجِ وَالْبَرَدِ<br>اَللّٰهُمَّ لاَ تَحْرِمْنَا أَجْرَهُ (هَا) وَلاَتَفْتِنَّا بَعْدَهُ(هَا)وَاغْفِرْلَنَا<br>وَلَهُ (هَا) .اَللّٰهُمَّ اغْفِرْلَنَا ذُنُوبَنَا وَلِوَالِدَيْنَا وَارْحَمْهُمَا<br>كَمَا رَبَّيَانَا صِغَارًا . رَبَّنَا اغْفِرْلَنَا وَلِإِخْوَانِنَا الَّذِيْنَ سَبَقُونَا</p>",
-                "latin": null,
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "arabic": "أُصَلِّى عَلَى هٰذِهِ الْمَيِّتَةِ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلّٰهِ تَعَالٰى . اَللّٰهُ أَكْبَرُ",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 17,
-                "arabic": "<p>بِالْإِيْمَانِ وَلاَ تَجْعَلْ فِيْ قُلُوبِنَا غِلاًّ لِلَّذِينَ امَنُوْا رَبَّنَآ إِنَّكَ<br>رَءُوفٌ رَّحِيمٌ . رَبَّنَا اتِنَا فِى الدُّنْيَا حَسَنَةً وَّفِى الأَخِرَةِ حَسَنَةً<br>وَقِنَا عَذَابَ النَّارِ . وَصَلَّى اللهُ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلٰى آلِهِ<br>وَصَحْبِهِ وَسَلَّمَ . سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُونَ<br>وَسَلاَمٌ عَلَى الْمُرْسَلِينَ .وَالْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِينَ</p>",
-                "latin": null,
-                "terjemahan": null,
-                "tipe_tampilan": "text",
-                "note_kaki": null
+                "indonesia": "untuk makmum yang tidak tahu nama mayatnya:",
+                "tipe_tampilan": "keterangan"
             },
             {
                 "urutan": 18,
-                "arabic": null,
-                "latin": "<p><strong>Gambar Posisi Mensholati Jenazah</strong></p>",
-                "terjemahan": null,
-                "tipe_tampilan": "judul_tengah",
-                "note_kaki": null
+                "arabic": "أُصَلِّى عَلَى مَنْ صَلَّى عَلَيْهِ الإِمَامُ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلّٰهِ تَعَالٰى . اَللّٰهُ أَكْبَرُ",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 19,
-                "arabic": null,
-                "latin": "<p><strong>a. Wanita</strong></p><p>Posisi Imam lurus dengan pusar (perut) bila mesholati mayat wanita</p>",
-                "terjemahan": null,
-                "tipe_tampilan": "keterangan",
-                "note_kaki": null
+                "indonesia": "2. Berdiri dengan posisi yang benar",
+                "tipe_tampilan": "text"
             },
             {
                 "urutan": 20,
-                "arabic": null,
-                "latin": "<p><strong>b. Laki-laki</strong></p><p>Posisi Imam lurus dengan kepala bila mesholati mayat laki-laki</p>",
-                "terjemahan": null,
-                "tipe_tampilan": "keterangan",
-                "note_kaki": null
+                "indonesia": "3. Takbir 4 kali dengan mengangkat kedua tangan sebahu.",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 21,
+                "indonesia": "4. Takbir pertama membaca Ta'awwudz dan Surat Al-Fatihah",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 22,
+                "arabic": "أَعُوْذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ . بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ\nاَلْحَمْـدُ لِلّٰهِ رَبِّ الْعَالَمِيْنَ ۞ اَلرَّحْمٰنِ الرَّحِيْمِ ۞ اَلآيَة",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 23,
+                "indonesia": "Membaca Tahlil",
+                "tipe_tampilan": "keterangan"
+            },
+            {
+                "urutan": 24,
+                "arabic": "لاَإِلٰهَ إِلاَّاللّٰهُ ........................................ ×١١",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 25,
+                "indonesia": "Membaca Tasbih",
+                "tipe_tampilan": "keterangan"
+            },
+            {
+                "urutan": 26,
+                "arabic": "سُبْحَانَ اللهِ وَبِحَمْدِهِ ، سُبْحَانَ اللهِ الْعَظِيْمِ .. ×١١",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 27,
+                "indonesia": "Membaca Sholawat",
+                "tipe_tampilan": "keterangan"
+            },
+            {
+                "urutan": 28,
+                "arabic": "اَللّٰهُمَّ صَلِّ عَلَى حَبِيْبِكَ سَيِّدِنَا مُحَمَّدٍ وَعَلٰى\nآلِهِ وَصَحْبِهِ وَبَارِكْ وَسَلِّمْ ..................×٣",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 29,
+                "indonesia": "7. Kemudian berdo'a",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 30,
+                "arabic": "أَعُوْذُ بِااللهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ ، بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ\nحَمْدًا يُوَافِى نِعَمَهُ وَيُكَافِئُ مَزِيْدَهُ ، يَارَبَّنَا لَكَ الْحَمْدُ كَمَا يَنْبَغِى\nلِجَلاَلِكَ وَلِعَظِيْمِ سُلْطَانِكَ ، سُبْحَانَكَ لاَنُحْصِي نَـتَآءَ\nعَلَيْكَ أَنْتَ كَمَا أَثْنَيْتَ عَلٰى نَفْسِكَ ، اَللّٰهُمَّ صَلِّ عَلَى\nسَيِّدِنَا مُحَمَّدٍ . وَعَلٰى آلِ سَيِّدِنَا مُحَمَّدٍ .اَللّٰهُمَّ اغْفِرْلَهُ (هَا)\nوَارْحَمْهُ(هَا) وَعَافِهِ(هَا)وَاعْفُ عَنْهُ(هَا) وَأَكْرِمْ نُزُلَهُ(هَا)\nوَوَسِّعْ مُدْخَلَهُ(هَا)وَاغِسِلْهُ(هَا)بِالْمَآءِ وَالثَّلْجِ وَالْبَرَدِ\nاَللّٰهُمَّ لاَ تَحْرِمْنَا أَجْرَهُ (هَا) وَلاَتَفْتِنَّا بَعْدَهُ(هَا)وَاغْفِرْلَنَا\nوَلَهُ (هَا) .اَللّٰهُمَّ اغْفِرْلَنَا ذُنُوبَنَا وَلِوَالِدَيْنَا وَارْحَمْهُمَا\nكَمَا رَبَّيَانَا صِغَارًا . رَبَّنَا اغْفِرْلَنَا وَلِإِخْوَانِنَا الَّذِيْنَ سَبَقُونَا",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 31,
+                "arabic": "بِالْإِيْمَانِ وَلاَ تَجْعَلْ فِيْ قُلُوبِنَا غِلاًّ لِلَّذِينَ امَنُوْا رَبَّنَآ إِنَّكَ\nرَءُوفٌ رَّحِيْمٌ . رَبَّنَا اتِنَا فِى الدُّنْيَا حَسَنَةً وَّفِى الأَخِرَةِ حَسَنَةً\nوَقِنَا عَذَابَ النَّارِ . وَصَلَّى اللهُ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلٰى آلِهِ\nوَصَحْبِهِ وَسَلَّمَ . سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُونَ\nوَسَلاَمٌ عَلَى الْمُرْسَلِينَ .وَالْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِينَ",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 32,
+                "indonesia": "Gambar Posisi Mensholati Jenazah",
+                "tipe_tampilan": "judul_tengah"
+            },
+            {
+                "urutan": 33,
+                "indonesia": "a. Wanita",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 34,
+                "arabic": "/images/bacaan/sj_wanita.png",
+                "tipe_tampilan": "image"
+            },
+            {
+                "urutan": 35,
+                "indonesia": "Posisi Imam lurus dengan pusar (perut) bila mesholati mayat wanita",
+                "tipe_tampilan": "keterangan"
+            },
+            {
+                "urutan": 36,
+                "indonesia": "b. Laki-laki",
+                "tipe_tampilan": "text"
+            },
+            {
+                "urutan": 37,
+                "arabic": "/images/bacaan/sj_laki.png",
+                "tipe_tampilan": "image"
+            },
+            {
+                "urutan": 38,
+                "indonesia": "Posisi Imam lurus dengan kepala bila mesholati mayat laki-laki",
+                "tipe_tampilan": "keterangan"
             }
         ]
     }

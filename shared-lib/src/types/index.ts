@@ -29,6 +29,7 @@ export interface Item {
   arabic: string | null;
   latin: string | null;
   terjemahan: string | null;
+  indonesia: string | null;
   tipe_tampilan: 'text' | 'syiir' | 'judul_tengah' | 'image' | 'keterangan';
   urutan: number;
 }
@@ -63,4 +64,48 @@ export interface DashboardData {
   recent_activity: RecentActivity[];
   content_health: ContentHealth;
   maintenance_mode: boolean;
+}
+
+// Reports
+export type ReportCategory = 'salah_ketik' | 'teks_hilang' | 'terjemahan_salah' | 'lain_lain';
+export type ReportJenis = 'bacaan' | 'section' | 'item';
+export type ReportStatus = 'pending' | 'disetujui' | 'ditolak';
+
+export interface BacaanReport {
+  id: number;
+  bacaan_id: number;
+  pelapor_nama: string | null;
+  pelapor_email: string | null;
+  kategori: ReportCategory;
+  jenis_laporan: ReportJenis;
+  target_id: number | null;
+  field_koreksi: string[];
+  konten_asli: any | null; // Store as object/array
+  konten_koreksi: any | null; // Store as object/array
+  status: ReportStatus;
+  created_at: string;
+  updated_at: string;
+  bacaan?: Pick<Bacaan, 'id' | 'judul' | 'slug'>;
+  item?: Item;
+  section?: Section;
+}
+
+export interface CreateReportPayload {
+  bacaan_id: number;
+  kategori: ReportCategory;
+  jenis_laporan: ReportJenis;
+  target_id?: number;
+  field_koreksi: string[];
+  konten_asli?: string; // stringified JSON
+  konten_koreksi: string; // stringified JSON
+  pelapor_nama?: string;
+  pelapor_email?: string;
+}
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  current_page: number;
+  last_page: number;
+  per_page: number;
+  total: number;
 }
