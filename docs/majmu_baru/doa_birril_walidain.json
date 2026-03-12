@@ -1,0 +1,128 @@
+{
+    "bacaan": {
+        "judul": "Doa Birrulwalidain, Qosidah Romadhon",
+        "judul_arab": "دُعَاءُ بِرِّ الْوَالِدَيْنِ، قَصِيْدَةُ رَمَضَانَ",
+        "slug": "doa-birrulwalidain-qosidah-romadhon",
+        "is_multi_section": 1,
+        "sections": [
+            {
+                "judul_section": "Doa Birril walidain",
+                "slug_section": "doa-birril-walidain",
+                "urutan": 1,
+                "items": [
+                    {
+                        "urutan": 1,
+                        "arabic": "<p>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ، وَأَفْضَلُ الصَّلَاةِ وَأَتَمُّ التَّسْلِيْمِ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِيْنَ</p>",
+                        "terjemahan": "Dengan menyebut nama Allah Yang Maha Pemurah lagi Maha Penyayang, Shalawat dan salam yang paling afdlol semoga tercurahkan pada Sayyidina Muhammad, beserta keluarga, dan para sahabatnya.",
+                        "note_kaki": "Halaman 42"
+                    },
+                    {
+                        "urutan": 2,
+                        "arabic": "<p>اَلْحَمْدُ لِلهِ الَّذِي أَمَرَنَا بِشُكْرِ الْوَالِدَيْنِ وَالْإِحْسَانِ إِلَيْهِمَا، وَحَتَّنَا عَلَى اغْتِنَامِ بِرِّهِمَا وَاصْطِنَاعِ الْمَعْرُوْفِ لَدَيْهِمَا، وَنَدَبَنَا إِلَى خَفْضِ الْجَنَاحِ مِنَ الرَّحْمَةِ لَهُمَا إِعْظَامًا وَإِكْبَارًا، وَوَصَّانَا بِالتَّرَحُّمِ عَلَيْهِمَا كَمَا رَبَّيَانَا صِغَارًا</p>",
+                        "terjemahan": "Segala puji bagi Allah, Tuhan yang memerintahkan kami untuk bersyukur dan berbuat baik kepada kedua orang tua, yang telah mendorong kami untuk meraih kemuliaan berbakti dan berbuat baik di hadapan mereka, yang telah menganjurkan kami untuk merendahkan diri kepada mereka dengan penuh kasih sebagai bentuk penghormatan dan pemuliaan, serta mewasiatkan kami untuk memohonkan kasih sayang Allah bagi mereka sebagaimana mereka mendidik dan membimbing kami sewaktu kecil.",
+                        "note_kaki": "Halaman 42"
+                    },
+                    {
+                        "urutan": 3,
+                        "arabic": "<p>اَللَّهُمَّ فَارْحَمْ وَالِدِيْنَا، اَللَّهُمَّ فَارْحَمْ وَالِدِيْنَا، اَللَّهُمَّ فَارْحَمْ وَالِدِيْنَا، وَاغْفِرْ لَهُمْ، وَارْضَ عَنْهُمْ رِضًا تَحُلُّ بِهِ عَلَيْهِمْ جَوَامِعَ رِضْوَانِكَ، وَتُحِـلُّهُمْ بِهِ دَارَ كَرَامَتِكَ وَأَمَانِكَ، وَمَوَاطِنَ عَفْوِكَ وَغُفْرَانِكَ، وَأَدِرَّ بِهِ عَلَيْهِمْ لَطَائِفَ بِرِّكَ وَإِحْسَانِكَ</p>",
+                        "terjemahan": "Ya Allah, sayangilah kedua orang tua kami. Ya Allah, sayangilah kedua orang tua kami. Ya Allah, sayangilah kedua orang tua kami. Ampuni, rahmati, dan ridhoilah mereka dengan keridhoan yang mengantarkan mereka pada semua jenis keridhaan-Mu, membawa mereka ke tempat-tempat yang mendatangkan maaf dan ampunan-Mu, serta meletakan mereka di negeri yang mulia dan aman (surga), kemudian hidangkanlah kepada mereka berbagai kebaikan dan kedermawaan-Mu.",
+                        "note_kaki": "Halaman 43"
+                    },
+                    {
+                        "urutan": 4,
+                        "arabic": "<p>اَللَّهُمَّ اغْفِرْ لَهُمْ مَغْفِرَةً جَامِعَةً تَمْحُوْ بِهَا سَالِفَ أَوْزَارِهِمْ، وَسَيِّىءَ إِصْرَارِهِمْ وَارْحَمْهُمْ رَحْمَةً تُنِيْرُ لَهُمْ بِهَا الْمَضْجَعَ فِي قُبُوْرِهِمْ، وَتُؤَمِّنُهُمْ بِهَا يَوْمَ الْفَزَعِ عِنْدَ نُشُوْرِهِمْ</p>",
+                        "terjemahan": "Ya Allah, ampunilah mereka dengan pengampunan menyeluruh yang menghapus dosa-dosa mereka terdahulu dan keburukan yang selalu mereka lakukan, dan rahmatilah mereka dengan rahmat yang mampu menerangi pembaringan mereka di dalam kubur, serta menyelamatkan mereka pada saat kebangkitan di hari yang menakutkan.",
+                        "note_kaki": "Halaman 43"
+                    },
+                    {
+                        "urutan": 5,
+                        "arabic": "<p>اللَّهُمَّ تَحَنَّنْ عَلَىٰ ضُعْفِهِمْ كَمَا كَانُوْا عَلَىٰ ضُعْفِنَا مُتَحَنِّنيْن، وَارْحَمِ انْقِطَاعَهُمْ إِلَيْكَ كَمَا كَانُوا لَنَا فِي حَالِ انْقِطَاعِنَا إِلَيْهِمْ رَاحِمِيْن، وَتَعَطَّفْ عَلَيْهِمْ كَمَا كَانُوا عَلَيْنَا فِي حَالِ صِغَرِنَا مُتَعَطِّفِيْن، اللَّهُمَّ احْفَظْ لَهُمْ ذَلِكَ الْوُدَّ الَّذِي أَشْرَبْتَهُ قُلُوْبَهُمْ، وَالْحَنَانَةَ الَّتِي مَلَأَتْ بِهَا صُدُورَهُمْ، وَاللُّطْفَ الَّذِي شَغَلْتَ جَوَارِحَهُمْ، وَاشْكُرْ لَهُمْ ذَلِكَ الْجِهَادَ الَّذِي كَانُوا بِهِ فِيْنَا مُجَاهِدِيْن، وَلَا تُضْيِعْ لَهُمْ ذَلِكَ الْاِجْتِهَادَ الَّذِي كَانُوا بِهِ فِيْنَا مُجْتَهِدِيْن، وَجَازِهِمْ عَلَى ذَلِكَ السَّعْيِ الَّذِي كَانُوا بِهِ فِيْنَا سَاعِيْن، وَالرَّعْيِ الَّذِي كَانُوا بِهِ لَنَا رَاعِيْن، أَفْضَلَ مَا جَزَيْتَ بِهِ السُّعَاةَ اْلمُصْلِحِيْنَ، وَالرُّعَاةَ النَّاصِحِيْنَ</p>",
+                        "terjemahan": "Ya Allah, sayangilah (maklumilah) kelemahan mereka sebagaimana mereka dahulu menyayangi (memaklumi) kelemahan kami, dan hargailah usaha mereka untuk beribadah kepada-Mu sepanjang waktu sebagaimana mereka dahulu juga menghargai usaha kami untuk berbakti kepada mereka sepanjang masa, dan kasihanilah mereka sebagaimana mereka mengasihi kami sewaktu kami kecil. Ya Allah, peliharalah rasa cinta yang Engkau letakan dalam hati mereka kasih sayang yang Engkau penuhi dada mereka dengannya, dan kelembutan yang Engkau sibukkan anggota tubuh mereka dengannya. Karuniailah mereka dengan pahala atas perjuangan mereka dahulu dalam mendidik kami, jangan sia-siakan perjuangan mereka tersebut. Balaslah usaha mereka untuk menghidupi dan memelihara kami dengan sebaik-baik balasan yang Engkau berikan kepada mereka yang suka berbuat baik dan memberi nasihat.",
+                        "note_kaki": "Halaman 44-45"
+                    },
+                    {
+                        "urutan": 6,
+                        "arabic": "<p>اللَّهُمَّ بِرَّهُمْ أَضْعَافَ مَا كَانُوا يَبِرُّونَنَا، وَانْظُرْ إِلَيْهِمْ بِعَيْنِ الرَّحْمَةِ كَمَا كَانُوْا يَنْظُرُوْنَنَا</p>",
+                        "terjemahan": "Ya Allah, berbuat baiklah kepada mereka dengan kebaikan yang jauh lebih banyak dari semua kebaikan mereka kepada kami, dan pandanglah mereka dengan pandangan kasih sebagaimana dahulu mereka memandang kami.",
+                        "note_kaki": "Halaman 45"
+                    },
+                    {
+                        "urutan": 7,
+                        "arabic": "<p>اللَّهُمَّ هَبْ لَهُمْ مَا ضَيَّعُوْا مِنْ حَقِّ رُبُوْبِيَّتِكَ بِمَا اشْتَغَلُوْا بِهِ مِنْ حَقِّ تَرْبِيَتِنَا، وَتَجَاوَزْ عَنْهُمْ مَا قَصَّرُوْا فِيْهِ مِنْ حَقِّ خِدْمَتِكَ بِمَا آثَرُوْنَا بِهِ فِي حَقِّ خِدْمَتِنَا، وَاعْفُ عَنْهُمْ مَا ارْتَكَبُوا مِنَ الشُّبُهَاتِ مِنْ أَجْلِ مَا اكْتَسَبُوا مِنْ أَجْلِنَا، وَلَا تُؤَاخِذْهُمْ بِمَا دَعَتْهُمْ إِلَيْهِ الْحَمِيَّةُ مِنَ الْهَوَى لِمَا غَلَبَ عَلَى قُلُوْبِهِمْ مِنْ مَحَبَّتِنَا، اللّهُمَّ وَتَحَمَّلْ عَنْهُمْ الظُّلُمَاتِ الَّتِي ارْتَكَبُوْهَا فِيْمَا اجْتَرَكُوا لَنَا وَسَعَوْا عَلَيْنَا، وَالْطُفْ بِهِمْ فِي مَضَاجِعِ الْبِلَى لُطْفًا يَزِيْدُ عَلَى لُطْفِهِمْ فِي أَيَّامِ حَيَاتِهِمْ بِنَا</p>",
+                        "terjemahan": "Ya Allah, berilah mereka pahala beribadah kepada-Mu yang tidak sempat mereka lakukan karena sibuk mendidik kami, dan maafkanlah segala kekurangan mereka dalam mengabdi kepada-Mu karena sibuk melayani kami, dan ampunilah mereka atas hal-hal syubhat yang mereka lakukan demi menghidupi kami, dan jangan siksa mereka karena rasa cinta mereka kepada kami yang menggelora, dan selesaikanlah permasalahan-permasalahan mereka dengan sesama manusia yang mereka lakukan demi menghidupi kami, dan bersikap lembutlah kepada mereka dipembaringan kubur dengan kelembutan yang melebihi sikap lembut mereka kepada kami di masa hidup mereka dahulu.",
+                        "note_kaki": "Halaman 45-46"
+                    },
+                    {
+                        "urutan": 8,
+                        "arabic": "<p>اَللّٰهُمَّ وَمَا هَدَيْتَنَا لَهُ مِنَ الطَّاعَاتِ، وَيَسَّرْتَهُ لَنَا مِنَ الْحَسَنَاتِ، وَوَفَّقْتَنَا لَهُ مِنَ الْقُرُبَاتِ، فَنَسْأَلُكَ اللّٰهُمَّ أَنْ تَجْعَلَ لَهُمْ مِنْهَا حَظًّا وَنَصِيْبًا، وَمَا اقْتَرَفْنَاهُ مِنَ السَّيِّئَاتِ، وَاكْتَسَبْنَاهُ مِنَ الْخَطِيْئَاتِ، وَتَحَمَّلْنَاهُ مِنَ التَّبِعَاتِ، فَلَا تُلْحِقْ بِهِمْ مِنَّا بِذَلِكَ حَوْبًا، وَلَا تُحَمِّلْ عَلَيْهِمْ مِنْ ذُنُوْبِنَا ذُنُوْبًا</p>",
+                        "terjemahan": "Ya Allah, atas setiap ketaatan yang Engkau hidayahkan kepada kami, kebaikan yang Engkau mudahkan kami untuk melakukannya, dan amal saleh yang Engkau beri kami taufik untuk mengerjakannya, kami mohon Engkau beri mereka pahala pula, dan jika ada keburukan yang kami lakukan, kesalahan yang kami perbuat, dan permasalahan dengan sesama manusia yang harus kami pertanggung jawabkan, jangan Engkau bebani mereka dengannya dan jangan tambahkan dosa kami ke dalam catatan dosa mereka.",
+                        "note_kaki": "Halaman 46-47"
+                    },
+                    {
+                        "urutan": 9,
+                        "arabic": "<p>اَللَّهُمَّ وَكَمَا سَرَرْتَهُمْ بِنَا فِي الْحَيَاةِ، فَسُرَّهُمْ بِنَا بَعْدَ الْمَوْتِ (×٣)</p>",
+                        "terjemahan": "Ya Allah, sebagaimana Engkau senangkan mereka dengan kami semasa hidup, maka senangkan pula mereka dengan kami setelah mati. (3x)",
+                        "note_kaki": "Halaman 47"
+                    },
+                    {
+                        "urutan": 10,
+                        "arabic": "<p>اَللَّهُمَّ وَلَا تُبَلِّغْهُمْ عَنْ أَخْبارِنَا مَا يَسُوْءُهُمْ، وَلَا تُحَمِّلْهُمْ مِنْ أَوْزَارِنَا مَا يَنُوْءُهُمْ، وَلَا تُخْزِهِمْ بِنَا فِي عَسْكَرِ الْأَمْوَاتِ بِمَا نُحْدِثُ مِنَ الْمُخْزِيَاتِ وَنَأْتِي مِنَ الْمُنْكَرَاتِ، وَسُرَّ أَرْوَاحَهُمْ بِأَعْمَالِنَا فِي مُلْتَقَى الْأَرْوَاحِ، إِذَا سُرَّ أَهْلُ الصَّلَاحِ بِأَبْنَاءِ الصَّلَاحِ، وَلَا تَقِفْهُمْ بِسَبَبِنَا عَلَى مَوْقِفِ افْتِضَاحٍ بِمَا نَجْتَرِحُ مِنْ سُوْءِ الْإِجْتِرَاحِ</p>",
+                        "terjemahan": "Ya Allah, jangan sampaikan berita-berita tentang diri kami yang akan membuat mereka kecewa, dan jangan bebankan kesalahan kami kepada mereka, dan jangan hinakan mereka di hadapan orang-orang yang sudah meninggal dunia dengan perbuatan-perbuatan hina dan mungkar yang kami lakukan, dan senangkanlah ruh mereka dengan amal-amal baik kami di tempat pertemuan para arwah, ketika orang-orang yang saleh bergembira dengan putra-putra mereka, dan jangan jadikan mereka ternoda oleh perbuatan-perbuatan buruk yang kami lakukan.",
+                        "note_kaki": "Halaman 48"
+                    },
+                    {
+                        "urutan": 11,
+                        "arabic": "<p>اَللَّهُمَّ وَمَا تَلَوْنَا مِنْ تِلَاوَةٍ فَزَكَّيْتَهَا، وَمَا صَلَّيْنَا مِنْ صَلَاةٍ فَتَقَبَّلْتَهَا، وَمَا تَصَدَّقْنَا مِنْ صَدَقَةٍ فَنَمَّيْتَهَا، وَمَا عَمِلْنَا مِنْ اَعْمَالِ صَالِحَةٍ فَرَضِيْتَهَا، فَنَسْأَلُكَ اللَّهُمَّ اَنْ تَجْعَلَ حَظَّهُمْ مِنْهَا اَكْبَرَ مِنْ حُظُوْظِنَا، وَقِسْمَهُمْ مِنْهَا اَجْزَلَ مِنْ اَقْسَامِنَا، وَسَهْمَهُمْ مِنْ ثَوَابِهَا اَوْفَرَ مِنْ سِهَامِنَا، فَإِنَّكَ وَصَّيْتَنَا بِبِرِّهِمْ، وَنَدَبْتَنَا اِلَى شُكْرِهِمْ، وَاَنْتَ اَوْلَى بِالْبِرِّ مِنَ الْبَارِّيْنَ، وَاَحَقُّ بِالْوَصْلِ مِنَ الْمَأْمُوْرِيْنَ</p>",
+                        "terjemahan": "Ya Allah, bagi setiap ayat suci yang kami baca, shalat kami yang Engkau terima, amal saleh kami yang Engkau ridhai, serta sedekah kami yang Engkau lipat gandakan pahalanya, tolong ya Allah, berilah mereka bagian yang lebih banyak dari bagian kami, dan pahala yang jauh lebih besar dari pahala kami sebab Engkaulah yang mewasiatkan agar kami berbakti dan berbuat baik kepada mereka. Sesungguhnya, Engkaulah yang lebih pantas untuk berbuat baik kepada mereka dari semua yang berbakti kepada orang tuanya, dan Engkaulah yang lebih berhak untuk melakukan kebajikan tersebut daripada mereka yang Engkau perintahkan.",
+                        "note_kaki": "Halaman 48-49"
+                    },
+                    {
+                        "urutan": 12,
+                        "arabic": "<p>اَللَّهُمَّ اجْعَلْنَا لَهُمْ قُرَّةَ اَعْيُنٍ يَوْمَ يَقُوْمُ الْأَشْهَادُ، وَأَسْمِعْهُمْ مِنَّا اَطْيَبَ النِّدَاءِ يَوْمَ التَّنَادِي، وَاجْعَلْهُمْ بِنَا مِنْ اَغْبَطِ الْآبَاءِ بِالْأَوْلَادِ (×٣)</p>",
+                        "terjemahan": "Ya Allah, jadikanlah kami penyejuk hati mereka di hari para saksi berdiri sebagai saksi, dan perdengarkanlah kepada mereka sebaik-baik seruan ketika sang penyeru berseru, dan jadikanlah mereka sebagai ayah yang merasa paling senang dengan anak-anaknya. (3x)",
+                        "note_kaki": "Halaman 49"
+                    },
+                    {
+                        "urutan": 13,
+                        "arabic": "<p>حَتَّى تَجْمَعَنَا وَإِيَّاهُمْ وَالْمُسْلِمِيْنَ جَمِيْعًا فِي دَارِ كَرَامَتِكَ، وَمُسْتَقَرِّ رَحْمَتِكَ، وَمَحَلِّ اَوْلِيَآئِكَ، مَعَ الَّذِيْنَ أَنْعَمْتَ عَلَيْهِمْ مِنَ النَّبِيِّيْنَ وَالصِّدِّيْقِيْنَ وَالشُّهَدَاء وَالصَّالِحِيْنَ، وَحَسُنَ أُولَئِكَ رَفِيْقًا، ذَلِكَ الْفَضْلُ مِنَ اللَّهِ وَكَفَى بِاللَّهِ عَلِيْمًا</p>",
+                        "terjemahan": "Kemudian pertemukanlah kami dengan mereka dan seluruh kaum muslimin di negeri yang mulia, di tempat curahan rahmat-Mu, dan kediaman para wali-Mu. Bersama orang-orang yang telah Engkau beri nikmat, yaitu para Nabi, shiddiqin, syuhada, dan sholihin. Merekalah sebaik-baik teman. Itulah karunia Allah dan cukuplah Allah sebagai Dzat Yang Maha Mengetahui.",
+                        "note_kaki": "Halaman 49-50"
+                    },
+                    {
+                        "urutan": 14,
+                        "arabic": "<p>سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُوْنَ، وَسَلَامٌ عَلَى الْمُرْسَلِيْنَ، وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِيْنَ، وَصَلَّى اللَّهُ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ أَجْمَعِيْنَ</p>",
+                        "terjemahan": "Maha Suci Allah, Tuhan Yang Perkasa, Maha suci Dia dari segala tuduhan-tuduhan yang tidak layak dan diperuntukkan bagi-Nya. Segala puji bagi Allah Tuhan semesta alam. Semoga shalawat dan salam Allah selalu tercurah kepada Sayyidina Muhammad beserta keluarga dan para sahabat beliau.",
+                        "note_kaki": "Halaman 50"
+                    }
+                ]
+            },
+            {
+                "judul_section": "Qosidah Romadhon",
+                "slug_section": "qosidah-romadhon",
+                "urutan": 2,
+                "items": [
+                    {
+                        "urutan": 1,
+                        "arabic": "<p>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ<br>إِنَّا أَنْزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ ۝ وَمَا أَدْرَاكَ مَا لَيْلَةُ الْقَدْرِ ۝<br>لَيْلَةُ الْقَدْرِ خَيْرٌ مِنْ أَلْفِ شَهْرٍ ۝ تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ<br>فِيهَا بِإِذْنِ رَبِّهِمْ مِنْ كُلِّ أَمْرٍ ۝ سَلَامٌ هِيَ حَتَّى مَطْلَعِ الْفَجْرِ ۝<br>لِلنَّبِيِّ مُحَمَّدٍ الْهَادِي وَالْآلِ وَالصَّحْبِ</p>",
+                        "tipe_tampilan": "syiir"
+                    },
+                    {
+                        "urutan": 2,
+                        "arabic": "<p>يَارَبَّنَا اقْبَلْنَا فِي شَهْرِنَا رَمَضَانْ ×٢<br>يَارَبَّنَا احْفَظْنَا فِي شَهْرِنَا رَمَضَانْ ×٢<br>يَارَبِّ سَامِحْنَا فِي شَهْرِنَا رَمَضَانْ ×٢<br>يَارَبِّ اغْفِرْ لَنَا فِي شَهْرِنَا رَمَضَانْ ×٢<br>يَارَبَّنَا ارْحَمْنَا فِي شَهْرِنَا رَمَضَانْ ×٢<br>يَارَبِّ عَامِلْنَا بِاللُّطْفِ وَالْإِحْسَانْ ×٢<br>يَارَبَّنَا ادْخِلْنَا فِي جَنَّةِ الرِّضْوَانْ ×٢<br>يَارَبِّ سَلِّمْنَا مِنْ لَهْبَةِ النِّيْرَانْ ×٢<br>يَارَبَّنَا انْفَعْنَا بِبَرَكَةِ الْقُرْآنْ ×٢<br>يَا سَلَامْ سَلِّمْنَا مِنْ عَوَائِقَ عَاقَتْنَا ×٢<br>يَا سَلَامْ اُكْتُبْ سَلَامًا بَيْنَ زَمْزَمَ وَالْمَقَامْ ×٢</p>",
+                        "tipe_tampilan": "syiir"
+                    },
+                    {
+                        "urutan": 3,
+                        "arabic": "<p>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ<br>إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ ۝ فَصَلِّ لِرَبِّكَ وَانْحَرْ ۝<br>إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ ۝</p>",
+                        "tipe_tampilan": "syiir"
+                    },
+                    {
+                        "urutan": 4,
+                        "arabic": "<p>يَا اللّٰهْ بِنَا نَلْتَقِي عِنْدَ الْحَبِيبِ النَّبِي ×٢<br>نَرِدْ لِحَوْضِ النَّبِي يَا اللّٰهْ مَعَ الْوَارِدِينْ ×٢<br>مَعَ أَنْبِيَائِكَ أَجْمَعِينْ عِبَادِكَ الصَّالِحِينْ ×٢<br>فِي زُمْرَةِ أَحْمَدَ مُحَمَّدٍ سَيِّدِ الْمُرْسَلِينْ ×٢<br>يَا رَبَّنَا ارْحَمْنَا وَلَا تُعَذِّبْنَا ×٢<br>يَا رَبَّنَا ارْحَمْنَا وَلَا لَنَا غَيْرُكَ ×٢<br>وَمِنْكَ قَرِّبْنَا وَلَا تُبَاعِدْنَا ×٢<br>إِنَّا تَوَسَّلْنَا بِجَاهِ سَيِّدِنَا<br>مُحَمَّدٍ الْهَادِي عَلَيْهِ صَلَّيْنَا ×٢</p>",
+                        "tipe_tampilan": "syiir"
+                    }
+                ]
+            }
+        ]
+    }
+}
