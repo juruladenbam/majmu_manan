@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Copy, Check } from 'lucide-react';
 import { Modal, Button } from '@/components/ui';
 import { useCreateReport } from '../hooks';
 import type { Item, Section, Bacaan, ReportCategory } from '@project/shared';
@@ -42,6 +43,7 @@ export const ReportModal = ({ isOpen, onClose, type, target, bacaanId }: ReportM
   const [pelaporNama, setPelaporNama] = useState('');
   const [pelaporEmail, setPelaporEmail] = useState('');
   const [mode, setMode] = useState<'langsung' | 'catatan'>('langsung');
+  const [isCopied, setIsCopied] = useState(false);
 
   const createReport = useCreateReport();
 
@@ -70,6 +72,24 @@ export const ReportModal = ({ isOpen, onClose, type, target, bacaanId }: ReportM
   const getFieldValue = (field: string): string => {
     const t = target as any;
     return t[field] || '';
+  };
+
+  const handleCopy = () => {
+    const textToCopy = selectedFields
+      .map((field) => {
+        // const label = getFields().find(f => f.key === field)?.label;
+        const value = getFieldValue(field)
+          .replace(/<br\s*\/?>/gi, '\n')
+          .replace(/<\/div>/gi, '\n')
+          .replace(/<[^>]*>?/gm, '')
+          .trim();
+        return `${value}`;
+      })
+      .join('\n\n');
+
+    navigator.clipboard.writeText(textToCopy);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
   };
 
   const handleSubmit = async () => {
@@ -115,21 +135,19 @@ export const ReportModal = ({ isOpen, onClose, type, target, bacaanId }: ReportM
         {/* Mode Selection */}
         <div className="flex p-1 bg-gray-100 dark:bg-gray-800 rounded-xl">
           <button
-            className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all ${
-              mode === 'langsung' 
-                ? 'bg-white dark:bg-gray-700 shadow-sm text-primary' 
+            className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all ${mode === 'langsung'
+                ? 'bg-white dark:bg-gray-700 shadow-sm text-primary'
                 : 'text-gray-500'
-            }`}
+              }`}
             onClick={() => setMode('langsung')}
           >
             Benarkan Langsung
           </button>
           <button
-            className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all ${
-              mode === 'catatan' 
-                ? 'bg-white dark:bg-gray-700 shadow-sm text-primary' 
+            className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all ${mode === 'catatan'
+                ? 'bg-white dark:bg-gray-700 shadow-sm text-primary'
                 : 'text-gray-500'
-            }`}
+              }`}
             onClick={() => setMode('catatan')}
           >
             Pakai Catatan
@@ -145,11 +163,10 @@ export const ReportModal = ({ isOpen, onClose, type, target, bacaanId }: ReportM
                 <button
                   key={opt.value}
                   onClick={() => setKategori(opt.value)}
-                  className={`relative px-4 py-3 text-sm border-2 rounded-2xl transition-all ${
-                    kategori === opt.value
+                  className={`relative px-4 py-3 text-sm border-2 rounded-2xl transition-all ${kategori === opt.value
                       ? 'bg-primary-500 border-primary-500 text-white shadow-lg shadow-primary-500/30'
                       : 'bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 hover:border-primary-400/50 text-gray-600 dark:text-gray-400 font-medium'
-                  }`}
+                    }`}
                 >
                   <div className="text-center font-bold">
                     {opt.label}
@@ -175,11 +192,10 @@ export const ReportModal = ({ isOpen, onClose, type, target, bacaanId }: ReportM
                       setSelectedFields([...selectedFields, field.key]);
                     }
                   }}
-                  className={`flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full border-2 transition-all ${
-                    selectedFields.includes(field.key)
+                  className={`flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full border-2 transition-all ${selectedFields.includes(field.key)
                       ? 'bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/20'
                       : 'bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:border-emerald-400/40'
-                  }`}
+                    }`}
                 >
                   {field.label}
                 </button>
@@ -190,14 +206,23 @@ export const ReportModal = ({ isOpen, onClose, type, target, bacaanId }: ReportM
           {/* Konten Sekarang */}
           {selectedFields.length > 0 && (
             <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Konten Saat Ini</label>
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Konten Saat Ini</label>
+                <button
+                  onClick={handleCopy}
+                  className="flex items-center gap-1.5 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                >
+                  {isCopied ? <Check size={12} /> : <Copy size={12} />}
+                  {isCopied ? 'Tersalin' : 'Copy'}
+                </button>
+              </div>
               <div className="p-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 rounded-2xl space-y-3">
                 {selectedFields.map((field: string) => (
                   <div key={field} className="space-y-1">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
                       {getFields().find(f => f.key === field)?.label}
                     </span>
-                    <div 
+                    <div
                       className={`text-sm ${field === 'arabic' ? 'font-arabic text-xl leading-relaxed text-right' : 'text-gray-600 dark:text-gray-300'}`}
                       dangerouslySetInnerHTML={{ __html: getFieldValue(field) }}
                     />
@@ -215,9 +240,8 @@ export const ReportModal = ({ isOpen, onClose, type, target, bacaanId }: ReportM
             <textarea
               value={kontenKoreksi}
               onChange={(e) => setKontenKoreksi(e.target.value)}
-              className={`w-full p-4 border rounded-2xl min-h-[120px] focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all dark:bg-gray-900 border-gray-200 dark:border-gray-800 ${
-                selectedFields.includes('arabic') && mode === 'langsung' ? 'font-arabic text-xl text-right' : 'text-sm'
-              }`}
+              className={`w-full p-4 border rounded-2xl min-h-[120px] focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all dark:bg-gray-900 border-gray-200 dark:border-gray-800 ${selectedFields.includes('arabic') && mode === 'langsung' ? 'font-arabic text-xl text-right' : 'text-sm'
+                }`}
               placeholder={mode === 'langsung' ? 'Tuliskan teks yang benar di sini...' : 'Jelaskan apa yang perlu diperbaiki...'}
             />
           </div>
