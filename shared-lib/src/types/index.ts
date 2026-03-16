@@ -70,6 +70,7 @@ export interface DashboardData {
 export type ReportCategory = 'salah_ketik' | 'teks_hilang' | 'terjemahan_salah' | 'lain_lain';
 export type ReportJenis = 'bacaan' | 'section' | 'item';
 export type ReportStatus = 'pending' | 'disetujui' | 'ditolak';
+export type ReportModeKoreksi = 'langsung' | 'catatan';
 
 export interface BacaanReport {
   id: number;
@@ -78,6 +79,7 @@ export interface BacaanReport {
   pelapor_email: string | null;
   kategori: ReportCategory;
   jenis_laporan: ReportJenis;
+  mode_koreksi: ReportModeKoreksi;
   target_id: number | null;
   field_koreksi: string[];
   konten_asli: any | null; // Store as object/array
@@ -94,6 +96,7 @@ export interface CreateReportPayload {
   bacaan_id: number;
   kategori: ReportCategory;
   jenis_laporan: ReportJenis;
+  mode_koreksi: ReportModeKoreksi;
   target_id?: number;
   field_koreksi: string[];
   konten_asli?: string; // stringified JSON

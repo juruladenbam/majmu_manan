@@ -92,6 +92,7 @@ export const ReportListPage = () => {
                             <tr>
                                 <th className="px-6 py-4">Tanggal</th>
                                 <th className="px-6 py-4">Jenis</th>
+                                <th className="px-6 py-4">Mode</th>
                                 <th className="px-6 py-4">Bacaan / Target</th>
                                 <th className="px-6 py-4">Kategori</th>
                                 <th className="px-6 py-4">Status</th>
@@ -101,7 +102,7 @@ export const ReportListPage = () => {
                         <tbody className="divide-y divide-border-light dark:divide-border-dark">
                             {!data || data.data.length === 0 ? (
                                 <tr>
-                                    <td colSpan={6} className="px-6 py-12 text-center text-gray-400 italic">
+                                    <td colSpan={7} className="px-6 py-12 text-center text-gray-400 italic">
                                         Tidak ada laporan ditemukan.
                                     </td>
                                 </tr>
@@ -118,6 +119,15 @@ export const ReportListPage = () => {
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <span className="font-medium text-text-main dark:text-gray-200">
                                                 {getJenisLabel(report.jenis_laporan)}
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                                                report.mode_koreksi === 'catatan'
+                                                    ? 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800'
+                                                    : 'bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800'
+                                            }`}>
+                                                {report.mode_koreksi === 'catatan' ? 'Catatan' : 'Langsung'}
                                             </span>
                                         </td>
                                         <td className="px-6 py-4">

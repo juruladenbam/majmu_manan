@@ -13,6 +13,7 @@ class BacaanReport extends Model
         'pelapor_email',
         'kategori',
         'jenis_laporan',
+        'mode_koreksi',
         'target_id',
         'field_koreksi',
         'konten_asli',

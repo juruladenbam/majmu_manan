@@ -11,8 +11,17 @@ export const ReportDetailPage = () => {
     const [editedKoreksi, setEditedKoreksi] = useState<Record<string, string>>({});
 
     useEffect(() => {
-        if (report?.konten_koreksi) {
-            setEditedKoreksi(report.konten_koreksi);
+        if (report) {
+            if (report.mode_koreksi === 'catatan') {
+                // For catatan mode, initialize empty corrections for admin to fill in
+                const initial: Record<string, string> = {};
+                (report.field_koreksi || []).forEach((field: string) => {
+                    initial[field] = '';
+                });
+                setEditedKoreksi(initial);
+            } else {
+                setEditedKoreksi(report.konten_koreksi || {});
+            }
         }
     }, [report]);
 
@@ -72,7 +81,10 @@ export const ReportDetailPage = () => {
 
     // Ensure konten_asli and konten_koreksi are treated as objects for mapping
     const kontenAsli = report.konten_asli || {};
+    const kontenKoreksi = report.konten_koreksi || {};
     const fields = report.field_koreksi || [];
+    const isCatatanMode = report.mode_koreksi === 'catatan';
+    const catatanText = isCatatanMode ? (kontenKoreksi['_catatan'] || '') : '';
 
     return (
         <div className="space-y-6">
@@ -144,6 +156,16 @@ export const ReportDetailPage = () => {
                                 </span>
                             </div>
                             <div>
+                                <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-1">Mode Koreksi</label>
+                                <span className={`px-2 py-1 text-xs font-bold rounded-lg border ${
+                                    isCatatanMode
+                                        ? 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800'
+                                        : 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800'
+                                }`}>
+                                    {isCatatanMode ? '📝 Catatan' : '✏️ Koreksi Langsung'}
+                                </span>
+                            </div>
+                            <div>
                                 <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-1">Waktu Laporan</label>
                                 <p className="text-sm font-medium">
                                     {new Date(report.created_at).toLocaleString('id-ID', {
@@ -160,12 +182,78 @@ export const ReportDetailPage = () => {
                 <div className="lg:col-span-2 space-y-6">
                     <div className="p-6 bg-white dark:bg-background-dark border border-border-light dark:border-border-dark rounded-2xl shadow-sm">
                         <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6 flex items-center gap-2">
-                            Perbandingan Konten
+                            {isCatatanMode ? 'Catatan & Konten' : 'Perbandingan Konten'}
                             <span className="h-px flex-1 bg-gray-100 dark:bg-gray-800"></span>
                         </h3>
 
                         <div className="space-y-8">
-                            {fields.map((field: string) => (
+                            {/* === MODE CATATAN === */}
+                            {isCatatanMode && (
+                                <>
+                                    {/* User's note */}
+                                    <div className="space-y-2">
+                                        <div className="flex items-center gap-2">
+                                            <div className="size-2 rounded-full bg-blue-500"></div>
+                                            <h4 className="text-sm font-bold uppercase tracking-wider text-text-main dark:text-gray-200">
+                                                Catatan dari Pelapor
+                                            </h4>
+                                        </div>
+                                        <div className="p-4 bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/30 rounded-2xl">
+                                            <p className="text-sm text-blue-900 dark:text-blue-200 whitespace-pre-wrap leading-relaxed">
+                                                {catatanText || <span className="italic text-gray-400">Tidak ada catatan</span>}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* Reference content + admin correction fields */}
+                                    {fields.map((field: string) => (
+                                        <div key={field} className="space-y-3">
+                                            <div className="flex items-center gap-2">
+                                                <div className="size-2 rounded-full bg-primary"></div>
+                                                <h4 className="text-sm font-bold uppercase tracking-wider text-text-main dark:text-gray-200">
+                                                    Field: {field.replace('_', ' ')}
+                                                </h4>
+                                            </div>
+
+                                            {/* Current content as reference */}
+                                            <div className="space-y-1.5">
+                                                <span className="text-[10px] font-bold text-gray-500 uppercase ml-2 tracking-tighter">Konten Sekarang (Referensi)</span>
+                                                <div className="p-4 bg-gray-50 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-700 rounded-2xl min-h-[60px]">
+                                                    <div className={`${field === 'arabic' || field === 'judul_arab' ? 'font-arabic text-2xl leading-relaxed' : 'text-sm text-gray-600 dark:text-gray-400'}`}
+                                                        dir={field === 'arabic' || field === 'judul_arab' ? 'rtl' : 'ltr'}
+                                                    >
+                                                        {kontenAsli[field] ? (
+                                                            <div dangerouslySetInnerHTML={{ __html: kontenAsli[field] }} />
+                                                        ) : (
+                                                            <span className="italic text-gray-400">Kosong</span>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Admin writes correction */}
+                                            {report.status === 'pending' && (
+                                                <div className="space-y-1.5">
+                                                    <span className="text-[10px] font-bold text-green-600 uppercase ml-2 tracking-tighter">
+                                                        Perbaikan oleh Admin (isi jika ingin menyetujui)
+                                                    </span>
+                                                    <textarea
+                                                        value={editedKoreksi[field] || ''}
+                                                        onChange={(e) => setEditedKoreksi(prev => ({ ...prev, [field]: e.target.value }))}
+                                                        dir={field === 'arabic' || field === 'judul_arab' ? 'rtl' : 'ltr'}
+                                                        className={`w-full p-4 bg-green-50/50 dark:bg-green-900/10 border border-green-200 dark:border-green-900/30 rounded-2xl min-h-[100px] outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all ${field === 'arabic' || field === 'judul_arab' ? 'font-arabic text-2xl leading-relaxed' : 'text-sm text-text-main dark:text-gray-200'
+                                                            }`}
+                                                        placeholder={`Tulis koreksi ${field.replace('_', ' ')} yang benar...`}
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </>
+                            )}
+
+                            {/* === MODE LANGSUNG === */}
+                            {!isCatatanMode && fields.map((field: string) => (
                                 <div key={field} className="space-y-3">
                                     <div className="flex items-center gap-2">
                                         <div className="size-2 rounded-full bg-primary"></div>
@@ -179,7 +267,9 @@ export const ReportDetailPage = () => {
                                         <div className="space-y-1.5">
                                             <span className="text-[10px] font-bold text-red-500 uppercase ml-2 tracking-tighter">Konten Sekarang</span>
                                             <div className="p-4 bg-red-50/50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-2xl min-h-[80px]">
-                                                <div className={`${field === 'arabic' ? 'font-arabic text-2xl text-right leading-relaxed' : 'text-sm text-gray-600 dark:text-gray-400'}`}>
+                                                <div className={`${field === 'arabic' || field === 'judul_arab' ? 'font-arabic text-2xl leading-relaxed' : 'text-sm text-gray-600 dark:text-gray-400'}`}
+                                                    dir={field === 'arabic' || field === 'judul_arab' ? 'rtl' : 'ltr'}
+                                                >
                                                     {kontenAsli[field] ? (
                                                         <div dangerouslySetInnerHTML={{ __html: kontenAsli[field] }} />
                                                     ) : (
@@ -198,12 +288,15 @@ export const ReportDetailPage = () => {
                                                 <textarea
                                                     value={editedKoreksi[field] || ''}
                                                     onChange={(e) => setEditedKoreksi(prev => ({ ...prev, [field]: e.target.value }))}
-                                                    className={`p-4 bg-green-50/50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/30 rounded-2xl min-h-[120px] outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all ${field === 'arabic' ? 'font-arabic text-2xl text-right leading-relaxed' : 'text-sm text-text-main dark:text-gray-200'
+                                                    dir={field === 'arabic' || field === 'judul_arab' ? 'rtl' : 'ltr'}
+                                                    className={`p-4 bg-green-50/50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/30 rounded-2xl min-h-[120px] outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all ${field === 'arabic' || field === 'judul_arab' ? 'font-arabic text-2xl leading-relaxed' : 'text-sm text-text-main dark:text-gray-200'
                                                         }`}
                                                 />
                                             ) : (
                                                 <div className="p-4 bg-green-50/50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/30 rounded-2xl min-h-[80px]">
-                                                    <div className={`${field === 'arabic' ? 'font-arabic text-2xl text-right leading-relaxed' : 'text-sm text-text-main dark:text-gray-200'}`}>
+                                                    <div className={`${field === 'arabic' || field === 'judul_arab' ? 'font-arabic text-2xl leading-relaxed' : 'text-sm text-text-main dark:text-gray-200'}`}
+                                                        dir={field === 'arabic' || field === 'judul_arab' ? 'rtl' : 'ltr'}
+                                                    >
                                                         {editedKoreksi[field] || <span className="italic text-gray-400">Kosong</span>}
                                                     </div>
                                                 </div>

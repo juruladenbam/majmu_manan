@@ -1,11 +1,9 @@
 import { cn } from '@/lib/utils';
 import type { Item } from '@project/shared';
 import { useLocalStorage } from '@/features/settings/hooks/useLocalStorage';
-import { useLongPress } from '@/hooks/useLongPress';
 import { ReportModal } from '@/features/reports/components/ReportModal';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { AlertTriangle, X } from 'lucide-react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { MoreVertical } from 'lucide-react';
 
 export interface ReadingItemProps {
   item: Item;
@@ -17,15 +15,25 @@ export const ReadingItem = ({ item, className }: ReadingItemProps) => {
   const [showTranslation] = useLocalStorage<boolean>('showTranslation', true);
   const [showLatin] = useLocalStorage<boolean>('showLatin', true);
   const [showReportModal, setShowReportModal] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const { showMenu, closeMenu, handlers } = useLongPress({
-    onLongPress: () => {
-      // Trigger haptic feedack if available
-      if ('vibrate' in navigator) {
-        navigator.vibrate(50);
+  const closeMenu = useCallback(() => setShowMenu(false), []);
+
+  useEffect(() => {
+    if (!showMenu) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        menuRef.current && !menuRef.current.contains(e.target as Node) &&
+        buttonRef.current && !buttonRef.current.contains(e.target as Node)
+      ) {
+        closeMenu();
       }
-    },
-  });
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showMenu, closeMenu]);
 
   // Dynamic font size style
   // const arabicStyle = { fontSize: `${fontSize}px` };
@@ -117,13 +125,41 @@ export const ReadingItem = ({ item, className }: ReadingItemProps) => {
         `}
       </style>
       <div
-        {...handlers}
         className={cn(
-          'py-5 border-b border-slate-100 dark:border-slate-800 relative transition-colors',
-          showMenu ? 'bg-primary-50/50 dark:bg-primary-900/10' : '',
+          'py-5 border-b border-slate-100 dark:border-slate-800 relative',
           className
         )}
       >
+        {/* Three-dot menu button */}
+        <div className="absolute top-2 left-2 z-10">
+          <button
+            ref={buttonRef}
+            onClick={() => setShowMenu((prev) => !prev)}
+            className="p-1 rounded-full text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            aria-label="Menu"
+          >
+            <MoreVertical size={16} />
+          </button>
+
+          {/* Dropdown menu */}
+          {showMenu && (
+            <div
+              ref={menuRef}
+              className="absolute left-0 top-full mt-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 min-w-[160px] z-20"
+            >
+              <button
+                onClick={() => {
+                  closeMenu();
+                  setShowReportModal(true);
+                }}
+                className="w-full text-left px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
+              >
+                Laporkan Kesalahan
+              </button>
+            </div>
+          )}
+        </div>
+
         <div className="flex flex-col gap-4">
           {/* Main Content (Arabic/Image/Title) */}
           {renderContent()}
@@ -162,62 +198,6 @@ export const ReadingItem = ({ item, className }: ReadingItemProps) => {
             />
           )}
         </div>
-
-        {/* Long Press Menu Overlay */}
-        <AnimatePresence>
-          {showMenu && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 flex items-center justify-center bg-slate-900/10 dark:bg-white/5 backdrop-blur-sm rounded-lg z-10 p-4"
-              onClick={(e) => {
-                e.stopPropagation();
-                closeMenu();
-              }}
-            >
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                className="bg-white dark:bg-slate-800 shadow-2xl border border-slate-200 dark:border-slate-700 p-2 rounded-2xl flex flex-col gap-1 min-w-[180px]"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    closeMenu();
-                    setShowReportModal(true);
-                  }}
-                  className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-xl transition-colors text-left"
-                >
-                  <div className="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400">
-                    <AlertTriangle size={18} />
-                  </div>
-                  <div>
-                    <div className="font-bold text-slate-800 dark:text-slate-100 text-sm">Laporkan</div>
-                    <div className="text-[10px] text-slate-500 dark:text-slate-400">Ada kesalahan teks/arti</div>
-                  </div>
-                </button>
-
-                <div className="h-px bg-slate-100 dark:bg-slate-700 my-1" />
-
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    closeMenu();
-                  }}
-                  className="flex items-center gap-3 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-xl transition-colors text-left text-slate-400 dark:text-slate-500"
-                >
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <X size={18} />
-                  </div>
-                  <span className="text-xs font-semibold">Batal</span>
-                </button>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       <ReportModal

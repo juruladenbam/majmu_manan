@@ -17,6 +17,7 @@ class ReportController extends Controller
             'bacaan_id' => 'required|exists:bacaans,id',
             'kategori' => 'required|in:salah_ketik,teks_hilang,terjemahan_salah,lain_lain',
             'jenis_laporan' => 'required|in:bacaan,section,item',
+            'mode_koreksi' => 'required|in:langsung,catatan',
             'target_id' => 'required_if:jenis_laporan,section,item|nullable',
             'field_koreksi' => 'required|array|min:1',
             'field_koreksi.*' => 'string',
